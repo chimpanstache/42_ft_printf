@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2019/12/15 17:43:12 by ehafidi          ###   ########.fr       */
+/*   Updated: 2019/12/18 18:52:30 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,12 @@ int 	findIndex(char *arr, char element)
 
 int		ft_printf(const char *src, ...)
 {
-	void (*tabFunction[8]) (va_list *) = {printf_p, printf_u, printf_x, 
-	printf_X, printf_s, printf_c, printf_d_i, printf_d_i};
 	va_list prms;
 	int i = 0;
-	int index;
-	int width;
-	int attribute;
-	int champ;
-	int precision;
+	int attribute = 0;
+	int champ = 0;
+	int precision = 0;
+	int conv;
 
 	va_start(prms, src);
 	while (src[i]) //la on check les flags entre % et indic de conversion
@@ -93,34 +90,55 @@ int		ft_printf(const char *src, ...)
 		{
 			i++;
 			if (src[i] == '-' || src[i] == '0') //caractere dáttribut
-			{
-				attribute = ft_attribute(src[i]);
+			{	
+				attribute = ft_attribute((char *)&src[i]); // uste gerer le 0 ou le -
 				i++;
-			}
-			if ((src[i] <= '1' && src[i] <= '9') || src[i] == '*') //largeur de champ
-			{
-				champ = ft_champ(src[i]);
-				while ('1'<= src[i] && src[i] <= '9')
+				if (src[i] == '-' && src[i - 1] == 0)
+				{
+					attribute = ft_attribute((char *)&src[i]);
 					i++;
+				}
+				printf("%d%s\n", attribute, ": attribute");	//////////////////////
+			}
+			if ((src[i] >= '1' && src[i] <= '9') || src[i] == '*') //largeur de champ
+			{
+				champ = ft_champ((char *)&src[i], &prms);
+				i++;
+				while ('0' <= src[i] && src[i] <= '9')
+					i++;
+				printf("%d%s\n", champ, ": champ");
 			}	
 			if (src[i] == '.') //precision
 			{
 				i++;
-				precision = ft_precision(src[i]);
-				while ('1'<= src[i] && src[i] <= '9')
-				i++;
+				precision = ft_precision((char *)&src[i]);
+				while ('0' <= src[i] && src[i] <= '9')
+					i++;
+				printf("%d%s\n", precision, ": precision"); 
 			}
-			ft_write(attribute, champ, precision, conv);
+		}
 		i++;
 	}
+	ft_write()
+	printf("%s\n", "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"); 
     return (5);
 }
 
 int main()
 {
-	int i = 12;
-	int j = 34;
-	ft_printf("rtrtt%d\n", i);
-	ft_printf("%d\n%d\n", i, j);
+	int age = 12;
+	int khey = 32;
+	ft_printf("%-10.5d:\n", age);
+	ft_printf("%.10d:\n", age);
+	ft_printf("%010d:\n", age);
+	ft_printf("%10.d:\n", age);
+	ft_printf("%d:\n", age);
+	ft_printf("%010.5d:\n", age);
+	ft_printf("%-10d:\n", age);
+	ft_printf("%-10.5d:\n", age);
+	ft_printf("%-10.3d:\n", age);
+	ft_printf("%2d:\n", age);
+	ft_printf("%50d:\n", age);
+	ft_printf("%*d:\n", khey, age);
 	return (0);
 }
