@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2019/12/19 17:25:31 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:23:34 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,29 @@
 #define RANGE (1 << 2)
 #define CHAMP (1 << 3)
 
-/*int main()
+int main()
 {
-	int age = 120;
-	int khey = 32;
-	printf("%.5d:\n", age);
-	printf("%17d:\n", age);
-	printf("%.10d:\n", age);
-	printf("%010d:\n", age);
-	printf("%10.d:\n", age);
-	printf("%d:\n", age);
-	printf("%010.5d:\n", age);
-	printf("%-10d:\n", age);
-	printf("%-10.5d:\n", age);
-	printf("%10.3d:\n", age);
-	printf("%2d:\n", age);
-	printf("%5.10d:\n", age);
-	//printf("%*d:\n", khey, age);
-	//printf("%*d:\n", age, khey);
+	int age = -120;
+	int khey = -32;
+	printf("0:%.5d:\n", age);
+	printf("1:%17d:\n", age);
+	printf("2:%.10d:\n", age);
+	printf("3:%010d:\n", age);
+	printf("4:%10.d:\n", age);
+	printf("5:%d:\n", age);
+	printf("6:%.5d:\n", age);
+	printf("7:%-10d:\n", age);
+	printf("8:%-10.5d:\n", age);
+	printf("9:%10.5d:\n", age);
+	printf("10:%2d:\n", age);
+	printf("11:%5.10d:\n", age);
+	printf("12:%*d:\n", khey, age);
+	printf("13:%*d:\n", age, khey);
 
 	return (0);
-}*/
+}
 
-int main()
+/*int main()
 {
 	int f;
 	int i = 0;
@@ -46,5 +46,5 @@ int main()
 	f = MINUS;
 	printf("%d", f);
 	
-}
+}*/
 
