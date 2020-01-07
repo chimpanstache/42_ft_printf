@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/06 15:29:28 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/07 15:25:57 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,32 @@ void	printf_d_i(va_list *prms, int attribute, int champ, int precision)
 	int nb = va_arg(*prms, int);
 	char *base = "0123456789";
 	int digit;
+	int lngth;
+	int i;
+	char *display;
 
+	i = 0;
 	digit = countdigit_d_i_u(nb);
-	printf("%d%s\n", digit, ": digit");
-	ft_putnbr_base(nb, base);
+	if (digit > champ && digit > precision)
+		lngth = digit;
+	if (champ > precision && champ > digit)
+		lngth = champ;	
+	if (precision > champ && precision > digit)
+		lngth = precision;
+	if (precision > champ && nb < 0)
+		lngth++; 
+	if (!(display = malloc(sizeof(display) * (lngth + 1))))
+		return (NULL);
+	/*if (attribute == -1)
+		write left;
+	if (attribute == 0)
+		write right;
+	if (attribute == 1)
+		write 0;*/	
+	if (precision > digit)
+	{	
+		i = precision - digit;
+		while 
+	}	
+
 }

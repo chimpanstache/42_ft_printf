@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/06 15:26:57 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/07 13:37:15 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ int		ft_printf(const char *src, ...)
 		}
 		if (src[i] != '%')
 		{
-			write( 1, &src[i], 1);
+			write(1, &src[i], 1);
 			i++;
 		}
 	}
-	while (tabIndex[j] != 0)
+	/*while (tabIndex[j] != 0)
 	{
 		if (src[i] == tabIndex[j])
 		{
@@ -88,23 +88,23 @@ int		ft_printf(const char *src, ...)
 		}
 		j++;	
 	}	
-	if (tabIndex[j] == 0)
+	while (src[++i] != '\0')
 	{
-		return(-1);
-	}
-	printf("\n%s\n", "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");/////////// 
-    return (5);
+		write(1, &src[i], 1);
+	}*/
+	printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+	return (5);
 }
 
 int main()
 {
 	int age = -1232;
 	int khey = -3222;
-	ft_printf("weieir%-10.5d:\n", age);
-	ft_printf("weieir%.10d:\n", khey);
-	ft_printf("weieir%010d:\n", age);
-	ft_printf("weieir%10.d:\n", khey);
-	ft_printf("weieir%d:\n", age);
+	ft_printf("weieir%-10.5d:hahah\n", age);
+	ft_printf("weieir%.10d:haha\n", khey);
+	ft_printf("weieir%010d:haha\n", age);
+	ft_printf("weieir%10.d:haha\n", khey);
+	ft_printf("weieir%d:haha\n", age);
 	ft_printf("weieir%010.5d:\n", khey);
 	ft_printf("%-10d:\n", age);
 	ft_printf("%-10.5d:\n", khey);

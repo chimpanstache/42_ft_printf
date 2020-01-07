@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/06 15:20:32 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/07 15:25:55 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,25 @@ int		ft_strlen(char *base)
 	while (base[i])
 		i++;
 	return (i);
+}
+
+void			ft_putnbr_base_nxmr(int n, char *base, char *src)
+{
+	unsigned int nb;
+	int a;
+	int i;
+
+	int i = 0;
+	a = ft_strlen(base);
+	if (n < 0)
+`	{
+		nb = (unsigned int)(n * -1);
+	}
+	else
+		nb = (unsigned int)n;
+	if (nb > 9)
+		ft_putnbr_base((nb / a), base);
+	src[i] = &base[nb % a];
 }
 
 void			ft_putnbr_base(int n, char *base)
@@ -78,7 +97,7 @@ int	countdigit_d_i_u(int nb)
 	int digit = 1;
 	if (nb < 0)
 	{
-		digit++;
+		//digit++;
 		nb = -nb;
 	}
 	if (nb <= 9)

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/06 15:18:23 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/07 11:27:34 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void 	printf_X(va_list *prms, int attribute, int champ, int precision);
 void 	printf_s(va_list *prms, int attribute, int champ, int precision);
 void	printf_c(va_list *prms, int attribute, int champ, int precision);
 void	printf_d_i(va_list *prms, int attribute, int champ, int precision);
+void ft_write_char(char *src);
 
 #endif
