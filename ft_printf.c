@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/07 13:37:15 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/10 11:40:47 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		ft_printf(const char *src, ...)
 			i++;
 		}
 	}
-	/*while (tabIndex[j] != 0)
+	while (tabIndex[j] != 0)
 	{
 		if (src[i] == tabIndex[j])
 		{
@@ -91,7 +91,7 @@ int		ft_printf(const char *src, ...)
 	while (src[++i] != '\0')
 	{
 		write(1, &src[i], 1);
-	}*/
+	}
 	printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
 	return (5);
 }

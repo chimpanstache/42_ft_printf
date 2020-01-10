@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/07 15:25:57 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/10 20:09:15 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,92 @@ void	printf_c(va_list *prms, int attribute, int champ, int precision)
 	write(1, &chr, 1);
 }
 
-void	printf_d_i(va_list *prms, int attribute, int champ, int precision)
+void	printf_d_i(va_list *prms, int attribute, int champ, int precision) //si nb est positif
+{
+/*	int nb = va_arg(*prms, int);
+	char *base = "0123456789";
+	int digit;
+	int lngth;
+	int i;
+	char *display;
+	int a;
+
+	a = 0;
+	i = 0;
+	digit = countdigit_d_i_u(nb);
+	if (digit > champ && digit > precision)
+		lngth = digit;
+	if (champ > precision && champ > digit)
+		lngth = champ;
+	if (precision > champ && precision > digit)
+		nb >= 0 ? lngth = precision : lngth = precision + 1;
+	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+		return (NULL);
+	display[lngth] = '\0';
+	if (digit > champ && digit > precision)
+		ft_putnbr_custom(nb, display);
+	if (precision > champ && precision > digit)
+	{
+		if (nb > 0)
+		{
+			i = precision - digit;
+			ft_putnbr_custom(nb, display[i]);
+			while (i > -1)
+				display[i--] = '0';
+		}
+		if (nb < 0)
+		{
+			i = precision - digit + 1;
+			ft_putnbr_custom(nb, display[i]);
+			while (i > 0)
+				display[i--] = '0';
+			while (i > -1)
+				display[i--] = '-';	
+		}
+	}
+	if (champ > precision && champ > digit) 
+	{
+		if (attribute == -1)
+		{
+			if (precision < digit)
+				ft_putnbr_custom(nb, display[i]);
+			if (precision > digit)
+			{
+				i = precision - digit;
+				ft_putnbr_custom(nb, display[i]);
+				while (i > -1)
+					display[i--] = '0';
+			}
+		}*/
+		//tout ce qui est en commentaire est cense etre fini, il n'y a plus qu'a gerer qund nb est negatif et precision > digit
+		if (attribute != -1)
+		{
+			i = champ - digit;
+			ft_putnbr_custom(nb, display[i]);
+			if (precision < digit)
+			{
+				if (nb < 0)
+					display[--i] = '-';
+				while (i > -1)
+					display[i--] = ' ';
+			}
+			if (precision > digit)
+			{
+				while ((precision - digit) > 0)
+				{
+					display[i--] = '0';
+					precision--;
+				}
+				while (i > -1)
+					display[i--] = ' ';
+			}
+		}
+	}
+	ft_putstr(display);
+	free(display);
+}
+
+void	printf_d_i(va_list *prms, int attribute, int champ, int precision) //si nb est negatif
 {
 	int nb = va_arg(*prms, int);
 	char *base = "0123456789";
@@ -63,29 +148,66 @@ void	printf_d_i(va_list *prms, int attribute, int champ, int precision)
 	int lngth;
 	int i;
 	char *display;
+	int a;
 
+	a = 0;
 	i = 0;
 	digit = countdigit_d_i_u(nb);
 	if (digit > champ && digit > precision)
 		lngth = digit;
 	if (champ > precision && champ > digit)
-		lngth = champ;	
+		lngth = champ;
 	if (precision > champ && precision > digit)
 		lngth = precision;
 	if (precision > champ && nb < 0)
-		lngth++; 
-	if (!(display = malloc(sizeof(display) * (lngth + 1))))
+		lngth++;
+	if (nb < 0 && precision > champ && precision > digit)
+		if (!(display = malloc(sizeof(*display) * (lngth + 2))))
+			return (NULL);
+	else if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
-	/*if (attribute == -1)
-		write left;
-	if (attribute == 0)
-		write right;
-	if (attribute == 1)
-		write 0;*/	
-	if (precision > digit)
-	{	
+	display[lngth] = '\0';
+	if (digit > champ && digit > precision)
+		ft_putnbr_custom(nb, display);
+	if (precision > champ && precision > digit) //to be continued
+	{
 		i = precision - digit;
-		while 
-	}	
-
+		ft_putnbr_custom(nb, display[i]);
+		while (i > -1)
+			display[i--] = '0';
+	}
+	if (champ > precision && champ > digit) //to be continued
+	{
+		if (attribute == -1)
+		{
+			if (precision < digit)
+				ft_putnbr_custom(nb, display[i]);
+			if (precision > digit)
+			{
+				i = precision - digit;
+				ft_putnbr_custom(nb, display[i]);
+				while (i > -1)
+					display[i--] = '0';
+			}
+		}
+		if (attribute != -1)
+		{
+			i = champ - digit;
+			ft_putnbr_custom(nb, display[i]);
+			if (precision < digit)
+				while (i > -1)
+					display[i--] = ' ';
+			if (precision > digit)
+			{
+				while ((precision - digit) > 0)
+				{
+					display[i--] = '0';
+					precision--;
+				}
+				while (i > -1)
+					display[i--] = ' ';
+			}
+		}
+	}
+	ft_putstr(display);
 }

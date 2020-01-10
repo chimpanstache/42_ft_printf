@@ -6,12 +6,44 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/07 15:25:55 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/10 20:07:00 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
+
+void	ft_putnbr_custom(int n, char *src)
+{
+	unsigned int nb;
+	static int i = 0;
+
+	if (n < 0)
+	{
+		nb = (unsigned int)(n * -1);
+	}
+	else
+		nb = (unsigned int)n;
+	if (nb > 9)
+		ft_putnbr(nb / 10);
+	src[i++] = nb % 10 + '0';
+}
+
+void	ft_putnbr_custom_neg(int n, char *src)
+{
+	unsigned int nb;
+	static int i = 0;
+
+	if (n < 0)
+	{
+		nb = (unsigned int)(n * -1);
+	}
+	else
+		nb = (unsigned int)n;
+	if (nb > 9)
+		ft_putnbr(nb / 10);
+	src[i++] = nb % 10 + '0';
+}
 
 void	ft_putchar(char c)
 {
@@ -30,26 +62,40 @@ int		ft_strlen(char *base)
 	return (i);
 }
 
-void			ft_putnbr_base_nxmr(int n, char *base, char *src)
+void	ft_putstr(char *s)
+{
+	size_t		i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write(0, &s[i], 1);
+		i++;
+	}
+}
+
+char	ft_putnbr_base_nxmr(int n, char *base, char *src)
 {
 	unsigned int nb;
 	int a;
 	int i;
 
-	int i = 0;
+	 i = 0;
 	a = ft_strlen(base);
 	if (n < 0)
-`	{
+	{
 		nb = (unsigned int)(n * -1);
 	}
 	else
 		nb = (unsigned int)n;
 	if (nb > 9)
 		ft_putnbr_base((nb / a), base);
-	src[i] = &base[nb % a];
+	return (&base[nb % a]);
 }
 
-void			ft_putnbr_base(int n, char *base)
+void		ft_putnbr_base(int n, char *base)
 {
 	unsigned int nb;
 	int a;
@@ -165,16 +211,16 @@ int 	ft_precision(char *str)
 	}
 	else if (src[i] != '%')
 		write(1, &src[i], 1);
-}*/
+}
 
-/*int 	count_digit_p(va_list *prms) //print the address
+int 	count_digit_p(va_list *prms) //print the address
 {
 	long long ptr = (long long)va_arg(*prms, void *);
 	char *base = "0123456789abcdef";
 	ft_putnbr_base(ptr, base);
-}*/
+}
 
-/*int 	count_digit_X_x(va_list *prms)	//putnbr majusule
+int 	count_digit_X_x(va_list *prms)	//putnbr majusule
 {
 	int nb = va_arg(*prms, int);
 	char *base = "0123456789ABCDEF";
@@ -200,19 +246,19 @@ int 	ft_precision(char *str)
 	}	
 	free(str);
 	return (i);
-}*/
+}
 
-/*int 	strlen_s(va_list *prms)
+int 	strlen_s(va_list *prms)
 {
 	int length;
 	char *src = va_arg(*prms, char *);
 	length = ft_strlen(src);
 	return(length);
-}*/
+}
 
 //pas de countdigit_c car forcement 1 digit 
 
-/*int 	findIndex(char *arr, char element)
+int 	findIndex(char *arr, char element)
 {
 	int i = 0;
 
@@ -223,9 +269,9 @@ int 	ft_precision(char *str)
 		i++;
 	}
 	return (-1);
-}*/
+}
 
-/*int main()
+int main()
 {
 	printf("%d", ft_atoi("-wef"));
 	return (0);
