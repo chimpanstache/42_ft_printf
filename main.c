@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/10 20:06:49 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/11 12:13:29 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 int main()
 {
-	int age = 1234;
+	int age = -1234;
 	int khey = 132;
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ < digit\n");

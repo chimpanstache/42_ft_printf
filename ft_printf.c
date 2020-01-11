@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/10 11:40:47 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:33:55 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ int		ft_printf(const char *src, ...)
 {
 	va_list prms;
 	int i = 0;
-	int attribute = 0;
-	int champ = 0;
-	int precision = 0;
+	s_flags flags;
 	int conv;
 	int j;
 	j = 0;
-	void (*tabFunction[8]) (va_list *, int, int, int) = {printf_p, printf_u, printf_x, printf_X, printf_s, printf_c, printf_d_i, printf_d_i};
+	void (*tabFunction[8]) (va_list *, s_flags) = {printf_p, printf_u, printf_x, printf_X, printf_s, printf_c, printf_d_i, printf_d_i};
 	char tabIndex[9] = {'p', 'u', 'x', 'X', 's', 'c', 'd', 'i', 0};
 
 	va_start(prms, src);
@@ -46,30 +44,30 @@ int		ft_printf(const char *src, ...)
 			i++;
 			if (src[i] == '-' || src[i] == '0') //caractere dáttribut
 			{	
-				attribute = ft_attribute((char *)&src[i]); // uste gerer le 0 ou le -
+				flags.att = ft_attribute((char *)&src[i]); // uste gerer le 0 ou le -
 				i++;
 				if (src[i] == '-' && src[i - 1] == 0)
 				{
-					attribute = ft_attribute((char *)&src[i]);
+					flags.att = ft_attribute((char *)&src[i]);
 					i++;
 				}
-				printf("%d%s\n", attribute, ": attribute");	//////////////////////
+				//printf("%d%s\n", attribute, ": attribute");	//////////////////////
 			}
 			if ((src[i] >= '1' && src[i] <= '9') || src[i] == '*') //largeur de champ
 			{
-				champ = ft_champ((char *)&src[i], &prms);
+				flags.chmp = ft_champ((char *)&src[i], &prms);
 				i++;
 				while ('0' <= src[i] && src[i] <= '9')
 					i++;
-				printf("%d%s\n", champ, ": champ");  ///////////////////////
+				//printf("%d%s\n", champ, ": champ");  ///////////////////////
 			}	
 			if (src[i] == '.') //precision
 			{
 				i++;
-				precision = ft_precision((char *)&src[i]);
+				flags.prec = ft_precision((char *)&src[i]);
 				while ('0' <= src[i] && src[i] <= '9')
 					i++;
-				printf("%d%s\n", precision, ": precision"); ////////////
+				//printf("%d%s\n", precision, ": precision"); ////////////
 			}
 		break ;	
 		}
@@ -83,7 +81,7 @@ int		ft_printf(const char *src, ...)
 	{
 		if (src[i] == tabIndex[j])
 		{
-			(*tabFunction[j]) (&prms, attribute, champ, precision);
+			(*tabFunction[j]) (&prms, flags);
 			break ;
 		}
 		j++;	
@@ -92,7 +90,7 @@ int		ft_printf(const char *src, ...)
 	{
 		write(1, &src[i], 1);
 	}
-	printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+	//printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
 	return (5);
 }
 

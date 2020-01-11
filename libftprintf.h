@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/10 11:39:22 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:44:09 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,19 @@ int		ft_attribute(char *str);
 int		ft_champ(char *str, va_list *prms);
 int 	ft_precision(char *str);
 int	countdigit_d_i_u(int nb);
-void 	printf_p(va_list *prms, int attribute, int champ, int precision);
-void 	printf_u(va_list *prms, int attribute, int champ, int precision);
-void 	printf_x(va_list *prms, int attribute, int champ, int precision);
-void 	printf_X(va_list *prms, int attribute, int champ, int precision);
-void 	printf_s(va_list *prms, int attribute, int champ, int precision);
-void	printf_c(va_list *prms, int attribute, int champ, int precision);
-void	printf_d_i(va_list *prms, int attribute, int champ, int precision);
+void 	printf_p(va_list *prms, s_flags flags);
+void 	printf_u(va_list *prms, s_flags flags);
+void 	printf_x(va_list *prms, s_flags flags);
+void 	printf_X(va_list *prms, s_flags flags);
+void 	printf_s(va_list *prms, s_flags flags);
+void	printf_c(va_list *prms, s_flags flags);
+void	printf_d_i(va_list *prms, s_flags flags);
 void ft_write_char(char *src);
 
+typedef struct 	s_flags
+{
+	int att;
+	int chmp;
+	int prec;
+}				s_flags;
 #endif

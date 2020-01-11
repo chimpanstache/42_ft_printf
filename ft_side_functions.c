@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/10 20:07:00 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:30:28 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_putnbr_custom_neg(int n, char *src)
 	if (n < 0)
 	{
 		nb = (unsigned int)(n * -1);
+		src[i++] = '-';
 	}
 	else
 		nb = (unsigned int)n;
@@ -143,7 +144,6 @@ int	countdigit_d_i_u(int nb)
 	int digit = 1;
 	if (nb < 0)
 	{
-		//digit++;
 		nb = -nb;
 	}
 	if (nb <= 9)
