@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/11 14:33:55 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/13 15:32:03 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_printf(const char *src, ...)
 					flags.att = ft_attribute((char *)&src[i]);
 					i++;
 				}
-				//printf("%d%s\n", attribute, ": attribute");	//////////////////////
+				//printf("%d%s\n", flags.att, ": attribute");	//////////////////////
 			}
 			if ((src[i] >= '1' && src[i] <= '9') || src[i] == '*') //largeur de champ
 			{
@@ -90,11 +90,37 @@ int		ft_printf(const char *src, ...)
 	{
 		write(1, &src[i], 1);
 	}
-	//printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+	//printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n"); //////////////////////
 	return (5);
 }
 
 int main()
+{
+	int age = 1234;
+	int khey = 132;
+
+	ft_printf("precision > champ && precision > digit\n");
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%3.10d:\n", age); //champ < digit
+	ft_printf("0:%03.10d:\n", age); //champ < digit
+	//ft_printf("-:%-3.10d:\n", age); //champ < digit
+	/*ft_printf("/////champ > digit\n");
+	ft_printf("R:%6.10d:\n", age); //champ > digit
+	ft_printf("0:%06.10d:\n", age); //champ > digit
+	ft_printf("-:%-6.10d:\n", age); //champ > digit
+	ft_printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
+	ft_printf("/////precision =< digit\n");
+	ft_printf("R:%10.3d:\n", age); //precision < digit
+	ft_printf("0:%010.3d:\n", age); //precision < digit
+	ft_printf("-:%-10.3d:\n", age); //precision < digit
+	ft_printf("/////precision > digit\n");
+	ft_printf("R:%10.6d:\n", age); //precision > digit
+	ft_printf("0:%010.6d:\n", age); //precision > digit 
+	ft_printf("-:%-10.6d:\n", age); //precision > digit*/
+	return (0);	
+}
+
+/*int main()
 {
 	int age = -1232;
 	int khey = -3222;
@@ -111,4 +137,4 @@ int main()
 	ft_printf("%50d:\n", age);
 	ft_printf("%*d:\n", khey, age);
 	return (0);
-}
+}*/

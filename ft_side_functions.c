@@ -6,14 +6,14 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/11 14:30:28 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/13 14:24:35 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-void	ft_putnbr_custom(int n, char *src)
+void	ft_putnbr_custom_pos(int n, char *src)
 {
 	unsigned int nb;
 	static int i = 0;
@@ -25,11 +25,11 @@ void	ft_putnbr_custom(int n, char *src)
 	else
 		nb = (unsigned int)n;
 	if (nb > 9)
-		ft_putnbr(nb / 10);
+		ft_putnbr_custom_pos(nb / 10, src);
 	src[i++] = nb % 10 + '0';
 }
 
-void	ft_putnbr_custom_neg(int n, char *src)
+void	ft_putnbr_custom(int n, char *src)
 {
 	unsigned int nb;
 	static int i = 0;
@@ -42,7 +42,7 @@ void	ft_putnbr_custom_neg(int n, char *src)
 	else
 		nb = (unsigned int)n;
 	if (nb > 9)
-		ft_putnbr(nb / 10);
+		ft_putnbr_custom(nb / 10, src);
 	src[i++] = nb % 10 + '0';
 }
 
@@ -61,39 +61,6 @@ int		ft_strlen(char *base)
 	while (base[i])
 		i++;
 	return (i);
-}
-
-void	ft_putstr(char *s)
-{
-	size_t		i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-	{
-		write(0, &s[i], 1);
-		i++;
-	}
-}
-
-char	ft_putnbr_base_nxmr(int n, char *base, char *src)
-{
-	unsigned int nb;
-	int a;
-	int i;
-
-	 i = 0;
-	a = ft_strlen(base);
-	if (n < 0)
-	{
-		nb = (unsigned int)(n * -1);
-	}
-	else
-		nb = (unsigned int)n;
-	if (nb > 9)
-		ft_putnbr_base((nb / a), base);
-	return (&base[nb % a]);
 }
 
 void		ft_putnbr_base(int n, char *base)
@@ -269,10 +236,4 @@ int 	findIndex(char *arr, char element)
 		i++;
 	}
 	return (-1);
-}
-
-int main()
-{
-	printf("%d", ft_atoi("-wef"));
-	return (0);
 }*/
