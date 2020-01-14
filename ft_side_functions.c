@@ -6,12 +6,28 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/13 14:24:35 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/14 17:18:59 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
+char	*ft_strndup(const char *str, size_t len)
+{
+	unsigned int	i;
+	char			*copy;
+
+	if (!(copy = malloc(sizeof(*copy) * (len + 1))))
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		copy[i] = str[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
+}
 
 void	ft_putnbr_custom_pos(int n, char *src)
 {
@@ -44,14 +60,6 @@ void	ft_putnbr_custom(int n, char *src)
 	if (nb > 9)
 		ft_putnbr_custom(nb / 10, src);
 	src[i++] = nb % 10 + '0';
-}
-
-void	ft_putchar(char c)
-{
-	unsigned char c1;
-
-	c1 = (unsigned char)c;
-	write(0, &c1, 1);
 }
 
 int		ft_strlen(char *base)
@@ -122,118 +130,3 @@ int	countdigit_d_i_u(int nb)
 	}	
 	return(digit);
 }
-
-int		ft_attribute(char *str)
-{
-	int att;
-	int i;
-
-	i = 0;
-	if (str[i] == '-')
-		att = -1;
-	else
-		att = 1;
-	return (att);
-}
-
-int		ft_champ(char *str, va_list *prms)
-{
-	int i;
-	int champ;
-
-	i = 0;
-	if (str[i] == '*')
-	{
-		champ = va_arg(*prms, int);
-		return (champ);
-	}
-	champ = ft_atoi(str);
-	return (champ);
-}
-
-int 	ft_precision(char *str)
-{
-	int prec;
-
-	prec  = ft_atoi(str);
-	return (prec);
-}
-
-/*void 	ft_write(int attribute, int champ, int precision, va_list *prms)
-{
-	void (*tabFunction[7]) (va_list *) = {printf_p, printf_u, printf_x, printf_X, printf_s, printf_c, printf_d_i};
-	char tabIndex[9] = {'p', 'u', 'x', 'X', 's', 'c', 'd', 'i', 0};
-	int j;
-	int conv;
-
-	while (tabIndex[j] != 0)
-	{
-		if (src[i + 1] == tabIndex[j])
-		{
-			index = findIndex(tabIndex, src[i]);
-			if (index != -1)
-				(*tabFunction[index]) (&prms);
-		}
-		j++;
-	}
-	else if (src[i] != '%')
-		write(1, &src[i], 1);
-}
-
-int 	count_digit_p(va_list *prms) //print the address
-{
-	long long ptr = (long long)va_arg(*prms, void *);
-	char *base = "0123456789abcdef";
-	ft_putnbr_base(ptr, base);
-}
-
-int 	count_digit_X_x(va_list *prms)	//putnbr majusule
-{
-	int nb = va_arg(*prms, int);
-	char *base = "0123456789ABCDEF";
-	int length;
-	char *str;
-	int i;
-
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(*str) * (count_digit_d_i(nb) + 1))))
-	{
-		free(str);
-		return (NULL);	
-	}
-	if (nb < 0)
-	{
-		nb = -nb;
-		str[i++] = '-';
-	}
-	while (nb > 9)
-	{
-		nb /= 16;
-		str[i++] = base[nb % ft_strlen(base)];
-	}	
-	free(str);
-	return (i);
-}
-
-int 	strlen_s(va_list *prms)
-{
-	int length;
-	char *src = va_arg(*prms, char *);
-	length = ft_strlen(src);
-	return(length);
-}
-
-//pas de countdigit_c car forcement 1 digit 
-
-int 	findIndex(char *arr, char element)
-{
-	int i = 0;
-
-	while (arr[i])
-	{
-		if (arr[i] == element)
-			return (i);
-		i++;
-	}
-	return (-1);
-}*/
