@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/14 19:44:59 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:15:02 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,9 @@ int		ft_printf(const char *src, ...)
 	return (5);
 }
 
-
-int main()
+int main()  //tout fonctionne si nombre positif
 {
-	int age = 1234;
+	int age = -1234;
 	int khey = 132;
 
 	ft_printf("precision > champ && precision > digit\n");
@@ -88,29 +87,27 @@ int main()
 	ft_printf("/////precision =< digit\n");
 	ft_printf("R:%10.3d:\n", age); //precision < digit
 	ft_printf("0:%010.3d:\n", age); //precision < digit
-	ft_printf("-:%-10.3d:\n", age); //precision < digit*/
+	ft_printf("-:%-10.3d:\n", age); //precision < digit
 	ft_printf("/////precision > digit\n");
 	ft_printf("R:%10.6d:\n", age); //precision > digit
 	ft_printf("0:%010.6d:\n", age); //precision > digit
-	ft_printf("-:%-10.6d:\n", age); //precision > digit*/
+	ft_printf("-:%-10.6d:\n", age); //precision > digit
 	return (0);	
 }
 
 /*int main()
 {
-	int age = -1232;
-	int khey = -3222;
-	ft_printf("weieir%-10.5d:hahah\n", age);
-	ft_printf("weieir%.10d:haha\n", khey);
-	ft_printf("weieir%010d:haha\n", age);
-	ft_printf("weieir%10.d:haha\n", khey);
-	ft_printf("weieir%d:haha\n", age);
-	ft_printf("weieir%010.5d:\n", khey);
-	ft_printf("%-10d:\n", age);
-	ft_printf("%-10.5d:\n", khey);
-	ft_printf("%-10.3d:\n", age);
-	ft_printf("%2d:\n", khey);
-	ft_printf("%50d:\n", age);
-	ft_printf("%*d:\n", khey, age);
-	return (0);
+	int age = 1234;
+	int khey = 132;
+
+	ft_printf("precision > champ && precision > digit\n");
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%d:\n", age); //champ < digit
+	ft_printf("0:%d:\n", age); //champ < digit
+	ft_printf("-:%d:\n", age); //champ < digit
+	ft_printf("/////champ > digit\n");
+	ft_printf("R:%d:\n", age); //champ > digit
+	ft_printf("0:%d:\n", age); //champ > digit
+	ft_printf("-:%d:\n", age); //champ > digit
+	return (0);	
 }*/

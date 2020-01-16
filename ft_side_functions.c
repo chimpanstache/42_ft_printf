@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/14 17:18:59 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:13:21 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void	ft_putnbr_custom_pos(int n, char *src)
 {
 	unsigned int nb;
 	static int i = 0;
+	int y;
+
+	y = 0;
+	if (i != 0)
+		i = y;
 
 	if (n < 0)
 	{
@@ -45,12 +50,16 @@ void	ft_putnbr_custom_pos(int n, char *src)
 	src[i++] = nb % 10 + '0';
 }
 
-void	ft_putnbr_custom(int n, char *src)
+void	ft_putnbr_custom(int n, char *src) //fonctionne pas avec les negatifs
 {
 	unsigned int nb;
 	static int i = 0;
+	int y;
 
-	if (n < 0)
+	y = 0;
+	if (i != 0)
+		i = y;
+ 	if (n < 0)
 	{
 		nb = (unsigned int)(n * -1);
 		src[i++] = '-';
