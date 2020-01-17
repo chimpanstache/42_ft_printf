@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/17 17:01:47 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/17 19:45:51 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,19 +111,19 @@
 	return (0);	
 }*/
 
-int main()  //tout fonctionne si nombre positif
+/*int main()  //tout fonctionne si nombre positif
 {
 	char *str;
-	char *str1;
-	char *str2;
-	char *str3;
+	char *str1 = "1234";
+	char *str2 = "1234";
+	char *str3 = "1234";
 
 	printf("%p\n", str); //champ < digit
 	printf("%p\n", str1); //champ < digit
 	printf("%p\n", str2); //champ < digit
 	printf("%p\n", str3); //champ > digit
 	return (0);
-}
+}*/
 
 /*int main()
 {
@@ -172,3 +172,29 @@ int main()  //tout fonctionne si nombre positif
 	printf("-:%-10.6s:\n", age); //precision > digit
 	return (0);	
 }*/
+
+int main()  //tout fonctionne si nombre positif
+{
+	int age = 1234;
+	int *p = &age;
+
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%3.10p:\n", age); //champ < digit
+	printf("0:%03.10p:\n", age); //champ < digit
+	printf("-:%-3.10p:\n", age); //champ < digit
+	printf("/////champ > digit\n");
+	printf("R:%6.10p:\n", age); //champ > digit
+	printf("0:%06.10p:\n", age); //champ > digit
+	printf("-:%-6.10p:\n", age); //champ > digit
+	printf("champ > precision && champ > digit\n"); 
+	printf("/////precision =< digit\n");
+	printf("R:%10.3p:\n", age); //precision < digit
+	printf("0:%010.3p:\n", age); //precision < digit
+	printf("-:%-10.3p:\n", age); //precision < digit
+	printf("/////precision > digit\n");
+	printf("R:%10.6p:\n", age); //precision > digit
+	printf("0:%010.6p:\n", age); //precision > digit
+	printf("-:%-10.6p:\n", age); //precision > digit
+	return (0);
+}

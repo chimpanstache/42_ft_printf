@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/17 17:02:02 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/17 19:44:54 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,18 +123,65 @@ int		ft_printf(const char *src, ...)
 
 int main()  //tout fonctionne si nombre positif
 {
-	char *str;
-	char *str1;
-	char *str2;
-	char *str3;
+	int age = 1234;
+	int *p = &age;
 
-	ft_printf("%p\n", str); //champ < digit
-	ft_printf("%p\n", str1); //champ < digit
-	ft_printf("%p\n", str2); //champ < digit
-	ft_printf("%p\n", str3); //champ > digit
+	ft_printf("precision > champ && precision > digit\n");
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%3.10p:\n", age); //champ < digit
+	ft_printf("0:%03.10p:\n", age); //champ < digit
+	ft_printf("-:%-3.10p:\n", age); //champ < digit
+	ft_printf("/////champ > digit\n");
+	ft_printf("R:%6.10p:\n", age); //champ > digit
+	ft_printf("0:%06.10p:\n", age); //champ > digit
+	ft_printf("-:%-6.10p:\n", age); //champ > digit
+	ft_printf("champ > precision && champ > digit\n"); 
+	ft_printf("/////precision =< digit\n");
+	ft_printf("R:%10.3p:\n", age); //precision < digit
+	ft_printf("0:%010.3p:\n", age); //precision < digit
+	ft_printf("-:%-10.3p:\n", age); //precision < digit
+	ft_printf("/////precision > digit\n");
+	ft_printf("R:%10.6p:\n", age); //precision > digit
+	ft_printf("0:%010.6p:\n", age); //precision > digit
+	ft_printf("-:%-10.6p:\n", age); //precision > digit
 	return (0);
 }
 
+/*int main()  //tout fonctionne si nombre positif
+{
+	char *str;
+	int i = 10;
+	int *p = &i;
+	unsigned int j = 10;
+	unsigned int *p1 = &j;
+	long k = 10;
+	long *p2 = &k;
+	unsigned long l = 10;
+	unsigned long *p3 = &l;
+	long long m = 10;
+	long long *p4 = &m;
+	unsigned long long n = 10;
+	unsigned long long *p5 = &n;
+
+
+
+	printf("%p\n", str); //champ < digit
+	ft_printf("%p\n", str); //champ < digit
+	printf("%p\n", p); //champ < digit
+	ft_printf("%p\n", p); //champ < digit
+	printf("%p\n", p1); //champ < digit
+	ft_printf("%p\n", p1); //champ < digit
+	printf("%p\n", p2); //champ < digit
+	ft_printf("%p\n", p2); //champ < digit
+	printf("%p\n", p3); //champ < digit
+	ft_printf("%p\n", p3); //champ < digit
+	printf("%p\n", p4); //champ < digit
+	ft_printf("%p\n", p4); //champ < digit
+	printf("%p\n", p5); //champ < digit
+	ft_printf("%p\n", p5); //champ < digit
+	
+	return (0);
+}*/
 
 /*int main()  //tout fonctionne si nombre positif
 {
