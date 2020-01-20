@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:16:55 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/16 14:12:11 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/20 16:30:43 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void init_flags(s_flags *flags)
 {
 	flags->att = 0;
 	flags->chmp = 0;
-	flags->prec = 0;
-}
+	flags->prec = -1; //trouver autre valeur d'initialisation que 0 pour str, pour reste bon sinon
+} ////DOOONNNEEE
 
 void analyse_params(char *prmtrs, s_flags *flags, va_list *prms) //fonctionne en theorie
 {

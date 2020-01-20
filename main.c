@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/17 19:45:51 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/20 16:29:00 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,59 @@
 
 /*int main()
 {
-	int age = 1234;
+	char age = 'h';
 	int khey = 132;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
-	printf("R:%3.10x:\n", age); //champ < digit
-	printf("0:%03.10x:\n", age); //champ < digit
-	printf("-:%-3.10x:\n", age); //champ < digit
+	printf("R:%c:\n", age); //champ < digit
+	printf("0:%c:\n", age); //champ < digit
+	printf("-:%-3.10c:\n", age); //champ < digit
 	printf("/////champ > digit\n");
-	printf("R:%6.10x:\n", age); //champ > digit
-	printf("0:%06.10x:\n", age); //champ > digit
-	printf("-:%-6.10x:\n", age); //champ > digit
+	printf("R:%6.10c:\n", age); //champ > digit
+	printf("0:%06.10c:\n", age); //champ > digit
+	printf("-:%-6.10c:\n", age); //champ > digit
 	printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
 	printf("/////precision =< digit\n");
-	printf("R:%10.3x:\n", age); //precision < digit
-	printf("0:%010.3x:\n", age); //precision < digit
-	printf("-:%-10.3x:\n", age); //precision < digit
+	printf("R:%10.3c:\n", age); //precision < digit
+	printf("0:%010.3c:\n", age); //precision < digit
+	printf("-:%-10.3c:\n", age); //precision < digit
 	printf("/////precision > digit\n");
-	printf("R:%10.6x:\n", age); //precision > digit
-	printf("0:%010.6x:\n", age); //precision > digit 
-	printf("-:%-10.6x:\n", age); //precision > digit
+	printf("R:%10.6c:\n", age); //precision > digit
+	printf("0:%010.6c:\n", age); //precision > digit 
+	printf("-:%-10.6c:\n", age); //precision > digit
+	return (0);	
+}*/
+
+/*int main()
+{
+	char *age = "choc";
+	int khey = 132;
+
+	printf("digit > champ\n");
+	printf("/////precision =< digit\n");
+	printf("R:%2.3s:\n", age); //champ < digit
+	printf("-:%2.3s:\n", age); //champ < digit
+	printf("/////precision > digit\n");
+	printf("R:%2.6s:\n", age); //champ < digit
+	printf("-:%-2.6s:\n", age); //champ < digit
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%3.10s:\n", age); //champ < digit
+	printf("-:%-3.10s:\n", age); //champ < digit
+	printf("/////champ > digit\n");
+	printf("R:%6.10s:\n", age); //champ > digit
+	printf("-:%-6.10s:\n", age); //champ > digit
+	printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
+	printf("/////precision =< digit\n");
+	printf("R:%10.3s:\n", age); //precision < digit
+	printf("-:%-10.3s:\n", age); //precision < digit
+	printf("/////precision > digit\n");
+	printf("R:%10.6s:\n", age); //precision > digit
+	printf("-:%-10.6s:\n", age); //precision > digit
+	printf("/////precision == 0\n");
+	printf("R:%10.s:\n", age); //precision > digit
+	printf("-:%-10.s:\n", age); //precision > digit
 	return (0);	
 }*/
 
@@ -180,21 +212,57 @@ int main()  //tout fonctionne si nombre positif
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
-	printf("R:%3.10p:\n", age); //champ < digit
-	printf("0:%03.10p:\n", age); //champ < digit
-	printf("-:%-3.10p:\n", age); //champ < digit
+	printf("R:%3.10d:\n", age); //champ < digit
+	printf("0:%03.10d:\n", age); //champ < digit
+	printf("-:%-3.10d:\n", age); //champ < digit
 	printf("/////champ > digit\n");
-	printf("R:%6.10p:\n", age); //champ > digit
-	printf("0:%06.10p:\n", age); //champ > digit
-	printf("-:%-6.10p:\n", age); //champ > digit
+	printf("R:%6.10d:\n", age); //champ > digit
+	printf("0:%06.10d:\n", age); //champ > digit
+	printf("-:%-6.10d:\n", age); //champ > digit
 	printf("champ > precision && champ > digit\n"); 
 	printf("/////precision =< digit\n");
-	printf("R:%10.3p:\n", age); //precision < digit
-	printf("0:%010.3p:\n", age); //precision < digit
-	printf("-:%-10.3p:\n", age); //precision < digit
+	printf("R:%10.3d:\n", age); //precision < digit
+	printf("0:%010.3d:\n", age); //precision < digit
+	printf("-:%-10.3d:\n", age); //precision < digit
 	printf("/////precision > digit\n");
-	printf("R:%10.6p:\n", age); //precision > digit
-	printf("0:%010.6p:\n", age); //precision > digit
-	printf("-:%-10.6p:\n", age); //precision > digit
+	printf("R:%10.6d:\n", age); //precision > digit
+	printf("0:%010.6d:\n", age); //precision > digit
+	printf("-:%-10.6d:\n", age); //precision > digit
 	return (0);
 }
+
+/*int main()  //tout fonctionne si nombre positif
+{
+	char *str;
+	int i = 10;
+	int *p = &i;
+	unsigned int j = 10;
+	unsigned int *p1 = &j;
+	long k = 10;
+	long *p2 = &k;
+	unsigned long l = 10;
+	unsigned long *p3 = &l;
+	long long m = 10;
+	long long *p4 = &m;
+	unsigned long long n = 10;
+	unsigned long long *p5 = &n;
+
+
+
+	printf("%p\n", str); //champ < digit
+	//ft_printf("%p\n", str); //champ < digit
+	printf("%p\n", p); //champ < digit
+	//ft_printf("%p\n", p); //champ < digit
+	printf("%p\n", p1); //champ < digit
+	//ft_printf("%p\n", p1); //champ < digit
+	printf("%p\n", p2); //champ < digit
+	//ft_printf("%p\n", p2); //champ < digit
+	printf("%p\n", p3); //champ < digit
+	//ft_printf("%p\n", p3); //champ < digit
+	printf("%p\n", p4); //champ < digit
+	//ft_printf("%p\n", p4); //champ < digit
+	printf("%p\n", p5); //champ < digit
+	//ft_printf("%p\n", p5); //champ < digit
+	
+	return (0);
+}*/

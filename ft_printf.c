@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/17 19:44:54 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/20 16:30:14 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		ft_printf(const char *src, ...)
 	return (0);
 }*/
 
-int main()  //tout fonctionne si nombre positif
+/*int main()  //tout fonctionne si nombre positif
 {
 	int age = 1234;
 	int *p = &age;
@@ -145,7 +145,19 @@ int main()  //tout fonctionne si nombre positif
 	ft_printf("0:%010.6p:\n", age); //precision > digit
 	ft_printf("-:%-10.6p:\n", age); //precision > digit
 	return (0);
-}
+}*/
+
+/*int main()
+{
+	char age = 'h';
+	int khey = 132;
+
+	ft_printf("precision > champ && precision > digit\n");
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%c:\n", age); //champ < digit
+	ft_printf("0:%c:\n", age); //champ < digit
+	return (0);	
+}*/
 
 /*int main()  //tout fonctionne si nombre positif
 {
@@ -162,6 +174,7 @@ int main()  //tout fonctionne si nombre positif
 	long long *p4 = &m;
 	unsigned long long n = 10;
 	unsigned long long *p5 = &n;
+	int *zeb;
 
 
 
@@ -179,7 +192,9 @@ int main()  //tout fonctionne si nombre positif
 	ft_printf("%p\n", p4); //champ < digit
 	printf("%p\n", p5); //champ < digit
 	ft_printf("%p\n", p5); //champ < digit
-	
+	printf("%p\n", zeb); //champ < digit
+	ft_printf("%p\n", zeb); //champ < digit
+
 	return (0);
 }*/
 
@@ -282,3 +297,58 @@ int main()  //tout fonctionne si nombre positif
 	printf("-:%x:\n", age); //precision > digit
 	return (0);	
 }*/
+
+/*int main()
+{
+	char *age = "choc";
+	int khey = 132;
+
+	ft_printf("digit > champ\n");
+	ft_printf("/////precision =< digit\n");
+	ft_printf("R:%2.3s:\n", age); //champ < digit
+	ft_printf("-:%2.3s:\n", age); //champ < digit
+	ft_printf("/////precision > digit\n");
+	ft_printf("R:%2.6s:\n", age); //champ < digit
+	ft_printf("-:%-2.6s:\n", age); //champ < digit
+	ft_printf("precision > champ && precision > digit\n");
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%3.10s:\n", age); //champ < digit
+	ft_printf("-:%-3.10s:\n", age); //champ < digit
+	ft_printf("/////champ > digit\n");
+	ft_printf("R:%6.10s:\n", age); //champ > digit
+	ft_printf("-:%-6.10s:\n", age); //champ > digit
+	ft_printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
+	ft_printf("/////precision =< digit\n");
+	ft_printf("R:%10.3s:\n", age); //precision < digit
+	ft_printf("-:%-10.3s:\n", age); //precision < digit
+	ft_printf("/////precision > digit\n");
+	ft_printf("R:%10.6s:\n", age); //precision > digit
+	ft_printf("-:%-10.6s:\n", age); //precision > digit
+	return (0);	
+}*/
+
+int main()  //tout fonctionne si nombre positif
+{
+	int age = -1234;
+	int *p = &age;
+
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%3.10d:\n", age); //champ < digit
+	printf("0:%03.10d:\n", age); //champ < digit
+	printf("-:%-3.10d:\n", age); //champ < digit
+	printf("/////champ > digit\n");
+	printf("R:%6.10d:\n", age); //champ > digit
+	printf("0:%06.10d:\n", age); //champ > digit
+	printf("-:%-6.10d:\n", age); //champ > digit
+	printf("champ > precision && champ > digit\n"); 
+	printf("/////precision =< digit\n");
+	printf("R:%10.3d:\n", age); //precision < digit
+	printf("0:%010.3d:\n", age); //precision < digit
+	printf("-:%-10.3d:\n", age); //precision < digit
+	printf("/////precision > digit\n");
+	printf("R:%10.6d:\n", age); //precision > digit
+	printf("0:%010.6d:\n", age); //precision > digit
+	printf("-:%-10.6d:\n", age); //precision > digit
+	return (0);
+}

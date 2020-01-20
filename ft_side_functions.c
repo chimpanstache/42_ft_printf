@@ -6,11 +6,31 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/17 17:10:33 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/20 13:49:22 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	char *dest1;
+	char *src1;
+
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	dest1 = (char *)dest;
+	src1 = (char *)src;
+	while (n > 0)
+	{
+		if (*dest1 != *src1)
+			*dest1 = *src1;
+		dest1++;
+		src1++;
+		n--;
+	}
+	return (dest);
+}
 
 char	*ft_strndup(const char *str, size_t len)
 {
