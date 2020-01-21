@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/20 13:13:09 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/21 15:17:13 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void 	printf_u(va_list *prms, s_flags flags)	//putnbr avec limites
 	//ft_putnbr_base(nb, base);
 }
 
-void	printf_c(va_list *prms, s_flags flags)
+/*void	printf_c(va_list *prms, s_flags flags)
 {
 	char *chr = va_arg(*prms, char *);
 	write(1, &chr, 1);
-}
+}*/

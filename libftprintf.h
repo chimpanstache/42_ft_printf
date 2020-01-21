@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/20 16:17:31 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/21 15:33:58 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #define RANGE (1 << 2)
 #define CHAMP (1 << 3)*/
 
-typedef struct 	s_flags  ////////////tjs free la struc a la fin!!!!!!!!!!!!!!!!!!!!
+typedef struct 	s_flags  
 {
 	int att;
 	int chmp;
@@ -56,21 +56,24 @@ char	*chmp_overall_thn_dgt(char *display, int digit, int nb, s_flags flags);
 char	*chmp_overall_thn_prec(char *display, int digit, int nb, s_flags flags);
 //x functions
 void 	printf_x(va_list *prms, s_flags flags);
-char	*chmp_overall_thn_prec_neg_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
 char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
 char	*chmp_overall_thn_dgt_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
 char	*prec_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
 char	*digit_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
 //s functions
 void 	printf_s(va_list *prms, s_flags flags);
-char	*chmp_overall_s_thn_digit(char *display, int digit, char *src, s_flags flags);
-char	*chmp_overall_s_thn_prec(char *display, int digit, char *src, s_flags flags);
+char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags);
+char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags);
+char	*digit_overall_s(char *display, int digit, char *src, s_flags flags);
+char	*chmp_thn_prec(char *display, int digit, char *src, s_flags flags);
 char	*prec_overall_s(char *display, int digit, char *src, s_flags flags);
-char	*digit_over_chmp(char *display, int digit, char *src, s_flags flags);
+//c functions
+void	printf_c(va_list *prms, s_flags flags);
+char	*put_c(char *display, char *chr, s_flags flags);
 //X functions
 void 	printf_X(va_list *prms, s_flags flags);
 void 	printf_p(va_list *prms, s_flags flags);
 void 	printf_u(va_list *prms, s_flags flags);
-void	printf_c(va_list *prms, s_flags flags);
+
 void ft_write_char(char *src);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/20 13:14:31 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/21 13:20:07 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,15 +137,15 @@ void 	printf_d_i(va_list *prms, s_flags flags) //separation de l'algo en fonctio
 	char *display;
 
 	digit = countdigit_d_i_u(nb);
-	if (digit > flags.chmp && digit > flags.prec)
+	if (digit >= flags.chmp && digit >= flags.prec)
 		display = digit_overall(display, digit, nb, flags);
-	if (flags.prec > flags.chmp && flags.prec > digit)
+	if (flags.prec >= flags.chmp && flags.prec >= digit)
 		display = prec_overall(display, digit, nb, flags);
-	if (flags.chmp > flags.prec && flags.chmp > digit && flags.prec < digit) 
+	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit) 
 		display = chmp_overall_thn_dgt(display, digit, nb, flags); //fonctionne pas si nb negatif
-	if (flags.chmp > flags.prec && flags.chmp > digit && flags.prec > digit && nb >= 0)
+	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit && nb >= 0)
 		display = chmp_overall_thn_prec_pos(display, digit, nb, flags);
-	if (flags.chmp > flags.prec && flags.chmp > digit && flags.prec > digit && nb < 0)
+	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit && nb < 0)
 		display = chmp_overall_thn_prec_neg(display, digit, nb, flags);
 	write(1, display, ft_strlen(display));
 	//display[0] = '\0';
