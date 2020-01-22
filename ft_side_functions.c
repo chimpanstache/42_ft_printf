@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/20 13:49:22 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/22 19:53:59 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,7 @@ int		ft_atoi(const char *str)
 int	countdigit_d_i_u(int nb)
 {
 	int digit = 1;
-	if (nb < 0)
-	{
-		nb = -nb;
-	}
+
 	if (nb <= 9)
 		return(++digit); 		
 	while (nb > 9)
@@ -169,6 +166,36 @@ void        ft_itoa_custom_pos(int n, char *arr)
     }
 }
 
+void        ft_ulltoa_base(unsigned long long n, char *arr, char *base)
+{
+    int                len;
+	int					lenny;
+ 
+    len = ft_strlen(base);
+	lenny = len;
+    while (len-- > 0)
+    {
+        arr[len] = base[n % lenny];
+        n = n / lenny;
+    }
+}
+
+int	countdigit_p(unsigned long long nb, char *base)
+{
+	int digit = 1;
+	int i = ft_strlen(base);
+	int j = i;
+
+	if (nb <= i)
+		return(++digit); 		
+	while (nb > j)
+	{
+		nb /= i;
+		digit++;
+	}	
+	return(digit);
+}
+
 /*void       ft_itoa_custom_hexa(int n, char *arr, char *base)
 {
     unsigned int    nb;
@@ -209,14 +236,27 @@ void		ft_putnbr_base(int n, char *base, char *str)
 	str[i++] = base[nb % a];
 }
 
-void	ft_putnbr_base_p(int nbr, char *base)
+void	ft_putnbr_base_p(unsigned long long nbr, char *base)
 {
-	unsigned int nb;
 	int a;
 
 	a = ft_strlen(base);
-	nb = (unsigned int)nbr;
-	if (nb > 9)
-		ft_putnbr_base_p((nb / a), base);
-	write(1, &base[ nb % a], 1);
+	if (nbr > 9)
+		ft_putnbr_base_p((nbr / a), base);
+	write(1, &base[nbr % a], 1);
 }
+
+/*int	ft_countnumbr_p(unsigned long long nbr, char *base)
+{
+	int a;
+	int i;
+
+	i = 0;
+	a = ft_strlen(base);
+	if (nbr > 9)
+	{
+		ft_countnumbr_p((nbr / a), base);
+		i++;
+	}
+	return (i);
+}*/
