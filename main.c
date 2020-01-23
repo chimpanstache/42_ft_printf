@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/22 19:06:25 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:24:12 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,13 @@
 	printf("/////champ =< digit\n");
 	printf("R:%10c:\n", age); //champ < digit
 	printf("-:%-10c:\n", age); //champ < digit
+	printf("-:%c:\n", age); //champ < digit
+	printf("-:%c:\n", age); //champ < digit
+	
 	return (0);	
 }*/
 
-int main()  // pointeur
+/*int main()  // pointeur
 {
 	char *str;
 	int i = 10;
@@ -108,6 +111,7 @@ int main()  // pointeur
 	unsigned long long n = 10;
 	unsigned long long *p5 = &n;
 	int *zeb;
+	int *zebi = NULL;
 
 
 
@@ -127,9 +131,9 @@ int main()  // pointeur
 	printf("%p\n", p5); //champ < digit
 	printf("%p\n", zeb); //champ < digit
 	printf("%p\n", zeb); //champ < digit
-
+	printf("%p\n", zebi); //champ < digit
 	return (0);
-}
+}*/
 
 /*int main() // int avec *
 {
@@ -197,7 +201,7 @@ int main()  // pointeur
 
 /*int main()  // int avec d
 {
-	int age = 1234;
+	int age = -1234;
 	int *p = &age;
 
 	printf("precision > champ && precision > digit\n");
@@ -247,7 +251,7 @@ int main()  // pointeur
 	return (0);
 }*/
 
-/*int main()  // int avec u
+int main()  // int avec u
 {
 	unsigned int age = 1234;
 
@@ -270,4 +274,4 @@ int main()  // pointeur
 	printf("0:%010.6u:\n", age); //precision > digit
 	printf("-:%-10.6u:\n", age); //precision > digit
 	return (0);
-}*/
+}

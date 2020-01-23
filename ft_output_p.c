@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/22 20:01:01 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/23 11:46:37 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@ void 	printf_p(va_list *prms, s_flags flags) //print the address, faire process 
 	unsigned long long ptr = (long long)va_arg(*prms, unsigned long long);
 	char *base = "0123456789abcdef";
 
-	//write(1, "0x", 2);
 	digit = countdigit_p(ptr, base) + 2;
-	//printf("%d%s\n", digit, ": digit");
 	if (flags.chmp > digit)
 	{
 		char *display;
-
 		display = put_p(display, ptr, base, digit, flags);
 		write(1, display, ft_strlen(display));
 		free(display);
@@ -64,4 +61,3 @@ char	*put_p(char *display, unsigned long long ptr, char *base, int digit, s_flag
 	}
 	return (display);
 }
-						

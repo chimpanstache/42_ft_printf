@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/22 19:53:59 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:20:03 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	countdigit_d_i_u(int nb)
 {
 	int digit = 1;
 
+	if (nb < 0)
+		nb = -nb;
 	if (nb <= 9)
 		return(++digit); 		
 	while (nb > 9)
@@ -107,10 +109,7 @@ static int    countdigit(int n)
     if (n == 0)
         return (1);
     if (n < 0)
-    {
-        len++;
         nb = (unsigned int)(n * -1);
-    }
     else
         nb = (unsigned int)n;
     while (nb > 0)
@@ -131,7 +130,8 @@ void       ft_itoa_custom(int n, char *arr)
     len = countdigit(n);
     if (n < 0)
     {
-        sign = 1;
+        len++;
+		sign = 1;
         nb = (unsigned int)(n * -1);
         *arr = '-';
     }
@@ -147,22 +147,17 @@ void       ft_itoa_custom(int n, char *arr)
 void        ft_itoa_custom_pos(int n, char *arr)
 {
     unsigned int    nb;
-    int                sign;
     int                len;
- 
-    sign = 0;
+	
     len = countdigit(n);
     if (n < 0)
-    {
-        sign = 1;
         nb = (unsigned int)(n * -1);
-    }
     else
         nb = (unsigned int)n;
-    while (len-- > sign)
+    while (len-- > 0)
     {
         arr[len] = nb % 10 + '0';
-        nb = nb / 10;
+		nb = nb / 10;
     }
 }
 
@@ -171,8 +166,8 @@ void        ft_ulltoa_base(unsigned long long n, char *arr, char *base)
     int                len;
 	int					lenny;
  
-    len = ft_strlen(base);
-	lenny = len;
+    len = countdigit_p(n, base);
+	lenny = ft_strlen(base);
     while (len-- > 0)
     {
         arr[len] = base[n % lenny];
@@ -234,6 +229,48 @@ void		ft_putnbr_base(int n, char *base, char *str)
 	if (nb > 9)
 		ft_putnbr_base((nb / a), base, str);
 	str[i++] = base[nb % a];
+}
+
+void	ft_putnbr_custom_pos(int n, char *src)
+{
+	unsigned int nb;
+	static int i = 0;
+	int y;
+
+	y = 0;
+	if (i != 0)
+		i = y;
+
+	if (n < 0)
+	{
+		nb = (unsigned int)(n * -1);
+	}
+	else
+		nb = (unsigned int)n;
+	if (nb > 9)
+		ft_putnbr_custom_pos(nb / 10, src);
+	src[i++] = nb % 10 + '0';
+}
+
+void	ft_putnbr_custom(int n, char *src) //fonctionne pas avec les negatifs
+{
+	unsigned int nb;
+	static int i = 0;
+	int y;
+
+	y = 0;
+	if (i != 0)
+		i = y;
+ 	if (n < 0)
+	{
+		nb = (unsigned int)(n * -1);
+		src[i++] = '-';
+	}
+	else
+		nb = (unsigned int)n;
+	if (nb > 9)
+		ft_putnbr_custom(nb / 10, src);
+	src[i++] = nb % 10 + '0';
 }
 
 void	ft_putnbr_base_p(unsigned long long nbr, char *base)

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/22 19:54:24 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:14:40 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,17 @@ char	*prec_overall(char *display, int digit, int nb, s_flags flags)
 	int y;
 
 	y = 0;
-	nb >= 0 ? (lngth = flags.prec) : (lngth = flags.prec + 1);
+	(nb >= 0) ? (lngth = flags.prec) : (lngth = flags.prec + 1);
+	//printf("%d%s\n", lngth, ": lngth"); /////////
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	i = lngth - digit;
 	while (y < lngth)
 		display[y++] = '0';
+	//printf("%d%s\n", digit, ": digit"); //////////	
+	//printf("%d%s\n", lngth, ": lngth"); //////////	
+	//printf("%d%s\n", i, ": i"); //////////	
 	ft_itoa_custom_pos(nb, &display[i]);
 	if (nb < 0)
 		display[0] = '-';
@@ -59,18 +63,12 @@ char	*chmp_overall_thn_dgt(char *display, int digit, int nb, s_flags flags) //re
 		return (NULL);
 	display[lngth] = '\0';
 	i = lngth - digit;
+	while (y < lngth)
+		display[y++] = ' ';
 	if (flags.att < 0)
-	{
-		while (y < lngth)
-			display[y++] = ' ';
 		ft_itoa_custom(nb, display);
-	}
 	else
-	{
-		while (y < lngth)
-			display[y++] = ' ';
 		ft_itoa_custom(nb, &display[i]);
-	}
 	return (display);
 }
 
@@ -89,9 +87,9 @@ char	*chmp_overall_thn_prec_pos(char *display, int digit, int nb, s_flags flags)
 	while (y < lngth)
 		display[y++] = ' ';
 	if (flags.att < 0)
-		ft_itoa_custom_pos(nb, &display[flags.prec - digit]);
+		ft_itoa_custom(nb, &display[flags.prec - digit]);
 	else
-		ft_itoa_custom_pos(nb, &display[i]);
+		ft_itoa_custom(nb, &display[i]);
 	y = 0;
 	while (y < (flags.prec - digit))
 	{
@@ -116,9 +114,9 @@ char	*chmp_overall_thn_prec_neg(char *display, int digit, int nb, s_flags flags)
 	while (y < lngth)
 		display[y++] = ' ';
 	if (flags.att < 0)
-		ft_itoa_custom_pos(nb, &display[flags.prec - digit]);
+		ft_itoa_custom_pos(nb, &display[flags.prec - digit + 1]);
 	else
-		ft_itoa_custom_pos(nb, &display[i]);
+		ft_itoa_custom_pos(nb, &display[i + 1]);
 	y = 0;
 	while (y < (flags.prec - digit))
 	{

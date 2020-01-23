@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/22 19:54:59 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/23 13:18:34 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_putnbr_base_p(unsigned long long nbr, char *base);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int	countdigit_p(unsigned long long nbr, char *base);
 void        ft_ulltoa_base(unsigned long long n, char *arr, char *base);
+void	ft_putnbr_custom(int n, char *src);
+ void	ft_putnbr_custom_pos(int n, char *src);
 //d_i functions
 void	printf_d_i(va_list *prms, s_flags flags);
 char	*digit_overall(char *display, int digit, int nb, s_flags flags);
