@@ -6,19 +6,19 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:57:03 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/22 19:54:29 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/24 12:07:20 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*digit_overall_u(char *display, int digit, int nb, s_flags flags)
+char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags)
 {
 	int i;
 
 	i = 0;
 	int lngth;
-	nb >= 0 ? (lngth = digit) : (lngth = digit + 1);
+	lngth = digit;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -26,14 +26,14 @@ char	*digit_overall_u(char *display, int digit, int nb, s_flags flags)
 	return (display);
 }
 
-char	*prec_overall_u(char *display, int digit, int nb, s_flags flags)
+char	*prec_overall_u(char *display, int digit, unsigned int nb, s_flags flags)
 {
 	int lngth;
 	int i;
 	int y;
 
 	y = 0;
-	nb >= 0 ? (lngth = flags.prec) : (lngth = flags.prec + 1);
+	lngth = flags.prec;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -44,7 +44,7 @@ char	*prec_overall_u(char *display, int digit, int nb, s_flags flags)
 	return (display);
 }
 
-char	*chmp_overall_thn_dgt_u(char *display, int digit, int nb, s_flags flags)
+char	*chmp_overall_thn_dgt_u(char *display, int digit, unsigned int nb, s_flags flags)
 {
 	int lngth;
 	int i;
@@ -71,7 +71,7 @@ char	*chmp_overall_thn_dgt_u(char *display, int digit, int nb, s_flags flags)
 	return (display);
 }
 
-char	*chmp_overall_thn_prec_pos_u(char *display, int digit, int nb, s_flags flags)
+char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_flags flags)
 {
 	int lngth;
 	int i;

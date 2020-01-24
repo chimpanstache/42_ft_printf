@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/23 15:24:12 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/24 19:40:32 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 /*int main() //petit x
 {
-	unsigned int age = 987654321;
+	unsigned int age = 4294967295;
 	int khey = 132;
 
 	printf("precision > champ && precision > digit\n");
@@ -56,7 +56,7 @@
 
 /*int main()  //grand X
 {
-	int age = 1234;
+	unsigned int age = 4294967295;
 	int khey = 132;
 
 	printf("precision > champ && precision > digit\n");
@@ -78,6 +78,37 @@
 	printf("0:%010.6X:\n", age); //precision > digit
 	printf("-:%-10.6X:\n", age); //precision > digit
 	return (0);
+}*/
+
+/*int main() //unsigned int avec *
+{
+	unsigned int age = 4294967295;
+	int prec = 3;
+	int prec1 = 6;
+	int prec2 = 10;
+	int chmp = 3;
+	int chmp1 = 6;
+	int chmp2 = 10;
+
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%*.*X:\n", chmp, prec2, age); //champ < digit
+	printf("0:%0*.*X:\n", chmp, prec2, age); //champ < digit
+	printf("-:%-*.*X:\n", chmp, prec2, age); //champ < digit
+	printf("/////champ > digit\n");
+	printf("-:%*.*X:\n", chmp1, prec2, age); //champ < digit
+	printf("-:%0*.*X:\n", chmp1, prec2, age); //champ < digit
+	printf("-:%-*.*X:\n", chmp1, prec2, age); //champ < digit
+	printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
+	printf("/////precision =< digit\n");
+	printf("-:%*.*X:\n", chmp2, prec, age); //champ < digit
+	printf("-:%0*.*X:\n", chmp2, prec, age); //champ < digit
+	printf("-:%-*.*X:\n", chmp2, prec, age); //champ < digit
+	printf("/////precision > digit\n");
+	printf("-:%*.*X:\n", chmp2, prec1, age); //champ < digit
+	printf("-:%0*.*X:\n", chmp2, prec1, age); //champ < digit
+	printf("-:%-10.*X:\n", prec1, age); //champ < digit
+	return (0);	
 }*/
 
 /*int main() // c
@@ -135,36 +166,37 @@
 	return (0);
 }*/
 
-/*int main() // int avec *
+int main() // int avec *
 {
-	int age = -1234;
+	int age = -214748364;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;
 	int chmp = 3;
 	int chmp1 = 6;
-	int chmp2 = 10;
+	int chmp2 = 9;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
+	printf("R:%d:\n", age); //champ < digit
 	printf("R:%*.*d:\n", chmp, prec2, age); //champ < digit
 	printf("0:%0*.*d:\n", chmp, prec2, age); //champ < digit
 	printf("-:%-*.*d:\n", chmp, prec2, age); //champ < digit
 	printf("/////champ > digit\n");
-	printf("-:%*.*d:\n", chmp1, prec2, age); //champ < digit
-	printf("-:%0*.*d:\n", chmp1, prec2, age); //champ < digit
+	printf("R:%*.*d:\n", chmp1, prec2, age); //champ < digit
+	printf("0:%0*.*d:\n", chmp1, prec2, age); //champ < digit
 	printf("-:%-*.*d:\n", chmp1, prec2, age); //champ < digit
 	printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
 	printf("/////precision =< digit\n");
-	printf("-:%*.*d:\n", chmp2, prec, age); //champ < digit
-	printf("-:%0*.*d:\n", chmp2, prec, age); //champ < digit
+	printf("R:%*.*d:\n", chmp2, prec, age); //champ < digit
+	printf("0:%0*.*d:\n", chmp2, prec, age); //champ < digit
 	printf("-:%-*.*d:\n", chmp2, prec, age); //champ < digit
 	printf("/////precision > digit\n");
-	printf("-:%*.*d:\n", chmp2, prec1, age); //champ < digit
-	printf("-:%0*.*d:\n", chmp2, prec1, age); //champ < digit
+	printf("R:%*.*d:\n", chmp2, prec1, age); //champ < digit
+	printf("0:%0*.*d:\n", chmp2, prec1, age); //champ < digit
 	printf("-:%-10.*d:\n", prec1, age); //champ < digit
 	return (0);	
-}*/
+}
 
 
 /*int main() //string
@@ -251,7 +283,7 @@
 	return (0);
 }*/
 
-int main()  // int avec u
+/*int main()  // int avec u
 {
 	unsigned int age = 1234;
 
@@ -274,4 +306,4 @@ int main()  // int avec u
 	printf("0:%010.6u:\n", age); //precision > digit
 	printf("-:%-10.6u:\n", age); //precision > digit
 	return (0);
-}
+}*/

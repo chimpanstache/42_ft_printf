@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/23 15:14:40 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/24 19:47:20 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ char	*prec_overall(char *display, int digit, int nb, s_flags flags)
 	i = lngth - digit;
 	while (y < lngth)
 		display[y++] = '0';
-	//printf("%d%s\n", digit, ": digit"); //////////	
-	//printf("%d%s\n", lngth, ": lngth"); //////////	
-	//printf("%d%s\n", i, ": i"); //////////	
 	ft_itoa_custom_pos(nb, &display[i]);
 	if (nb < 0)
 		display[0] = '-';
@@ -56,9 +53,12 @@ char	*chmp_overall_thn_dgt(char *display, int digit, int nb, s_flags flags) //re
 	int i;
 	int y;
 
-	lngth = flags.chmp;
-	y = 0;
+	//printf("ici\n"); ////////////////********************
 	nb >= 0 ? (digit = digit) : (digit = digit + 1);
+	lngth = flags.chmp;
+	if (nb < 0 && digit == flags.chmp)
+		lngth = digit;
+	y = 0;
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -78,6 +78,7 @@ char	*chmp_overall_thn_prec_pos(char *display, int digit, int nb, s_flags flags)
 	int i;
 	int y;
 
+	//printf("ici\n"); ////////////////
 	y = 0;
 	lngth = flags.chmp;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
@@ -107,6 +108,7 @@ char	*chmp_overall_thn_prec_neg(char *display, int digit, int nb, s_flags flags)
 
 	y = 0;
 	lngth = flags.chmp;
+	//printf("ici\n"); ////////////////
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0'; 
@@ -134,7 +136,11 @@ void 	printf_d_i(va_list *prms, s_flags flags) //separation de l'algo en fonctio
 	int digit;
 	char *display;
 
+/*	printf("%d%s\n", flags.att, ": att");
+	printf("%d%s\n", flags.chmp, ": chmp");
+	printf("%d%s\n", flags.prec, ": prec");*/
 	digit = countdigit_d_i_u(nb);
+	//printf("%d%s\n", digit, ": digit"); ////////
 	if (digit >= flags.chmp && digit >= flags.prec)
 		display = digit_overall(display, digit, nb, flags);
 	if (flags.prec >= flags.chmp && flags.prec >= digit)

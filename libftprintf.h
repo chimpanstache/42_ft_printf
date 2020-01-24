@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/23 13:18:34 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/24 14:05:09 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct 	s_flags
 }				s_flags;
 
 //side & parse functions
-void	ft_putchar(char c);
 void	ft_putnbr_base(int n, char *base, char *str);
 int		ft_strlen(char *base);
 int		ft_atoi(const char *str);
@@ -44,11 +43,11 @@ void analyse_params(char *prmtrs, s_flags *flags, va_list *prms);
 char	*ft_strndup(const char *str, size_t len);
 void init_flags(s_flags *flags);
 void        ft_itoa_custom(int n, char *arr);
-static int    countdigit(int n);
+static int    countdigit_custom(int n);
 void        ft_itoa_custom_pos(int n, char *arr);
 void	ft_putnbr_base_p(unsigned long long nbr, char *base);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-int	countdigit_p(unsigned long long nbr, char *base);
+int	countdigit_base(unsigned long long nbr, char *base);
 void        ft_ulltoa_base(unsigned long long n, char *arr, char *base);
 void	ft_putnbr_custom(int n, char *src);
  void	ft_putnbr_custom_pos(int n, char *src);
@@ -82,9 +81,9 @@ char	*put_p(char *display, unsigned long long ptr, char *base, int digit, s_flag
 
 //u functions
 void 	printf_u(va_list *prms, s_flags flags);
-char	*digit_overall_u(char *display, int digit, int nb, s_flags flags);
-char	*prec_overall_u(char *display, int digit, int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_u(char *display, int digit, int nb, s_flags flags);
-char	*chmp_overall_thn_prec_pos_u(char *display, int digit, int nb, s_flags flags);
+char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
+char	*prec_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
+char	*chmp_overall_thn_dgt_u(char *display, int digit, unsigned int nb, s_flags flags);
+char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_flags flags);
 
 #endif

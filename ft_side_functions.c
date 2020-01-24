@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/23 15:20:03 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/24 18:41:31 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,19 @@ int		ft_atoi(const char *str)
 
 int	countdigit_d_i_u(int nb)
 {
-	int digit = 1;
+	int digit = 0;
 
+	if (nb == 0)
+        return (1);
 	if (nb < 0)
 		nb = -nb;
 	if (nb <= 9)
-		return(++digit); 		
-	while (nb > 9)
+		return(++digit);
+	while (nb > 0)
 	{
 		nb /= 10;
 		digit++;
-	}	
+	}
 	return(digit);
 }
 
@@ -166,7 +168,7 @@ void        ft_ulltoa_base(unsigned long long n, char *arr, char *base)
     int                len;
 	int					lenny;
  
-    len = countdigit_p(n, base);
+    len = countdigit_base(n, base);
 	lenny = ft_strlen(base);
     while (len-- > 0)
     {
@@ -175,44 +177,20 @@ void        ft_ulltoa_base(unsigned long long n, char *arr, char *base)
     }
 }
 
-int	countdigit_p(unsigned long long nb, char *base)
+int	countdigit_base(unsigned long long nb, char *base)
 {
-	int digit = 1;
+	int digit = 0;
 	int i = ft_strlen(base);
-	int j = i;
 
-	if (nb <= i)
-		return(++digit); 		
-	while (nb > j)
+	if (nb == 0)
+		return(1); 		
+	while (nb > 0)
 	{
 		nb /= i;
 		digit++;
 	}	
 	return(digit);
 }
-
-/*void       ft_itoa_custom_hexa(int n, char *arr, char *base)
-{
-    unsigned int    nb;
-    int                sign;
-    int                len;
- 
-    sign = 0;
-    len = countdigit(n);
-    if (n < 0)
-    {
-        sign = 1;
-        nb = (unsigned int)(n * -1);
-       // *arr = '-';
-    }
-    else
-        nb = (unsigned int)n;
-    while (len-- > sign)
-    {
-        arr[len] = &base[nb % 16];
-        nb = nb / 10;
-    }
-}*/
 
 void		ft_putnbr_base(int n, char *base, char *str)
 {
@@ -226,7 +204,7 @@ void		ft_putnbr_base(int n, char *base, char *str)
 		i = y;
 	a = ft_strlen(base);
 	nb = (unsigned int)n;
-	if (nb > 9)
+	if (nb >= a)
 		ft_putnbr_base((nb / a), base, str);
 	str[i++] = base[nb % a];
 }
@@ -278,22 +256,7 @@ void	ft_putnbr_base_p(unsigned long long nbr, char *base)
 	int a;
 
 	a = ft_strlen(base);
-	if (nbr > 9)
+	if (nbr > a)
 		ft_putnbr_base_p((nbr / a), base);
 	write(1, &base[nbr % a], 1);
 }
-
-/*int	ft_countnumbr_p(unsigned long long nbr, char *base)
-{
-	int a;
-	int i;
-
-	i = 0;
-	a = ft_strlen(base);
-	if (nbr > 9)
-	{
-		ft_countnumbr_p((nbr / a), base);
-		i++;
-	}
-	return (i);
-}*/

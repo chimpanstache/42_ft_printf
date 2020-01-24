@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/23 15:24:16 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/24 19:40:16 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		ft_printf(const char *src, ...)
 
 /*int main() //petit x
 {
-	unsigned int age = 987654321;
+	unsigned int age = 4294967295;
 	int khey = 132;
 
 	ft_printf("precision > champ && precision > digit\n");
@@ -89,12 +89,12 @@ int		ft_printf(const char *src, ...)
 	ft_printf("R:%10.6x:\n", age); //precision > digit
 	ft_printf("0:%010.6x:\n", age); //precision > digit 
 	ft_printf("-:%-10.6x:\n", age); //precision > digit
-	return (0);	
+	return (0);
 }*/
 
 /*int main()  //grand X
 {
-	int age = 1234;
+	unsigned int age = 4294967295;
 	int khey = 132;
 
 	ft_printf("precision > champ && precision > digit\n");
@@ -116,6 +116,37 @@ int		ft_printf(const char *src, ...)
 	ft_printf("0:%010.6X:\n", age); //precision > digit
 	ft_printf("-:%-10.6X:\n", age); //precision > digit
 	return (0);
+}*/
+
+/*int main() //unsigned int avec *
+{
+	unsigned int age = 4294967295;
+	int prec = 3;
+	int prec1 = 6;
+	int prec2 = 10;
+	int chmp = 3;
+	int chmp1 = 6;
+	int chmp2 = 10;
+
+	ft_printf("precision > champ && precision > digit\n");
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%*.*X:\n", chmp, prec2, age); //champ < digit
+	ft_printf("0:%0*.*X:\n", chmp, prec2, age); //champ < digit
+	ft_printf("-:%-*.*X:\n", chmp, prec2, age); //champ < digit
+	ft_printf("/////champ > digit\n");
+	ft_printf("-:%*.*X:\n", chmp1, prec2, age); //champ < digit
+	ft_printf("-:%0*.*X:\n", chmp1, prec2, age); //champ < digit
+	ft_printf("-:%-*.*X:\n", chmp1, prec2, age); //champ < digit
+	ft_printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
+	ft_printf("/////precision =< digit\n");
+	ft_printf("-:%*.*X:\n", chmp2, prec, age); //champ < digit
+	ft_printf("-:%0*.*X:\n", chmp2, prec, age); //champ < digit
+	ft_printf("-:%-*.*X:\n", chmp2, prec, age); //champ < digit
+	ft_printf("/////precision > digit\n");
+	ft_printf("-:%*.*X:\n", chmp2, prec1, age); //champ < digit
+	ft_printf("-:%0*.*X:\n", chmp2, prec1, age); //champ < digit
+	ft_printf("-:%-10.*X:\n", prec1, age); //champ < digit
+	return (0);	
 }*/
 
 /*int main() // c
@@ -172,37 +203,37 @@ int		ft_printf(const char *src, ...)
 	return (0);
 }*/
 
-/*int main() // int avec *
+int main() // int avec *
 {
-	int age = 1234;
+	int age = -214748364;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;
 	int chmp = 3;
 	int chmp1 = 6;
-	int chmp2 = 10;
+	int chmp2 = 9;
 
 	ft_printf("precision > champ && precision > digit\n");
 	ft_printf("/////champ =< digit\n");
-	//ft_printf("R:%d:\n", age); //champ < digit
+	ft_printf("R:%d:\n", age); //champ < digit
 	ft_printf("R:%*.*d:\n", chmp, prec2, age); //champ < digit
 	ft_printf("0:%0*.*d:\n", chmp, prec2, age); //champ < digit
 	ft_printf("-:%-*.*d:\n", chmp, prec2, age); //champ < digit
 	ft_printf("/////champ > digit\n");
-	ft_printf("-:%*.*d:\n", chmp1, prec2, age); //champ < digit
-	ft_printf("-:%0*.*d:\n", chmp1, prec2, age); //champ < digit
+	ft_printf("R:%*.*d:\n", chmp1, prec2, age); //champ < digit
+	ft_printf("0:%0*.*d:\n", chmp1, prec2, age); //champ < digit
 	ft_printf("-:%-*.*d:\n", chmp1, prec2, age); //champ < digit
 	ft_printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
 	ft_printf("/////precision =< digit\n");
-	ft_printf("-:%*.*d:\n", chmp2, prec, age); //champ < digit
-	ft_printf("-:%0*.*d:\n", chmp2, prec, age); //champ < digit
+	ft_printf("R:%*.*d:\n", chmp2, prec, age); //champ < digit
+	ft_printf("0:%0*.*d:\n", chmp2, prec, age); //champ < digit
 	ft_printf("-:%-*.*d:\n", chmp2, prec, age); //champ < digit
 	ft_printf("/////precision > digit\n");
-	ft_printf("-:%*.*d:\n", chmp2, prec1, age); //champ < digit
-	ft_printf("-:%0*.*d:\n", chmp2, prec1, age); //champ < digit
+	ft_printf("R:%*.*d:\n", chmp2, prec1, age); //champ < digit
+	ft_printf("0:%0*.*d:\n", chmp2, prec1, age); //champ < digit
 	ft_printf("-:%-10.*d:\n", prec1, age); //champ < digit
 	return (0);	
-}*/
+}
 
 
 /*int main() //string
@@ -288,7 +319,7 @@ int		ft_printf(const char *src, ...)
 	return (0);
 }*/
 
-int main()  // int avec u
+/*int main()  // int avec u
 {
 	unsigned int age = 1234;
 
@@ -311,4 +342,4 @@ int main()  // int avec u
 	ft_printf("0:%010.6u:\n", age); //precision > digit
 	ft_printf("-:%-10.6u:\n", age); //precision > digit
 	return (0);
-}
+}*/
