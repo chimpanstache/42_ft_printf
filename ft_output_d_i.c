@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 19:47:20 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/26 16:38:15 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,61 @@ char	*prec_overall(char *display, int digit, int nb, s_flags flags)
 	int i;
 	int y;
 
+	//printf("ici\n"); ////////////////********************
 	y = 0;
 	(nb >= 0) ? (lngth = flags.prec) : (lngth = flags.prec + 1);
-	//printf("%d%s\n", lngth, ": lngth"); /////////
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	i = lngth - digit;
+	//printf("%d%s\n", digit, ": digit");
 	while (y < lngth)
 		display[y++] = '0';
+	//printf("%d%s\n", i, ": i"); /////////	
 	ft_itoa_custom_pos(nb, &display[i]);
 	if (nb < 0)
 		display[0] = '-';
 	return (display);
 }
 
-char	*chmp_overall_thn_dgt(char *display, int digit, int nb, s_flags flags) //regler ca
+char	*chmp_overall_thn_dgt_pos(char *display, int digit, int nb, s_flags flags) //regler ca
+{
+	int lngth;
+	int i;
+	int y;
+	//printf("ici\n"); ///////////////
+	lngth = flags.chmp;
+	y = 0;
+	if (!(display = malloc(sizeof(char) * (lngth + 1))))
+		return (NULL);
+	display[lngth] = '\0';
+	i = lngth - digit;
+	while (y < lngth)
+		display[y++] = ' ';
+	if (flags.att < 0)
+		ft_itoa_custom(nb, display);
+	else
+		ft_itoa_custom(nb, &display[i]);
+	return (display);
+}
+
+char	*chmp_overall_thn_dgt_neg(char *display, int digit, int nb, s_flags flags) //regler ca
 {
 	int lngth;
 	int i;
 	int y;
 
-	//printf("ici\n"); ////////////////********************
-	nb >= 0 ? (digit = digit) : (digit = digit + 1);
+	//printf("ici\n"); ///////////////
+	//nb >= 0 ? (digit = digit) : digit++;
+	//printf("%d%s\n", digit, ": digit"); //////////////////////
+	++digit;
 	lngth = flags.chmp;
-	if (nb < 0 && digit == flags.chmp)
+	//printf("%d%s\n", lngth, ": lngth"); //////////////////////
+	if (nb < 0 && digit == flags.chmp + 1)
 		lngth = digit;
+	//printf("%d%s\n", flags.chmp, ": chmp"); ////////////////
+	//printf("%d%s\n", digit, ": digit"); ///////////////
+	//printf("%d%s\n", lngth, ": lngth"); /////////////	
 	y = 0;
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
@@ -108,7 +137,7 @@ char	*chmp_overall_thn_prec_neg(char *display, int digit, int nb, s_flags flags)
 
 	y = 0;
 	lngth = flags.chmp;
-	//printf("ici\n"); ////////////////
+	//printf("ici\n"); ////////////////*******************
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0'; 
@@ -145,8 +174,10 @@ void 	printf_d_i(va_list *prms, s_flags flags) //separation de l'algo en fonctio
 		display = digit_overall(display, digit, nb, flags);
 	if (flags.prec >= flags.chmp && flags.prec >= digit)
 		display = prec_overall(display, digit, nb, flags);
-	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit) 
-		display = chmp_overall_thn_dgt(display, digit, nb, flags); //fonctionne pas si nb negatif
+	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit && nb >= 0) 
+		display = chmp_overall_thn_dgt_pos(display, digit, nb, flags);
+	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit && nb < 0) 
+		display = chmp_overall_thn_dgt_neg(display, digit, nb, flags); 
 	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit && nb >= 0)
 		display = chmp_overall_thn_prec_pos(display, digit, nb, flags);
 	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit && nb < 0)

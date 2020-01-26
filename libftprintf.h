@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 14:05:09 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/26 18:34:52 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ft_putnbr_custom(int n, char *src);
 void	printf_d_i(va_list *prms, s_flags flags);
 char	*digit_overall(char *display, int digit, int nb, s_flags flags);
 char	*prec_overall(char *display, int digit, int nb, s_flags flags);
-char	*chmp_overall_thn_dgt(char *display, int digit, int nb, s_flags flags);
+char	*chmp_overall_thn_dgt_pos(char *display, int digit, int nb, s_flags flags);
+char	*chmp_overall_thn_dgt_neg(char *display, int digit, int nb, s_flags flags);
 char	*chmp_overall_thn_prec(char *display, int digit, int nb, s_flags flags);
 //x functions
 void 	printf_x(va_list *prms, s_flags flags);
@@ -70,6 +71,7 @@ char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags
 char	*digit_overall_s(char *display, int digit, char *src, s_flags flags);
 char	*chmp_thn_prec(char *display, int digit, char *src, s_flags flags);
 char	*prec_overall_s(char *display, int digit, char *src, s_flags flags);
+char *null(void);
 //c functions
 void	printf_c(va_list *prms, s_flags flags);
 char	*put_c(char *display, char chr, s_flags flags);

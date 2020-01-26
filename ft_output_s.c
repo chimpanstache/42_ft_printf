@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/21 13:10:30 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/26 18:34:09 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,23 +102,45 @@ char	*prec_overall_s(char *display, int digit, char *src, s_flags flags)
 	return (display);
 }
 
+char *null(void)
+{
+	char *null;
+
+	if (!(null = malloc(sizeof(*null) * (7))))
+		return (NULL);
+	null[0] = '(';
+	null[1] = 'n';
+	null[2] = 'u';
+	null[3] = 'l';
+	null[4] = 'l';
+	null[5] = ')';
+	null[6] = '\0';
+	return (null);
+}
+
 void 	printf_s(va_list *prms, s_flags flags)
 {
 	char *src = va_arg(*prms, char *);
     int digit;
 	char *display;
+	char *src2;
 
 	digit = ft_strlen(src);
+	if (src == NULL)
+	{
+		src2 = null();
+		digit = ft_strlen(src2);
+	}
 	if (flags.chmp >= digit && flags.att < 0)
-		display = chmp_over_erthing_left(display, digit, src, flags);
+		display = chmp_over_erthing_left(display, digit, src == NULL ? src2 : src, flags);
 	if (flags.chmp >= digit && flags.att == 0)
-		display = chmp_over_erthing_right(display, digit, src, flags);
-    if (flags.chmp < digit && digit <= flags.prec)
-        display = digit_overall_s(display, digit, src, flags);
-    if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec)
-		display = chmp_thn_prec(display, digit, src, flags);
-    if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec)
-        display = prec_overall_s(display, digit, src, flags);
+		display = chmp_over_erthing_right(display, digit, src == NULL ? src2 : src, flags);
+  if (flags.chmp < digit && digit <= flags.prec)
+    display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
+  if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec)
+		display = chmp_thn_prec(display, digit, src == NULL ? src2 : src, flags);
+  if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec)
+    display = prec_overall_s(display, digit, src == NULL ? src2 : src, flags);
 	write(1, display, ft_strlen(display));
 	free(display);
 }

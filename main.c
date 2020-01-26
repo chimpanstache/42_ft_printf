@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 19:40:32 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/26 17:46:58 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,15 +166,15 @@
 	return (0);
 }*/
 
-int main() // int avec *
+/*int main() // int avec *
 {
-	int age = -214748364;
+	int age = -2147483;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;
 	int chmp = 3;
 	int chmp1 = 6;
-	int chmp2 = 9;
+	int chmp2 = 10;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
@@ -196,12 +196,12 @@ int main() // int avec *
 	printf("0:%0*.*d:\n", chmp2, prec1, age); //champ < digit
 	printf("-:%-10.*d:\n", prec1, age); //champ < digit
 	return (0);	
-}
+}*/
 
 
-/*int main() //string
+int main() //string
 {
-	char *age = "choc";
+	char *age = NULL;
 	int khey = 132;
 
 	printf("digit > champ\n");
@@ -229,15 +229,15 @@ int main() // int avec *
 	printf("R:%10.0s:\n", age); //precision > digit
 	printf("-:%-10.0s:\n", age); //precision > digit
 	return (0);	
-}*/
+}
 
 /*int main()  // int avec d
 {
-	int age = -1234;
-	int *p = &age;
+	int age = 2147483647;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
+	printf("R:%d:\n", age); //champ < digit
 	printf("R:%3.10d:\n", age); //champ < digit
 	printf("0:%03.10d:\n", age); //champ < digit
 	printf("-:%-3.10d:\n", age); //champ < digit

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 18:41:31 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/26 16:35:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,19 @@ int		ft_atoi(const char *str)
 int	countdigit_d_i_u(int nb)
 {
 	int digit = 0;
+	unsigned int nbr;
 
 	if (nb == 0)
         return (1);
 	if (nb < 0)
-		nb = -nb;
-	if (nb <= 9)
+		nbr = (unsigned int)(nb * -1);
+	else
+		nbr = (unsigned int)nb;
+	if (nbr <= 9)
 		return(++digit);
-	while (nb > 0)
+	while (nbr > 0)
 	{
-		nb /= 10;
+		nbr /= 10;
 		digit++;
 	}
 	return(digit);

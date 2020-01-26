@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 19:40:16 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/26 17:46:53 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,15 +203,15 @@ int		ft_printf(const char *src, ...)
 	return (0);
 }*/
 
-int main() // int avec *
+/*int main() // int avec *
 {
-	int age = -214748364;
+	int age = -2147483;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;
 	int chmp = 3;
 	int chmp1 = 6;
-	int chmp2 = 9;
+	int chmp2 = 10;
 
 	ft_printf("precision > champ && precision > digit\n");
 	ft_printf("/////champ =< digit\n");
@@ -233,12 +233,12 @@ int main() // int avec *
 	ft_printf("0:%0*.*d:\n", chmp2, prec1, age); //champ < digit
 	ft_printf("-:%-10.*d:\n", prec1, age); //champ < digit
 	return (0);	
-}
+}*/
 
 
-/*int main() //string
+int main() //string
 {
-	char *age = "choc";
+	char *age = NULL;
 	int khey = 132;
 
 	ft_printf("digit > champ\n");
@@ -266,14 +266,15 @@ int main() // int avec *
 	ft_printf("R:%10.0s:\n", age); //precision > digit
 	ft_printf("-:%-10.0s:\n", age); //precision > digit
 	return (0);	
-}*/
+}
 
 /*int main()  // int avec d
 {
-	int age = -1234;
+	int age = 2147483647;
 
 	ft_printf("precision > champ && precision > digit\n");
 	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%d:\n", age); //champ < digit
 	ft_printf("R:%3.10d:\n", age); //champ < digit
 	ft_printf("0:%03.10d:\n", age); //champ < digit
 	ft_printf("-:%-3.10d:\n", age); //champ < digit
