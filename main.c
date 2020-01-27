@@ -6,11 +6,12 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/26 17:46:58 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/27 18:31:35 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #define MINUS (1 << 0)
 #define ZERO (1 << 1)
 #define RANGE (1 << 2)
@@ -113,16 +114,13 @@
 
 /*int main() // c
 {
-	char age = 'h';
-	int khey = 132;
+	char age = 127;
 
-	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
 	printf("R:%10c:\n", age); //champ < digit
 	printf("-:%-10c:\n", age); //champ < digit
 	printf("-:%c:\n", age); //champ < digit
 	printf("-:%c:\n", age); //champ < digit
-	
 	return (0);	
 }*/
 
@@ -146,8 +144,8 @@
 
 
 
-	printf("R:%50p:\n", str); //champ < digit
-	printf("-:%-50p:\n", str); //champ < digit
+	printf("R:%6p:\n", str); //champ < digit
+	printf("-:%-6p:\n", str); //champ < digit
 	printf("%p\n", p); //champ < digit
 	printf("%p\n", p); //champ < digit
 	printf("%p\n", p1); //champ < digit
@@ -198,16 +196,81 @@
 	return (0);	
 }*/
 
-
-int main() //string
+/*int main() //string unprintables
 {
-	char *age = NULL;
+	char chaine[33];
+	chaine[0] = 1;
+	chaine[1] = 2;
+	chaine[2] = 3;
+	chaine[3] = 4;
+	chaine[4] = 5;
+	chaine[5] = 6;
+	chaine[6] = 7;
+	chaine[7] = 8;
+	chaine[8] = 9;
+	chaine[9] = 10;
+	chaine[10] = 11;
+	chaine[11] = 12;
+	chaine[12] = 13;
+	chaine[13] = 14;
+	chaine[14] = 15;
+	chaine[15] = 16;
+	chaine[16] = 17;
+	chaine[17] = 18;
+	chaine[18] = 19;
+	chaine[19] = 20;
+	chaine[20] = 21;
+	chaine[21] = 22;
+	chaine[22] = 23;
+	chaine[23] = 24;
+	chaine[24] = 25;
+	chaine[25] = 26;
+	chaine[26] = 27;
+	chaine[27] = 28;
+	chaine[28] = 29;
+	chaine[29] = 30;
+	chaine[30] = 31;
+	chaine[31] = 127;
+	chaine[32] = 0;
+
+	printf("digit > champ\n");
+	printf("/////precision =< digit\n");
+	printf("R:%s:\n", chaine); //champ < digit
+	printf("R:%4.3s:\n", chaine); //champ < digit
+	printf("-:%-4.3s:\n", chaine); //champ < digit
+	printf("/////precision > digit\n"); ///////////part ici en couille
+	printf("R:%2.6s:\n", chaine); //champ < digit
+	printf("-:%-2.6s:\n", chaine); //champ < digit
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%3.10s:\n", chaine); //champ < digit
+	printf("-:%-3.10s:\n", chaine); //champ < digit
+	printf("/////champ > digit\n");
+	printf("R:%6.10s:\n", chaine); //champ > digit
+	printf("-:%-6.10s:\n", chaine); //champ > digit
+	printf("champ > precision && champ > digit\n"); 
+	printf("/////precision =< digit\n");
+	printf("R:%10.3s:\n", chaine); //precision < digit
+	printf("-:%-10.3s:\n", chaine); //precision < digit
+	printf("/////precision > digit\n");
+	printf("R:%10.6s:\n", chaine); //precision > digit
+	printf("-:%-10.6s:\n", chaine); //precision > digit
+	printf("/////precision == 0\n");
+	printf("R:%10.0s:\n", chaine); //precision > digit
+	printf("-:%-10.0s:\n", chaine); //precision > digit
+	return (0);	
+}*/
+
+/*int main() //string printables
+{
+	char *age = "\0";
 	int khey = 132;
 
 	printf("digit > champ\n");
 	printf("/////precision =< digit\n");
+	printf("R:%s:\n", age); //champ < digit
 	printf("R:%4.3s:\n", age); //champ < digit
-	printf("-:%4.3s:\n", age); //champ < digit
+	printf("-:%-4.3s:\n", age); //champ < digit
 	printf("/////precision > digit\n"); ///////////part ici en couille
 	printf("R:%2.6s:\n", age); //champ < digit
 	printf("-:%-2.6s:\n", age); //champ < digit
@@ -229,7 +292,7 @@ int main() //string
 	printf("R:%10.0s:\n", age); //precision > digit
 	printf("-:%-10.0s:\n", age); //precision > digit
 	return (0);	
-}
+}*/
 
 /*int main()  // int avec d
 {

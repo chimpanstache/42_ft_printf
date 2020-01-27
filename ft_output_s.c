@@ -6,16 +6,32 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/26 18:34:09 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/27 18:02:56 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
+char	*digit_overall_s(char *display, int digit, char *src, s_flags flags)
+{
+	int y;
+	int lngth;
+	y = 0;
+	lngth = digit;
+	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+		return (NULL);
+	display[lngth] = '\0';
+	while (y < lngth)
+		display[y++] = ' ';
+	if (*src == '\0' || !src)
+		return (display);
+	ft_memcpy(display, src, digit);
+	return (display);
+}
+
 char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags)
 {
 	int y;
-
 	y = 0;
 	int lngth;
 	lngth = flags.chmp;
@@ -23,7 +39,9 @@ char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags)
 		return (NULL);
 	display[lngth] = '\0';
 	while (y < lngth)
-		display[y++] = ' ';
+		display[y++] = ' ';	
+	if (*src == '\0' || !src)
+		return (display);	
 	if (flags.prec < digit)
 		ft_memcpy(display, src, flags.prec);
 	if (flags.prec >= digit)
@@ -35,7 +53,6 @@ char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags
 {
 	int i;
 	int y;
-
 	y = 0;
 	i = 0;
 	int lngth;
@@ -46,26 +63,12 @@ char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
+	if (*src == '\0' || !src)
+		return (display);	
 	if (flags.prec < digit)
 		ft_memcpy(&display[i], src, flags.prec);
 	if (flags.prec >= digit)
 		ft_memcpy(&display[i], src, digit);
-	return (display);
-}
-
-char	*digit_overall_s(char *display, int digit, char *src, s_flags flags)
-{
-	int y;
-	int lngth;
-
-	y = 0;
-	lngth = digit;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
-		return (NULL);
-	display[lngth] = '\0';
-	while (y < lngth)
-		display[y++] = ' ';
-	ft_memcpy(display, src, digit);
 	return (display);
 }
 
@@ -74,18 +77,19 @@ char	*chmp_thn_prec(char *display, int digit, char *src, s_flags flags)
 	int i;
 	int y;
 	int lngth;
-
 	y = 0;
-	i = lngth - flags.prec;
 	lngth = flags.chmp;
+	i = lngth - flags.prec;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
+	if (*src == '\0' || !src)
+		return (display);
 	if (flags.att < 0)
 		ft_memcpy(display, src, flags.prec);
-	if (flags.prec == 0)
+	if (flags.att == 0)
 		ft_memcpy(&display[i], src, flags.prec);
 	return (display);
 }
@@ -93,11 +97,17 @@ char	*chmp_thn_prec(char *display, int digit, char *src, s_flags flags)
 char	*prec_overall_s(char *display, int digit, char *src, s_flags flags)
 {
 	int lngth;
+	int y;
 
+	y = 0;
 	lngth = flags.prec;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
+	while (y < lngth)
+		display[y++] = ' ';
+	if (*src == '\0' || !src)
+		return (display);	
 	ft_memcpy(display, src, flags.prec);
 	return (display);
 }
@@ -105,8 +115,7 @@ char	*prec_overall_s(char *display, int digit, char *src, s_flags flags)
 char *null(void)
 {
 	char *null;
-
-	if (!(null = malloc(sizeof(*null) * (7))))
+	if (!(null = malloc(sizeof(*null) * 7)))
 		return (NULL);
 	null[0] = '(';
 	null[1] = 'n';
@@ -124,24 +133,39 @@ void 	printf_s(va_list *prms, s_flags flags)
     int digit;
 	char *display;
 	char *src2;
-
-	digit = ft_strlen(src);
 	if (src == NULL)
 	{
 		src2 = null();
 		digit = ft_strlen(src2);
 	}
+	else
+		digit = ft_strlen(src);
+	if (flags.prec == -1 && flags.chmp == 0)
+	{
+		display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
+	}
 	if (flags.chmp >= digit && flags.att < 0)
+	{
 		display = chmp_over_erthing_left(display, digit, src == NULL ? src2 : src, flags);
+	}	
 	if (flags.chmp >= digit && flags.att == 0)
+	{
 		display = chmp_over_erthing_right(display, digit, src == NULL ? src2 : src, flags);
-  if (flags.chmp < digit && digit <= flags.prec)
-    display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
-  if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec)
+	}
+	if (flags.chmp < digit && digit <= flags.prec)
+  {
+	  display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
+	}
+	if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec && flags.prec != -1 && flags.chmp != 0)
+	{
 		display = chmp_thn_prec(display, digit, src == NULL ? src2 : src, flags);
-  if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec)
-    display = prec_overall_s(display, digit, src == NULL ? src2 : src, flags);
+	}
+	if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec && flags.prec != -1 && flags.chmp != 0)
+	{
+	  display = prec_overall_s(display, digit, src == NULL ? src2 : src, flags);
+	}
 	write(1, display, ft_strlen(display));
 	free(display);
+	if (src == NULL)
+		free(src2);
 }
-

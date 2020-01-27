@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/22 12:36:48 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/27 18:12:41 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*put_c(char *display, char chr, s_flags flags)
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
+	if (chr == '\0' || !chr)
+		return (display);
 	if (flags.att < 0)
 		display[0] = chr;
 	else

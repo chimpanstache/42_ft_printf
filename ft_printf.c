@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/26 17:46:53 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/27 18:31:37 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,12 +151,9 @@ int		ft_printf(const char *src, ...)
 
 /*int main() // c
 {
-	char age = 'h';
-	int khey = 132;
+	char age = 127;
 
-	ft_printf("precision > champ && precision > digit\n");
 	ft_printf("/////champ =< digit\n");
-	
 	ft_printf("R:%10c:\n", age); //champ < digit
 	ft_printf("-:%-10c:\n", age); //champ < digit
 	ft_printf("-:%c:\n", age); //champ < digit
@@ -183,8 +180,8 @@ int		ft_printf(const char *src, ...)
 	int *zebi = NULL;
 
 
-	ft_printf("R:%50p:\n", str); //champ < digit
-	ft_printf("-:%-50p:\n", str); //champ < digit
+	ft_printf("R:%6p:\n", str); //champ < digit
+	ft_printf("-:%-6p:\n", str); //champ < digit
 	ft_printf(":%p:\n", p); //champ < digit
 	ft_printf("%p\n", p); //champ < digit
 	ft_printf("%p\n", p1); //champ < digit
@@ -235,16 +232,16 @@ int		ft_printf(const char *src, ...)
 	return (0);	
 }*/
 
-
-int main() //string
+/*int main() //string printables
 {
-	char *age = NULL;
+	char *age = "\0";
 	int khey = 132;
 
 	ft_printf("digit > champ\n");
 	ft_printf("/////precision =< digit\n");
+	ft_printf("R:%s:\n", age); //champ < digit
 	ft_printf("R:%4.3s:\n", age); //champ < digit
-	ft_printf("-:%4.3s:\n", age); //champ < digit
+	ft_printf("-:%-4.3s:\n", age); //champ < digit
 	ft_printf("/////precision > digit\n"); ///////////part ici en couille
 	ft_printf("R:%2.6s:\n", age); //champ < digit
 	ft_printf("-:%-2.6s:\n", age); //champ < digit
@@ -252,7 +249,7 @@ int main() //string
 	ft_printf("/////champ =< digit\n");
 	ft_printf("R:%3.10s:\n", age); //champ < digit
 	ft_printf("-:%-3.10s:\n", age); //champ < digit
-	ft_printf("/////champ > digit\n");
+	ft_printf("/////champ > digit\n"); ///////// ************ici
 	ft_printf("R:%6.10s:\n", age); //champ > digit
 	ft_printf("-:%-6.10s:\n", age); //champ > digit
 	ft_printf("champ > precision && champ > digit\n"); 
@@ -266,7 +263,72 @@ int main() //string
 	ft_printf("R:%10.0s:\n", age); //precision > digit
 	ft_printf("-:%-10.0s:\n", age); //precision > digit
 	return (0);	
-}
+}*/
+
+/*int main() //string unprintables
+{
+	char chaine[33];
+	chaine[0] = 1;
+	chaine[1] = 2;
+	chaine[2] = 3;
+	chaine[3] = 4;
+	chaine[4] = 5;
+	chaine[5] = 6;
+	chaine[6] = 7;
+	chaine[7] = 8;
+	chaine[8] = 9;
+	chaine[9] = 10;
+	chaine[10] = 11;
+	chaine[11] = 12;
+	chaine[12] = 13;
+	chaine[13] = 14;
+	chaine[14] = 15;
+	chaine[15] = 16;
+	chaine[16] = 17;
+	chaine[17] = 18;
+	chaine[18] = 19;
+	chaine[19] = 20;
+	chaine[20] = 21;
+	chaine[21] = 22;
+	chaine[22] = 23;
+	chaine[23] = 24;
+	chaine[24] = 25;
+	chaine[25] = 26;
+	chaine[26] = 27;
+	chaine[27] = 28;
+	chaine[28] = 29;
+	chaine[29] = 30;
+	chaine[30] = 31;
+	chaine[31] = 127;
+	chaine[32] = 0;
+
+	ft_printf("digit > champ\n");
+	ft_printf("/////precision =< digit\n");
+	ft_printf("R:%s:\n", chaine); //champ < digit
+	ft_printf("R:%4.3s:\n", chaine); //champ < digit
+	ft_printf("-:%-4.3s:\n", chaine); //champ < digit
+	ft_printf("/////precision > digit\n"); ///////////part ici en couille
+	ft_printf("R:%2.6s:\n", chaine); //champ < digit
+	ft_printf("-:%-2.6s:\n", chaine); //champ < digit
+	ft_printf("precision > champ && precision > digit\n");
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%3.10s:\n", chaine); //champ < digit
+	ft_printf("-:%-3.10s:\n", chaine); //champ < digit
+	ft_printf("/////champ > digit\n");
+	ft_printf("R:%6.10s:\n", chaine); //champ > digit
+	ft_printf("-:%-6.10s:\n", chaine); //champ > digit
+	ft_printf("champ > precision && champ > digit\n"); 
+	ft_printf("/////precision =< digit\n");
+	ft_printf("R:%10.3s:\n", chaine); //precision < digit
+	ft_printf("-:%-10.3s:\n", chaine); //precision < digit
+	ft_printf("/////precision > digit\n");
+	ft_printf("R:%10.6s:\n", chaine); //precision > digit
+	ft_printf("-:%-10.6s:\n", chaine); //precision > digit
+	ft_printf("/////precision == 0\n");
+	ft_printf("R:%10.0s:\n", chaine); //precision > digit
+	ft_printf("-:%-10.0s:\n", chaine); //precision > digit
+	return (0);
+}*/
 
 /*int main()  // int avec d
 {
