@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/27 18:31:35 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/29 18:46:56 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@
 	return (0);
 }*/
 
-/*int main() //petit x
+/*int main() //petit x okkk
 {
 	unsigned int age = 4294967295;
 	int khey = 132;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
+	printf("R:%x:\n", age); //champ < digit
 	printf("R:%3.10x:\n", age); //champ < digit
 	printf("0:%03.10x:\n", age); //champ < digit
 	printf("-:%-3.10x:\n", age); //champ < digit
@@ -55,13 +56,14 @@
 	return (0);	
 }*/
 
-/*int main()  //grand X
+/*int main()  //grand X okkk
 {
 	unsigned int age = 4294967295;
 	int khey = 132;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
+	printf("R:%X:\n", age); //champ < digit
 	printf("R:%3.10X:\n", age); //champ < digit
 	printf("0:%03.10X:\n", age); //champ < digit
 	printf("-:%-3.10X:\n", age); //champ < digit
@@ -81,9 +83,9 @@
 	return (0);
 }*/
 
-/*int main() //unsigned int avec *
+/*int main() //unsigned int avec * okkk
 {
-	unsigned int age = 4294967295;
+	unsigned int age = 0;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;
@@ -112,7 +114,38 @@
 	return (0);	
 }*/
 
-/*int main() // c
+/*int main() //unsigned int avec * okkk
+{
+	unsigned int age = 0;
+	int prec = 3;
+	int prec1 = 6;
+	int prec2 = 10;
+	int chmp = 3;
+	int chmp1 = 6;
+	int chmp2 = 10;
+
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%*.*x:\n", chmp, prec2, age); //champ < digit
+	printf("0:%0*.*x:\n", chmp, prec2, age); //champ < digit
+	printf("-:%-*.*x:\n", chmp, prec2, age); //champ < digit
+	printf("/////champ > digit\n");
+	printf("-:%*.*x:\n", chmp1, prec2, age); //champ < digit
+	printf("-:%0*.*x:\n", chmp1, prec2, age); //champ < digit
+	printf("-:%-*.*x:\n", chmp1, prec2, age); //champ < digit
+	printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
+	printf("/////precision =< digit\n");
+	printf("-:%*.*x:\n", chmp2, prec, age); //champ < digit
+	printf("-:%0*.*x:\n", chmp2, prec, age); //champ < digit
+	printf("-:%-*.*x:\n", chmp2, prec, age); //champ < digit
+	printf("/////precision > digit\n");
+	printf("-:%*.*x:\n", chmp2, prec1, age); //champ < digit
+	printf("-:%0*.*x:\n", chmp2, prec1, age); //champ < digit
+	printf("-:%-10.*x:\n", prec1, age); //champ < digit
+	return (0);	
+}*/
+
+/*int main() // c okkk
 {
 	char age = 127;
 
@@ -124,7 +157,7 @@
 	return (0);	
 }*/
 
-/*int main()  // pointeur
+/*int main()  // pointeur okkk
 {
 	char *str;
 	int i = 10;
@@ -164,9 +197,9 @@
 	return (0);
 }*/
 
-/*int main() // int avec *
+/*int main() // int d avec * okkk
 {
-	int age = -2147483;
+	int age = -2147483648;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;
@@ -196,7 +229,39 @@
 	return (0);	
 }*/
 
-/*int main() //string unprintables
+int main() // int i avec * okkk
+{
+	int age = 1;
+	int prec = 3;
+	int prec1 = 6;
+	int prec2 = 10;
+	int chmp = -3;
+	int chmp1 = -6;
+	int chmp2 = -10;
+
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%i:\n", age); //champ < digit
+	printf("R:%*.*i:\n", chmp, prec2, age); //champ < digit 
+	printf("0:%0*.*i:\n", chmp, prec2, age); //champ < digit
+	printf("-:%-*.*i:\n", chmp, prec2, age); //champ < digit
+	printf("/////champ > digit\n");
+	printf("R:%*.*i:\n", chmp1, prec2, age); //champ < digit
+	printf("0:%0*.*i:\n", chmp1, prec2, age); //champ < digit
+	printf("-:%-*.*i:\n", chmp1, prec2, age); //champ < digit
+	printf("champ > precision && champ > digit\n"); //pro fois gerer ces cas quand c'est negatif
+	printf("/////precision =< digit\n");
+	printf("R:%*.*i:\n", chmp2, prec, age); //champ < digit
+	printf("0:%0*.*i:\n", chmp2, prec, age); //champ < digit
+	printf("-:%-*.*i:\n", chmp2, prec, age); //champ < digit
+	printf("/////precision > digit\n");
+	printf("R:%*.*i:\n", chmp2, prec1, age); //champ < digit
+	printf("0:%0*.*i:\n", chmp2, prec1, age); //champ < digit
+	printf("-:%-10.*i:\n", prec1, age); //champ < digit
+	return (0);	
+}
+
+/*int main() //string unprintables okkk
 {
 	char chaine[33];
 	chaine[0] = 1;
@@ -261,9 +326,9 @@
 	return (0);	
 }*/
 
-/*int main() //string printables
+/*int main() //string printables okkk
 {
-	char *age = "\0";
+	char *age = "\x";
 	int khey = 132;
 
 	printf("digit > champ\n");
@@ -294,9 +359,9 @@
 	return (0);	
 }*/
 
-/*int main()  // int avec d
+/*int main()  // int avec d okkk
 {
-	int age = 2147483647;
+	int age = 0;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
@@ -320,10 +385,9 @@
 	return (0);
 }*/
 
-/*int main()  // int avec i
+/*int main()  // int avec i okkk
 {
-	int age = -1234;
-	int *p = &age;
+	int age = 0;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");
@@ -346,9 +410,9 @@
 	return (0);
 }*/
 
-/*int main()  // int avec u
+/*int main()  // int avec u okkk
 {
-	unsigned int age = 1234;
+	unsigned int age = 4294967295;
 
 	printf("precision > champ && precision > digit\n");
 	printf("/////champ =< digit\n");

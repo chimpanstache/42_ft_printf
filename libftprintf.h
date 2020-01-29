@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/27 13:25:01 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/29 15:14:56 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_atoi(const char *str);
 int		ft_attribute(char str);
 int		ft_champ(char *str, va_list *prms);
 int 	ft_precision(char *str, va_list *prms);
-int	countdigit_d_i_u(int nb);
+int	countdigit_d_i(int nb);
 void analyse_params(char *prmtrs, s_flags *flags, va_list *prms);
 char	*ft_strndup(const char *str, size_t len);
 void init_flags(s_flags *flags);
@@ -87,5 +87,7 @@ char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
 char	*prec_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
 char	*chmp_overall_thn_dgt_u(char *display, int digit, unsigned int nb, s_flags flags);
 char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_flags flags);
-
+void        ft_itoa_custom_pos_u(unsigned int n, char *arr);
+void       ft_itoa_custom_u(unsigned int n, char *arr);
+int	countdigit_u(unsigned int nb);
 #endif

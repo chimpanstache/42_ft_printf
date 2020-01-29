@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/27 17:09:21 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/29 16:01:15 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		ft_atoi(const char *str)
 	return (nb);
 }
 
-int	countdigit_d_i_u(int nb)
+int	countdigit_d_i(int nb)
 {
 	int digit = 0;
 	unsigned int nbr;
@@ -94,6 +94,24 @@ int	countdigit_d_i_u(int nb)
 		nbr = (unsigned int)(nb * -1);
 	else
 		nbr = (unsigned int)nb;
+	if (nbr <= 9)
+		return(++digit);
+	while (nbr > 0)
+	{
+		nbr /= 10;
+		digit++;
+	}
+	return(digit);
+}
+
+int	countdigit_u(unsigned int nb)
+{
+	int digit = 0;
+	unsigned int nbr;
+
+	if (nb == 0)
+        return (1);
+	nbr = (unsigned int)nb;
 	if (nbr <= 9)
 		return(++digit);
 	while (nbr > 0)
@@ -123,6 +141,22 @@ static int    countdigit(int n)
         len++;
     }
     return (len);
+}
+
+void       ft_itoa_custom_u(unsigned int n, char *arr)
+{
+    unsigned int    nb;
+    int                sign;
+    int                len;
+ 
+    sign = 0;
+    len = countdigit_u(n);
+    nb = (unsigned int)n;
+    while (len-- > sign)
+    {
+        arr[len] = nb % 10 + '0';
+        nb = nb / 10;
+    }
 }
 
 void       ft_itoa_custom(int n, char *arr)
@@ -159,6 +193,20 @@ void        ft_itoa_custom_pos(int n, char *arr)
         nb = (unsigned int)(n * -1);
     else
         nb = (unsigned int)n;
+    while (len-- > 0)
+    {
+        arr[len] = nb % 10 + '0';
+		nb = nb / 10;
+    }
+}
+
+void        ft_itoa_custom_pos_u(unsigned int n, char *arr)
+{
+    unsigned int    nb;
+    int                len;
+	
+    len = countdigit_u(n);
+    nb = (unsigned int)n;
     while (len-- > 0)
     {
         arr[len] = nb % 10 + '0';
