@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/29 15:14:56 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/30 15:30:18 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ char	*prec_overall(char *display, int digit, int nb, s_flags flags);
 char	*chmp_overall_thn_dgt_pos(char *display, int digit, int nb, s_flags flags);
 char	*chmp_overall_thn_dgt_neg(char *display, int digit, int nb, s_flags flags);
 char	*chmp_overall_thn_prec(char *display, int digit, int nb, s_flags flags);
+char	*chmp_neg_prec_pos(char *display, int digit, int nb, s_flags flags);
+char	*chmp_neg_prec_pos_nb_neg(char *display, int digit, int nb, s_flags flags);
 //x functions
 void 	printf_x(va_list *prms, s_flags flags);
 char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);

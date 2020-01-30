@@ -6,16 +6,12 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/29 18:46:56 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/30 15:49:10 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#define MINUS (1 << 0)
-#define ZERO (1 << 1)
-#define RANGE (1 << 2)
-#define CHAMP (1 << 3)
 
 /*int main()
 {
@@ -231,7 +227,7 @@
 
 int main() // int i avec * okkk
 {
-	int age = 1;
+	int age = -2147483648;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;

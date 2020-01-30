@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/29 18:46:53 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/30 15:49:13 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,7 +266,7 @@ int		ft_printf(const char *src, ...)
 
 int main() // int i avec * okkk
 {
-	int age = 1;
+	int age = -2147483648;
 	int prec = 3;
 	int prec1 = 6;
 	int prec2 = 10;
@@ -277,7 +277,7 @@ int main() // int i avec * okkk
 	ft_printf("precision > champ && precision > digit\n");
 	ft_printf("/////champ =< digit\n");
 	ft_printf("R:%i:\n", age); //champ < digit
-	ft_printf("R:%*.*i:\n", chmp, prec2, age); //champ < digit
+	ft_printf("R:%*.*i:\n", chmp, prec2, age); //champ < digit 
 	ft_printf("0:%0*.*i:\n", chmp, prec2, age); //champ < digit
 	ft_printf("-:%-*.*i:\n", chmp, prec2, age); //champ < digit
 	ft_printf("/////champ > digit\n");
