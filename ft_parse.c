@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:16:55 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/20 16:30:43 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/01/31 15:51:13 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,31 @@ void init_flags(s_flags *flags)
 {
 	flags->att = 0;
 	flags->chmp = 0;
-	flags->prec = -1; //trouver autre valeur d'initialisation que 0 pour str, pour reste bon sinon
-} ////DOOONNNEEE
+	flags->prec = -1;
+} 
 
-void analyse_params(char *prmtrs, s_flags *flags, va_list *prms) //fonctionne en theorie
+void analyse_params(char *prmtrs, s_flags *flags, va_list *prms)
 {
 	int i = 0;
 	int j = 0;
 
-	//printf("%s%s\n", prmtrs, ": prmtrs");   //////////////////////////
 	while (prmtrs[i] == '-' || prmtrs[i] == '0')
 	{
 		if (flags->att != -1)
 			flags->att = ft_attribute(prmtrs[i]);
 		i++;
 	}
-	while (('0' <= prmtrs[i] && prmtrs[i] <= '9') || prmtrs[i] == '*') //ne pas boucler zebi
+	while (('0' <= prmtrs[i] && prmtrs[i] <= '9') || prmtrs[i] == '*')
 	{
 		if (flags->chmp == 0)
 			flags->chmp = ft_champ(&prmtrs[i], prms);
 		i++;
 	}
-	if (prmtrs[i] == '.') // attention peut aussi avoir * pour gerer prec
+	if (prmtrs[i] == '.')
 		flags->prec = ft_precision(&prmtrs[++i], prms);
 }
 
-int		ft_attribute(char str) //fonctionne normalement si 00000-0----0...
+int		ft_attribute(char str)
 {
 	int att;
 

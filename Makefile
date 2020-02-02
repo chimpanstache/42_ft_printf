@@ -6,45 +6,61 @@
 #    By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/10 11:06:06 by ehafidi           #+#    #+#              #
-#    Updated: 2020/01/23 15:32:43 by ehafidi          ###   ########.fr        #
+#    Updated: 2020/02/02 14:30:13 by ehafidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+LIBFT_ROOT = ./libft
+
 CC = gcc
-RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -c
-LIBFT_PATH = ./libft
+CCFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L. -lftprintf
 INCFLAGS = -I$(LIBFT_ROOT)
 
-SRCS = ft_printf.c ft_output_c.c ft_output_d_i.c ft_output_p.c ft_output_s.c \
-ft_output_u.c ft_output_x.c ft_output_XX.c ft_parse.c ft_side_functions.c \
-
-OBJS = $(SRCS:.c=.o)
+RM = rm -f
+LIB = ar rcs
+MAKE = make
 
 NAME = libftprintf.a
 
+SRC = ft_printf.c ft_output_c.c ft_output_d_i.c ft_output_p.c ft_output_s.c ft_output_u.c ft_output_x.c ft_output_XX.c ft_parse.c ft_side_functions.c 
+	  
+OBJ = $(SRC:.c=.o)
+INCLUDE = header.h
+
+
 all: libft_all $(NAME)
 
-$(NAME):	$(OBJS)
-	cp $(LIBFT_PATH)/libft.a $(NAME) 
-	ar rc $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	cp $(LIBFT_ROOT)/libft.a $(NAME)
+	$(LIB) $(NAME) $(OBJ)
 
-%.o: %.c header.h
-	$(CC) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
+%.o: %.c $(INCLUDE)
+	$(CC) $(CCFLAGS) $(INCFLAGS) -c -o $@ $<
 
-clean:	libft_clean
-		$(RM) $(OBJS) 
+bonus: all
+
+clean: libft_clean
+	$(RM) $(OBJ)
 
 fclean: libft_fclean clean
-		$(RM) $(NAME) 
+	$(RM) $(NAME)
 
-re: fclean all	
+re: fclean all
 
-libft_all: make -C $(LIBFT_PATH) all 
+test: CCFLAGS += -g
+test: all
+	$(CC) $(CCFLAGS) $(LDFLAGS) -L./libft -lft $(INCFLAGS) -o test main.c
 
-libft_clean: make -C $(LIBFT_PATH) clean 
 
-libft_fclean: make -C $(LIBFT_PATH) fclean 
+libft_all:
+	$(MAKE) -C $(LIBFT_ROOT) all
 
-.PHONY: all clean fclean re libft_all libft_clean libft_fclean 
+libft_bonus:
+	$(MAKE) -C $(LIBFT_ROOT) bonus
+
+libft_clean:
+	$(MAKE) -C $(LIBFT_ROOT) clean
+
+libft_fclean:
+	$(MAKE) -C $(LIBFT_ROOT) fclean

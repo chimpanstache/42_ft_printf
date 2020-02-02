@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/27 18:02:56 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 15:42:36 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,12 +127,14 @@ char *null(void)
 	return (null);
 }
 
-void 	printf_s(va_list *prms, s_flags flags)
+int	printf_s(va_list *prms, s_flags flags)
 {
 	char *src = va_arg(*prms, char *);
-    int digit;
+   int digit;
 	char *display;
 	char *src2;
+	int p;
+	
 	if (src == NULL)
 	{
 		src2 = null();
@@ -141,31 +143,21 @@ void 	printf_s(va_list *prms, s_flags flags)
 	else
 		digit = ft_strlen(src);
 	if (flags.prec == -1 && flags.chmp == 0)
-	{
 		display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
-	}
 	if (flags.chmp >= digit && flags.att < 0)
-	{
 		display = chmp_over_erthing_left(display, digit, src == NULL ? src2 : src, flags);
-	}	
 	if (flags.chmp >= digit && flags.att == 0)
-	{
 		display = chmp_over_erthing_right(display, digit, src == NULL ? src2 : src, flags);
-	}
 	if (flags.chmp < digit && digit <= flags.prec)
-  {
-	  display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
-	}
+    display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
 	if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec && flags.prec != -1 && flags.chmp != 0)
-	{
 		display = chmp_thn_prec(display, digit, src == NULL ? src2 : src, flags);
-	}
 	if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec && flags.prec != -1 && flags.chmp != 0)
-	{
 	  display = prec_overall_s(display, digit, src == NULL ? src2 : src, flags);
-	}
-	write(1, display, ft_strlen(display));
+	p = ft_strlen(display);
+	write(1, display, p);
 	free(display);
 	if (src == NULL)
 		free(src2);
+	return (p);
 }

@@ -6,30 +6,36 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 14:03:59 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 16:12:34 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void 	printf_p(va_list *prms, s_flags flags) //print the address, faire process de prec, champ et att directement dans fonction.
+int 	printf_p(va_list *prms, s_flags flags)
 {
 	int digit;
 	unsigned long long ptr = (long long)va_arg(*prms, unsigned long long);
 	char *base = "0123456789abcdef";
+	int p;
 
+	p = 0;
 	digit = countdigit_base(ptr, base) + 2;
 	if (flags.chmp > digit)
 	{
 		char *display;
 		display = put_p(display, ptr, base, digit, flags);
-		write(1, display, ft_strlen(display));
+		p = ft_strlen(display);
+		write(1, display, p);
 		free(display);
+		return (p);
 	}
 	else
 	{
 		write(1, "0x", 2);
-		ft_putnbr_base_p(ptr, base);
+		p = ft_putnbr_base_p(ptr, base);
+		p = p + 2;
+		return (p);
 	}
 }
 

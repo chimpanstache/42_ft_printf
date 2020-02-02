@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:10 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 15:10:49 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 15:44:05 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,12 @@ char	*chmp_overall_thn_dgt_x(char *base, char *display, int digit, unsigned int 
 
 	lngth = flags.chmp;
 	y = 0;
-	//printf("ici\n");	
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	i = lngth - digit;
 	while (y < lngth)
-		display[y++] = ' ';	
+		display[y++] = ' ';
 	if (flags.att < 0)
 		ft_putnbr_base(nb, base, display);
 	else
@@ -76,11 +75,10 @@ char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned
 	lngth = flags.chmp;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0'; ///////
+	display[lngth] = '\0';
 	(flags.att >= 0) ? (i = lngth - digit) : (i = flags.prec - digit);
 	while (y < lngth)
 		display[y++] = ' ';
-	//printf("ici\n");	//////////////////////
 	if (flags.att < 0)
 		ft_putnbr_base(nb, base, &display[flags.prec - digit]);
 	else
@@ -94,16 +92,15 @@ char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned
 	return (display);
 }
 
-void 	printf_x(va_list *prms, s_flags flags)
+int 	printf_x(va_list *prms, s_flags flags)
 {
 	unsigned int nb = va_arg(*prms, unsigned int);
 	int digit;
 	char *display;
 	char *base = "0123456789abcdef";
+	int p;
 
 	digit = countdigit_base(nb, base);
-	//printf("%d%s\n", digit, ": digit"); ////////////
-	//printf("%d%s\n", flags.prec, ": prec"); /////////////
 	if (digit >= flags.chmp && digit >= flags.prec)
 		display = digit_overall_x(base, display, digit, nb, flags);
 	else if (flags.prec >= flags.chmp && flags.prec >= digit)
@@ -112,6 +109,8 @@ void 	printf_x(va_list *prms, s_flags flags)
 		display = chmp_overall_thn_dgt_x(base, display, digit, nb, flags); 
 	else if ((flags.chmp >= flags.prec) && (flags.chmp >= digit) && (flags.prec > digit))
 		display = chmp_overall_thn_prec_pos_x(base, display, digit, nb, flags);
+	p = ft_strlen(display);
 	write(1, display, ft_strlen(display));
 	free(display);
+	return (p);
 }

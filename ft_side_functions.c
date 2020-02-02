@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/29 16:01:15 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 17:02:19 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+/*void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	char *dest1;
 	char *src1;
@@ -30,9 +30,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		n--;
 	}
 	return (dest);
-}
+}*/
 
-char	*ft_strndup(const char *str, size_t len)
+/*char	*ft_strndup(const char *str, size_t len)
 {
 	unsigned int	i;
 	char			*copy;
@@ -47,18 +47,18 @@ char	*ft_strndup(const char *str, size_t len)
 	}
 	copy[i] = '\0';
 	return (copy);
-}
+}*/
 
-int		ft_strlen(char *base)
+/*int		ft_strlen(char *base)
 {
 	int i = 0;
 
 	while (base[i])
 		i++;
 	return (i);
-}
+}*/
 
-int		ft_atoi(const char *str)
+/*int		ft_atoi(const char *str)
 {
 	long i;
 	long nb;
@@ -81,7 +81,7 @@ int		ft_atoi(const char *str)
 	if (i % 2 != 0)
 		nb = -nb;
 	return (nb);
-}
+}*/
 
 int	countdigit_d_i(int nb)
 {
@@ -122,7 +122,7 @@ int	countdigit_u(unsigned int nb)
 	return(digit);
 }
 
-static int    countdigit(int n)
+static int    count_no_diggity(int n)
 {
     int                len;
     unsigned int    nb;
@@ -166,7 +166,7 @@ void       ft_itoa_custom(int n, char *arr)
     int                len;
  
     sign = 0;
-    len = countdigit(n);
+    len = count_no_diggity(n);
     if (n < 0)
     {
         len++;
@@ -188,7 +188,7 @@ void        ft_itoa_custom_pos(int n, char *arr)
     unsigned int    nb;
     int                len;
 	
-    len = countdigit(n);
+    len = count_no_diggity(n);
     if (n < 0)
         nb = (unsigned int)(n * -1);
     else
@@ -281,7 +281,7 @@ void	ft_putnbr_custom_pos(int n, char *src)
 	src[i++] = nb % 10 + '0';
 }
 
-void	ft_putnbr_custom(int n, char *src) //fonctionne pas avec les negatifs
+void	ft_putnbr_custom(int n, char *src)
 {
 	unsigned int nb;
 	static int i = 0;
@@ -302,12 +302,16 @@ void	ft_putnbr_custom(int n, char *src) //fonctionne pas avec les negatifs
 	src[i++] = nb % 10 + '0';
 }
 
-void	ft_putnbr_base_p(unsigned long long nbr, char *base)
+int	ft_putnbr_base_p(unsigned long long nbr, char *base)
 {
 	int a;
-
+	static int p = 1;
 	a = ft_strlen(base);
 	if (nbr > a)
+	{
+		++p;
 		ft_putnbr_base_p((nbr / a), base);
+	}
 	write(1, &base[nbr % a], 1);
+	return (p);
 }

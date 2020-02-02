@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/30 15:49:13 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 17:07:02 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,22 @@ int		ft_printf(const char *src, ...)
 	int i = 0;
 	int j = 0;
 	int l = 0;
-	void (*tabFunction[8]) (va_list *, s_flags) = {printf_p, printf_u, printf_x, printf_X, printf_s, printf_c, printf_d_i, printf_d_i};
+	int a;
+	int b;
+	int (*tabFunction[8]) (va_list *, s_flags) = {printf_p, printf_u, printf_x, printf_X, printf_s, printf_c, printf_d_i, printf_d_i};
 	char tabIndex[9] = {'p', 'u', 'x', 'X', 's', 'c', 'd', 'i', 0};
 	char *prmtrs;
 
+	b = 0;
+	a = 0;
 	va_start(prms, src);
-	while (src[i]) //la on check les flags entre % et indic de conversion
+	while (src[i])
 	{
 		if (src[i] != '%')
+		{
 			write(1, &src[i++], 1);
+			b++;		
+		}
 		else if (src[i] == '%')
 		{
 			i++;
@@ -55,7 +62,7 @@ int		ft_printf(const char *src, ...)
 			{
 				if (src[i] == tabIndex[j])
 				{
-					(*tabFunction[j]) (&prms, flags);
+					a = (*tabFunction[j]) (&prms, flags);
 					break ;
 				}
 				j++;
@@ -63,7 +70,7 @@ int		ft_printf(const char *src, ...)
 			i++;
 		}
 	}
-	return (5);
+	return (a + b);
 }
 
 /*int main() //petit x okkk
@@ -264,12 +271,12 @@ int		ft_printf(const char *src, ...)
 	return (0);	
 }*/
 
-int main() // int i avec * okkk
+/*int main() // int i avec * okkk
 {
-	int age = -2147483648;
-	int prec = 3;
-	int prec1 = 6;
-	int prec2 = 10;
+	int age = -2;
+	int prec = -3;
+	int prec1 = -6;
+	int prec2 = -10;
 	int chmp = -3;
 	int chmp1 = -6;
 	int chmp2 = -10;
@@ -293,8 +300,8 @@ int main() // int i avec * okkk
 	ft_printf("R:%*.*i:\n", chmp2, prec1, age); //champ < digit
 	ft_printf("0:%0*.*i:\n", chmp2, prec1, age); //champ < digit
 	ft_printf("-:%-10.*i:\n", prec1, age); //champ < digit
-	return (0);	
-}
+	return (0);
+}*/
 
 /*int main() //string unprintables okkk
 {
@@ -468,4 +475,11 @@ int main() // int i avec * okkk
 	ft_printf("0:%010.6u:\n", age); //precision > digit
 	ft_printf("-:%-10.6u:\n", age); //precision > digit
 	return (0);
+}*/
+
+/*int main()  // int avec u okkk
+{
+	unsigned int age = 4294967295;
+	ft_printf("/////champ > digit\n");
+
 }*/

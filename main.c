@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/30 15:49:10 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 15:34:53 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@
 	return (0);	
 }*/
 
-/*int main()  // pointeur okkk
+int main()  // pointeur okkk
 {
 	char *str;
 	int i = 10;
@@ -191,7 +191,7 @@
 	printf("%p\n", zeb); //champ < digit
 	printf("%p\n", zebi); //champ < digit
 	return (0);
-}*/
+}
 
 /*int main() // int d avec * okkk
 {
@@ -225,12 +225,12 @@
 	return (0);	
 }*/
 
-int main() // int i avec * okkk
+/*int main() // int i avec * okkk
 {
-	int age = -2147483648;
-	int prec = 3;
-	int prec1 = 6;
-	int prec2 = 10;
+	int age = -2;
+	int prec = -3;
+	int prec1 = -6;
+	int prec2 = -10;
 	int chmp = -3;
 	int chmp1 = -6;
 	int chmp2 = -10;
@@ -255,7 +255,7 @@ int main() // int i avec * okkk
 	printf("0:%0*.*i:\n", chmp2, prec1, age); //champ < digit
 	printf("-:%-10.*i:\n", prec1, age); //champ < digit
 	return (0);	
-}
+}*/
 
 /*int main() //string unprintables okkk
 {
@@ -406,27 +406,7 @@ int main() // int i avec * okkk
 	return (0);
 }*/
 
-/*int main()  // int avec u okkk
+/*int main()  // int avec i okkk
 {
-	unsigned int age = 4294967295;
-
-	printf("precision > champ && precision > digit\n");
-	printf("/////champ =< digit\n");
-	printf("R:%3.10u:\n", age); //champ < digit
-	printf("0:%03.10u:\n", age); //champ < digit
-	printf("-:%-3.10u:\n", age); //champ < digit
-	printf("/////champ > digit\n");
-	printf("R:%6.10u:\n", age); //champ > digit
-	printf("0:%06.10u:\n", age); //champ > digit
-	printf("-:%-6.10u:\n", age); //champ > digit
-	printf("champ > precision && champ > digit\n"); 
-	printf("/////precision =< digit\n");
-	printf("R:%10.3u:\n", age); //precision < digit
-	printf("0:%010.3u:\n", age); //precision < digit
-	printf("-:%-10.3u:\n", age); //precision < digit
-	printf("/////precision > digit\n");
-	printf("R:%10.6u:\n", age); //precision > digit
-	printf("0:%010.6u:\n", age); //precision > digit
-	printf("-:%-10.6u:\n", age); //precision > digit
-	return (0);
+	printf("%%%%");
 }*/

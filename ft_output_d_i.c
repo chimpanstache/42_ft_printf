@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/30 15:48:48 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 15:18:58 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*digit_overall(char *display, int digit, int nb, s_flags flags)
 {
 	int i;
-	//printf("ici1\n"); ////////////////
+
 	i = 0;
 	int lngth;
 	nb >= 0 ? (lngth = digit) : (lngth = digit + 1);
@@ -32,18 +32,14 @@ char	*prec_overall(char *display, int digit, int nb, s_flags flags)
 	int i;
 	int y;
 
-	//printf("ici2\n"); ////////////////
 	y = 0;
 	(nb >= 0) ? (lngth = flags.prec) : (lngth = flags.prec + 1);
-	//(flags.chmp < flags.prec) ? lngth = -flags.chmp : (lngth = lngth);
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	i = lngth - digit;
-	//printf("%d%s\n", digit, ": digit");
 	while (y < lngth)
 		display[y++] = '0';
-	//printf("%d%s\n", i, ": i"); /////////	
 	ft_itoa_custom_pos(nb, &display[i]);
 	if (nb < 0)
 		display[0] = '-';
@@ -55,7 +51,7 @@ char	*chmp_neg_prec_pos(char *display, int digit, int nb, s_flags flags)
 	int lngth;
 	int i;
 	int y;
-	//printf("ici0\n"); ///////////////***********************
+
 	y = 0;
 	-flags.chmp >= flags.prec ? lngth = -flags.chmp : (lngth = -flags.chmp + 1);
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
@@ -84,11 +80,11 @@ char	*chmp_neg_prec_pos_nb_neg(char *display, int digit, int nb, s_flags flags)
 	int lngth;
 	int i;
 	int y;
-	//printf("ici0000\n"); ///////////////***********************
-	//printf("%d%s\n", digit, ": digit"); ///////////////***********************
+
 	y = 0;
-	-flags.chmp >= flags.prec ? lngth = -flags.chmp : (lngth = -flags.chmp + 1);
-	(digit + 1 >= flags.chmp) ? lngth = digit : (lngth = lngth); 
+	(-flags.chmp <= flags.prec) ? (lngth = flags.prec + 1): (lngth = -flags.chmp);
+	if (digit >= -flags.chmp && -flags.chmp > flags.prec)
+		lngth++;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -115,7 +111,7 @@ char	*chmp_overall_thn_dgt_pos(char *display, int digit, int nb, s_flags flags) 
 	int lngth;
 	int i;
 	int y;
-	//printf("ici3\n"); ///////////////
+
 	lngth = flags.chmp;
 	y = 0;
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
@@ -141,7 +137,6 @@ char	*chmp_overall_thn_dgt_neg(char *display, int digit, int nb, s_flags flags) 
 	int i;
 	int y;
 
-	//printf("ici4\n"); ///////////////*********************
 	++digit;
 	lngth = flags.chmp;
 	if (nb < 0 && digit == flags.chmp + 1)
@@ -204,7 +199,6 @@ char	*chmp_overall_thn_prec_neg(char *display, int digit, int nb, s_flags flags)
 
 	y = 0;
 	lngth = flags.chmp;
-	//printf("ici6\n"); ////////////////
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0'; 
@@ -226,17 +220,14 @@ char	*chmp_overall_thn_prec_neg(char *display, int digit, int nb, s_flags flags)
 	return (display);
 }
 
-void 	printf_d_i(va_list *prms, s_flags flags) //separation de l'algo en fonction des situations
+int	printf_d_i(va_list *prms, s_flags flags) 
 {
 	int nb = va_arg(*prms, int);
 	int digit;
 	char *display;
+	int p;
 
-/*	printf("%d%s\n", flags.att, ": att");
-	printf("%d%s\n", flags.chmp, ": chmp");
-	printf("%d%s\n", flags.prec, ": prec");*/
 	digit = countdigit_d_i(nb);
-	//printf("%d%s\n", digit, ": digit"); ////////
 	if (digit >= flags.chmp && digit >= flags.prec && flags.chmp >= 0)
 		display = digit_overall(display, digit, nb, flags);
 	else if (flags.chmp < 0 && nb >= 0) 
@@ -252,8 +243,9 @@ void 	printf_d_i(va_list *prms, s_flags flags) //separation de l'algo en fonctio
 	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit && nb >= 0)
 		display = chmp_overall_thn_prec_pos(display, digit, nb, flags);
 	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit && nb < 0)
-		display = chmp_overall_thn_prec_neg(display, digit, nb, flags);
-	write(1, display, ft_strlen(display));
-	//display[0] = '\0';
+		display = chmp_overall_thn_prec_neg(display, digit, nb, flags);	
+	p = ft_strlen(display);
+	write(1, display, p);
 	free(display);
+	return (p);
 }

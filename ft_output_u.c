@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:57:03 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/29 15:59:37 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 17:00:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags)
 {
 	int i;
-	//printf("ici1\n"); ////////////////////////
+	
 	i = 0;
 	int lngth;
 	lngth = digit;
@@ -31,11 +31,9 @@ char	*prec_overall_u(char *display, int digit, unsigned int nb, s_flags flags)
 	int lngth;
 	int i;
 	int y;
-	//printf("ici2\n"); ////////////////////////
+
 	y = 0;
 	lngth = flags.prec;
-	//printf("%d%s\n", flags.prec, ": prec"); ////////////////////////
-	//printf("%d%s\n", lngth, ": lngth"); ////////////////////////
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -51,7 +49,7 @@ char	*chmp_overall_thn_dgt_u(char *display, int digit, unsigned int nb, s_flags 
 	int lngth;
 	int i;
 	int y;
-	//printf("ici3\n"); ////////////////////////
+
 	lngth = flags.chmp;
 	y = 0;
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
@@ -78,12 +76,12 @@ char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_f
 	int lngth;
 	int i;
 	int y;
-	//printf("ici4\n"); ////////////////////////
+
 	y = 0;
 	lngth = flags.chmp;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0'; ///////
+	display[lngth] = '\0';
 	(flags.att >= 0) ? (i = lngth - digit) : (i = flags.prec - digit);
 	while (y < lngth)
 		display[y++] = ' ';
@@ -101,23 +99,24 @@ char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_f
 }
 
 
-void 	printf_u(va_list *prms, s_flags flags)	//putnbr avec limites
+int	printf_u(va_list *prms, s_flags flags)
 {
 	unsigned int nb = va_arg(*prms, unsigned int);
 	int digit;
 	char *display;
-	//printf("ici\n"); ////////////////////////
+	int p;
+
 	digit = countdigit_u(nb);
-	//printf("%d%s\n", digit, ": digit"); ////////////////////////
 	if (digit >= flags.chmp && digit >= flags.prec)
 		display = digit_overall_u(display, digit, nb, flags);
 	if (flags.prec >= flags.chmp && flags.prec >= digit)
 		display = prec_overall_u(display, digit, nb, flags);
 	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit) 
-		display = chmp_overall_thn_dgt_u(display, digit, nb, flags); //fonctionne pas si nb negatif
+		display = chmp_overall_thn_dgt_u(display, digit, nb, flags);
 	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit)
 		display = chmp_overall_thn_prec_pos_u(display, digit, nb, flags);
-	write(1, display, ft_strlen(display));
-	//display[0] = '\0';
+	p = ft_strlen(display);
+	write(1, display, p);
 	free(display);
+	return (p);
 }

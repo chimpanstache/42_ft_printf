@@ -6,18 +6,19 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 16:36:15 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/01/24 15:20:06 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/02 15:43:57 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void 	printf_X(va_list *prms, s_flags flags)
+int 	printf_X(va_list *prms, s_flags flags)
 {
 	unsigned int nb = va_arg(*prms, unsigned int);
 	int digit;
 	char *display;
 	char *base = "0123456789ABCDEF";
+	int p;
 
 	digit = countdigit_base(nb, base);
 	if (digit >= flags.chmp && digit >= flags.prec)
@@ -28,6 +29,8 @@ void 	printf_X(va_list *prms, s_flags flags)
 		display = chmp_overall_thn_dgt_x(base, display, digit, nb, flags); 
 	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit)
 		display = chmp_overall_thn_prec_pos_x(base, display, digit, nb, flags);
-	write(1, display, ft_strlen(display));
+	p = ft_strlen(display);
+	write(1, display, p);
 	free(display);
+	return (p);
 }
