@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/02 17:07:02 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/07 17:52:20 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ int		ft_printf(const char *src, ...)
 	int l = 0;
 	int a;
 	int b;
-	int (*tabFunction[8]) (va_list *, s_flags) = {printf_p, printf_u, printf_x, printf_X, printf_s, printf_c, printf_d_i, printf_d_i};
-	char tabIndex[9] = {'p', 'u', 'x', 'X', 's', 'c', 'd', 'i', 0};
+	int (*tabFunction[9]) (va_list *, s_flags) = {printf_percent, printf_p, printf_u, printf_x, printf_X, printf_s, printf_c, printf_d_i, printf_d_i};
+	char tabIndex[10] = {'%', 'p', 'u', 'x', 'X', 's', 'c', 'd', 'i', 0};
 	char *prmtrs;
 
-	b = 0;
 	a = 0;
+	b = 0;
 	va_start(prms, src);
 	while (src[i])
 	{
 		if (src[i] != '%')
 		{
 			write(1, &src[i++], 1);
-			b++;		
+			a++;
 		}
 		else if (src[i] == '%')
 		{
 			i++;
 			init_flags(&flags);
 			l = i;
-			while (('0' <= src[i] && src[i] <= '9') || src[i] == '-' || src[i] == '.' || src[i] == '*') ///attention peut aussi avoir *
+			while (('0' <= src[i] && src[i] <= '9') || src[i] == '-' || src[i] == '.' || src[i] == '*')
 				i++;
 			prmtrs = ft_strndup(&src[l], (i - l));
 			analyse_params(prmtrs, &flags, &prms);
@@ -62,7 +62,9 @@ int		ft_printf(const char *src, ...)
 			{
 				if (src[i] == tabIndex[j])
 				{
-					a = (*tabFunction[j]) (&prms, flags);
+					//printf("ici\n"); ////////////////
+					b = b + (*tabFunction[j]) (&prms, flags);
+					j = 0;
 					break ;
 				}
 				j++;
@@ -70,6 +72,7 @@ int		ft_printf(const char *src, ...)
 			i++;
 		}
 	}
+	//printf("%d%s\n", a, ": a"); ///////////////////
 	return (a + b);
 }
 
@@ -370,7 +373,7 @@ int		ft_printf(const char *src, ...)
 
 /*int main() //string printables  okkk
 {
-	char *age = "\z";
+	char *age = "chocolatttt";
 	int khey = 132;
 
 	ft_printf("digit > champ\n");
@@ -477,9 +480,21 @@ int		ft_printf(const char *src, ...)
 	return (0);
 }*/
 
-/*int main()  // int avec u okkk
+/*int main()  //printf testers
 {
-	unsigned int age = 4294967295;
-	ft_printf("/////champ > digit\n");
+	ft_printf("2:%%%%:\n");
+	ft_printf("3:%%%%%%:\n");
+	ft_printf("4:%.10%:\n");
+	ft_printf("5:%-5%:\n");
+	ft_printf("5:%5%:\n");
+	ft_printf("6:%05%:\n");
+	ft_printf("7:%c%%:\n", '3');
+	ft_printf("8:%s%%:\n", "Hello3");
+	return (0);
+}*/
 
+/*int main()  //printf testers
+{
+	ft_printf("%5s", "hello");
+	return (0);
 }*/

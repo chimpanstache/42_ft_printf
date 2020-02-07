@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/02 17:02:19 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/07 17:42:02 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-/*void	*ft_memcpy(void *dest, const void *src, size_t n)
+/*void	*ft_memcpy(void *dest, const void *src, size_t n) ///////////////////
 {
 	char *dest1;
 	char *src1;
@@ -30,9 +30,9 @@
 		n--;
 	}
 	return (dest);
-}*/
+}
 
-/*char	*ft_strndup(const char *str, size_t len)
+char	*ft_strndup(const char *str, size_t len) /////////////////////////////
 {
 	unsigned int	i;
 	char			*copy;
@@ -47,18 +47,18 @@
 	}
 	copy[i] = '\0';
 	return (copy);
-}*/
+}
 
-/*int		ft_strlen(char *base)
+int		ft_strlen(char *base)  //////////////////////////////
 {
 	int i = 0;
 
 	while (base[i])
 		i++;
 	return (i);
-}*/
+}
 
-/*int		ft_atoi(const char *str)
+int		ft_atoi(const char *str)  ////////////////////////////////
 {
 	long i;
 	long nb;

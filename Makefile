@@ -6,7 +6,7 @@
 #    By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/10 11:06:06 by ehafidi           #+#    #+#              #
-#    Updated: 2020/02/02 14:30:13 by ehafidi          ###   ########.fr        #
+#    Updated: 2020/02/07 15:44:24 by ehafidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MAKE = make
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_output_c.c ft_output_d_i.c ft_output_p.c ft_output_s.c ft_output_u.c ft_output_x.c ft_output_XX.c ft_parse.c ft_side_functions.c 
+SRC = ft_printf.c ft_output_c.c ft_output_d_i.c ft_output_p.c ft_output_s.c ft_output_%.c ft_output_u.c ft_output_x.c ft_output_XX.c ft_parse.c ft_side_functions.c 
 	  
 OBJ = $(SRC:.c=.o)
 INCLUDE = header.h

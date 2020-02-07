@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/02 15:34:53 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/07 16:54:55 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@
 	return (0);	
 }*/
 
-int main()  // pointeur okkk
+/*int main()  // pointeur okkk
 {
 	char *str;
 	int i = 10;
@@ -191,7 +191,7 @@ int main()  // pointeur okkk
 	printf("%p\n", zeb); //champ < digit
 	printf("%p\n", zebi); //champ < digit
 	return (0);
-}
+}*/
 
 /*int main() // int d avec * okkk
 {
@@ -406,7 +406,22 @@ int main()  // pointeur okkk
 	return (0);
 }*/
 
-/*int main()  // int avec i okkk
+/*int main()  //printf testers
 {
-	printf("%%%%");
+	printf("1:%%:\n");
+	printf("2:%%%%:\n");
+	printf("3:%%%%%%:\n");
+	printf("4:%.10%:\n");
+	printf("5:%-5%:\n");
+	printf("5:%5%:\n");
+	printf("6:%05%:\n");
+	printf("7:%c%%:\n", '3');
+	printf("8:%s%%:\n", "Hello3");
+	return (0);
 }*/
+
+int main()  //printf testers
+{
+	printf("%*s", -1000, "hello");
+	return (0);
+}
