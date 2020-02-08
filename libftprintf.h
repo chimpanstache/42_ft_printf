@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/07 18:03:35 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/08 14:37:40 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ char	*digit_overall_x(char *base, char *display, int digit, unsigned int nb, s_f
 //s functions
 int	printf_s(va_list *prms, s_flags flags);
 char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags);
+char	*chmp_over_erthing_left_2(char *display, int digit, char *src, s_flags flags);
 char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags);
 char	*digit_overall_s(char *display, int digit, char *src, s_flags flags);
 char	*chmp_thn_prec(char *display, int digit, char *src, s_flags flags);
 char	*prec_overall_s(char *display, int digit, char *src, s_flags flags);
 char	*chmp_neg_s(char *display, int digit, char *src, s_flags flags);
+char	*chmp_over_erthing_right_2(char *display, int digit, char *src, s_flags flags);
 char *null(void);
 //c functions
 int	printf_c(va_list *prms, s_flags flags);

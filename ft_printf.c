@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/07 17:52:20 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/08 14:37:02 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		ft_printf(const char *src, ...)
 		{
 			write(1, &src[i++], 1);
 			a++;
+			//printf("%d%s\n", a, ": a"); ///////////////////
 		}
 		else if (src[i] == '%')
 		{
@@ -62,8 +63,9 @@ int		ft_printf(const char *src, ...)
 			{
 				if (src[i] == tabIndex[j])
 				{
-					//printf("ici\n"); ////////////////
+					//printf("%d%s\n", b, ": b before"); ///////////////////
 					b = b + (*tabFunction[j]) (&prms, flags);
+					//printf("%d%s\n", b, ": b after"); ///////////////////
 					j = 0;
 					break ;
 				}
@@ -73,6 +75,7 @@ int		ft_printf(const char *src, ...)
 		}
 	}
 	//printf("%d%s\n", a, ": a"); ///////////////////
+	//printf("%d%s\n", b, ": b"); ///////////////////
 	return (a + b);
 }
 
@@ -495,6 +498,6 @@ int		ft_printf(const char *src, ...)
 
 /*int main()  //printf testers
 {
-	ft_printf("%5s", "hello");
+	ft_printf("%-5s", "Hello");
 	return (0);
 }*/

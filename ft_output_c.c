@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/07 17:50:08 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/08 13:06:53 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,21 @@ int	printf_c(va_list *prms, s_flags flags)
 	char chr = va_arg(*prms, int);
 	int p;
 	char *display;
-
+	//printf("ici\n"); //////////////////////
 	if (flags.chmp > 1)
 		display = put_c(display, chr, flags);
 	else if (flags.chmp < -1)
 		display = put_c_neg(display, chr, flags);
 	else
 	{
+		//printf("ici\n"); //////////////////////
 		write(1, &chr, 1);
-		free (display);
+		//free (display);
 		return (1);
 	}
 	p = ft_strlen(display);
 	write(1, display, p);
 	free(display);
+	//printf("%d%s\n", p, ": pppp"); ////////////////////// 
 	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/07 17:39:11 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/08 14:37:16 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,33 @@ char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags)
 		display[y++] = ' ';	
 	if (*src == '\0' || !src)
 		return (display);	
-	if (flags.prec < digit)
+	if (flags.prec < digit && flags.prec >= 0)
+	{
+		//printf("here\n");////////////////////	
 		ft_memcpy(display, src, flags.prec);
-	if (flags.prec >= digit)
+	}
+	if ((flags.prec >= digit && flags.prec >= 0) || flags.prec == -1)
+	{
+		//printf("hereitis\n");////////////////////
 		ft_memcpy(display, src, digit);
+	}
+	return (display);
+}
+
+char	*chmp_over_erthing_left_2(char *display, int digit, char *src, s_flags flags)
+{
+	int y;
+	y = 0;
+	int lngth;
+	lngth = -flags.chmp;
+	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+		return (NULL);
+	display[lngth] = '\0';
+	while (y < lngth)
+		display[y++] = ' ';	
+	if (*src == '\0' || !src)
+		return (display);	
+	ft_memcpy(display, src, digit);
 	return (display);
 }
 
@@ -67,11 +90,34 @@ char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags
 	if (*src == '\0' || !src)
 		return (display);
 	if (flags.prec == -1)
+	{
 		ft_memcpy(display, src, digit);
+		//printf("icihihi\n"); ////////////
+	}
 	else if (flags.prec < digit)
 		ft_memcpy(&display[i], src, flags.prec);
 	else if (flags.prec >= digit)
 		ft_memcpy(&display[i], src, digit);
+	return (display);
+}
+char	*chmp_over_erthing_right_2(char *display, int digit, char *src, s_flags flags)
+{
+	int i;
+	int y;
+	y = 0;
+	i = 0;
+	int lngth;
+	lngth = flags.chmp;
+	i = lngth - digit;
+	//printf("%d\n", i); ////////////
+	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+		return (NULL);
+	display[lngth] = '\0';
+	while (y < lngth)
+		display[y++] = ' ';
+	if (*src == '\0' || !src)
+		return (display);
+	ft_memcpy(&display[i], src, digit);
 	return (display);
 }
 
@@ -173,10 +219,15 @@ int	printf_s(va_list *prms, s_flags flags)
 		//printf("ici1\n"); /////////////
 		display = chmp_over_erthing_left(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp >= digit && flags.att == 0)
+	if (flags.chmp == digit && flags.att == 0)
 	{
 		//printf("ici2\n"); /////////////
 		display = chmp_over_erthing_right(display, digit, src == NULL ? src2 : src, flags);
+	}
+	if (flags.chmp > digit && flags.att == 0)
+	{
+		//printf("icikiwi\n"); /////////////
+		display = chmp_over_erthing_right_2(display, digit, src == NULL ? src2 : src, flags);
 	}
 	if (flags.chmp < digit && digit <= flags.prec)
   {
