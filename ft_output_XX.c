@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 16:36:15 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/02 15:43:57 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/10 19:56:57 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,21 @@ int 	printf_X(va_list *prms, s_flags flags)
 	digit = countdigit_base(nb, base);
 	if (digit >= flags.chmp && digit >= flags.prec)
 		display = digit_overall_x(base, display, digit, nb, flags);
-	if (flags.prec >= flags.chmp && flags.prec >= digit)
+	else if (flags.prec >= flags.chmp && flags.prec >= digit)
 		display = prec_overall_x(base, display, digit, nb, flags);
-	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit) 
-		display = chmp_overall_thn_dgt_x(base, display, digit, nb, flags); 
-	if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit)
+	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
+	{
+		//printf("ici333\n"); //////////////////////
+		display = chmp_overall_thn_dgt_u_3(display, digit, nb, flags);
+	}
+	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1) 
+	{
+		//printf("ici2222\n");  ////////////////
+		display = chmp_overall_thn_dgt_x_2(base, display, digit, nb, flags); 
+	}	
+	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit)
+		display = chmp_overall_thn_dgt_x(base, display, digit, nb, flags);
+	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit)
 		display = chmp_overall_thn_prec_pos_x(base, display, digit, nb, flags);
 	p = ft_strlen(display);
 	write(1, display, p);

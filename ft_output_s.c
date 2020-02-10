@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/08 14:37:16 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/10 15:32:01 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*chmp_over_erthing_right_2(char *display, int digit, char *src, s_flags fla
 	i = 0;
 	int lngth;
 	lngth = flags.chmp;
-	i = lngth - digit;
+	(flags.prec >= 0) ? i = lngth - flags.prec : (i = lngth - digit);
 	//printf("%d\n", i); ////////////
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
@@ -117,7 +117,12 @@ char	*chmp_over_erthing_right_2(char *display, int digit, char *src, s_flags fla
 		display[y++] = ' ';
 	if (*src == '\0' || !src)
 		return (display);
-	ft_memcpy(&display[i], src, digit);
+	if (flags.prec == -1)
+		ft_memcpy(&display[i], src, digit);
+	else if (flags.prec > digit)
+		ft_memcpy(&display[lngth - digit], src, digit);
+	else 
+		ft_memcpy(&display[i], src, flags.prec);		
 	return (display);
 }
 
@@ -230,16 +235,16 @@ int	printf_s(va_list *prms, s_flags flags)
 		display = chmp_over_erthing_right_2(display, digit, src == NULL ? src2 : src, flags);
 	}
 	if (flags.chmp < digit && digit <= flags.prec)
-  {
+    {
 		//printf("ici3\n"); /////////////
 	  display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec && flags.prec != -1 && flags.chmp > 0)
+	if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec && flags.prec != -1)
 	{
 		//printf("ici4\n"); /////////////
 		display = chmp_thn_prec(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec && flags.prec != -1 && flags.chmp > 0)
+	if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec && flags.prec != -1)
 	{
 		//printf("ici5\n"); /////////////
 	  display = prec_overall_s(display, digit, src == NULL ? src2 : src, flags);
@@ -250,6 +255,7 @@ int	printf_s(va_list *prms, s_flags flags)
 		display = chmp_neg_s(display, digit, src == NULL ? src2 : src, flags);
 	}
 	p = ft_strlen(display);
+	//printf("%d%s\n", p, ": p"); ///////////////////
 	write(1, display, p);
 	free(display);
 	if (src == NULL)

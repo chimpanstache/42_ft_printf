@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/08 14:37:02 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/10 20:00:34 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,7 +460,7 @@ int		ft_printf(const char *src, ...)
 
 /*int main()  // int avec u okkk
 {
-	unsigned int age = 4294967295;
+	unsigned int age = 1;
 
 	ft_printf("precision > champ && precision > digit\n");
 	ft_printf("/////champ =< digit\n");
@@ -498,6 +498,43 @@ int		ft_printf(const char *src, ...)
 
 /*int main()  //printf testers
 {
-	ft_printf("%-5s", "Hello");
+	ft_printf("%02u\n", 0);
+	ft_printf("%010u\n", 0);
+	ft_printf("%011u\n", UINT_MAX);
+
 	return (0);
 }*/
+
+/*int main()  //printf testers
+{
+	ft_printf("%.0d\n", 0);
+	ft_printf("%.0i\n", 0);
+	ft_printf("%.0u\n", 0);
+	ft_printf("%.0x\n", 0);
+	ft_printf("%.0X\n", 0);
+	return (0);
+}*/
+
+/*int main()  //printf testers
+{
+	ft_printf(":%6.10s:\n", "Hello");
+	//ft_printf(":%6.1s:\n", "Hello");
+	//ft_printf(":%6.2s:\n", "Hello");
+	return (0);
+}*/
+
+/*int main()  //printf testers
+{
+	ft_printf(":%02.0u:\n", 0);
+	ft_printf(":%010.0u:\n", 0);
+	ft_printf(":%010.2u:\n", 0);
+	return (0);
+}*/
+
+int main()  //printf testers
+{
+	ft_printf(":%011.10x:\n", UINT_MAX);
+	ft_printf(":%011.10X:\n", UINT_MAX);
+	return (0);
+}
+

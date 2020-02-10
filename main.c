@@ -6,12 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/07 16:54:55 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/10 20:01:10 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 /*int main()
 {
@@ -406,6 +407,31 @@
 	return (0);
 }*/
 
+/*int main()  // int avec u okkk
+{
+	unsigned int age = 1;
+
+	printf("precision > champ && precision > digit\n");
+	printf("/////champ =< digit\n");
+	printf("R:%3.10u:\n", age); //champ < digit
+	printf("0:%03.10u:\n", age); //champ < digit
+	printf("-:%-3.10u:\n", age); //champ < digit
+	printf("/////champ > digit\n");
+	printf("R:%6.10u:\n", age); //champ > digit
+	printf("0:%06.10u:\n", age); //champ > digit
+	printf("-:%-6.10u:\n", age); //champ > digit
+	printf("champ > precision && champ > digit\n"); 
+	printf("/////precision =< digit\n");
+	printf("R:%10.3u:\n", age); //precision < digit
+	printf("0:%010.3u:\n", age); //precision < digit
+	printf("-:%-10.3u:\n", age); //precision < digit
+	printf("/////precision > digit\n");
+	printf("R:%10.6u:\n", age); //precision > digit
+	printf("0:%010.6u:\n", age); //precision > digit
+	printf("-:%-10.6u:\n", age); //precision > digit
+	return (0);
+}*/
+
 /*int main()  //printf testers
 {
 	printf("1:%%:\n");
@@ -422,6 +448,7 @@
 
 int main()  //printf testers
 {
-	printf("%*s", -1000, "hello");
+	printf(":%011.10x:\n", UINT_MAX);
+	printf(":%011.10X:\n", UINT_MAX);
 	return (0);
 }

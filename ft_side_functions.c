@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/08 14:37:51 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/10 20:01:45 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-/*void	*ft_memcpy(void *dest, const void *src, size_t n) ///////////////////
+void	*ft_memcpy(void *dest, const void *src, size_t n) ///////////////////
 {
 	char *dest1;
 	char *src1;
@@ -81,7 +81,7 @@ int		ft_atoi(const char *str)  ////////////////////////////////
 	if (i % 2 != 0)
 		nb = -nb;
 	return (nb);
-}*/
+}//*/
 
 int	countdigit_d_i(int nb)
 {

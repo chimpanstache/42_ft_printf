@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/08 14:37:40 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/10 20:00:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
-#include "libft.h"
+//#include "libft.h"
 
 typedef struct 	s_flags  
 {
@@ -29,10 +29,10 @@ typedef struct 	s_flags
 
 //side & parse functions
 void	ft_putnbr_base(int n, char *base, char *str);
-/*int		ft_strlen(char *base);
+int		ft_strlen(char *base);
 int		ft_atoi(const char *str);
 char	*ft_strndup(const char *str, size_t len);
-void	*ft_memcpy(void *dest, const void *src, size_t n);*/
+void	*ft_memcpy(void *dest, const void *src, size_t n);//*/
 int		ft_attribute(char str);
 int		ft_champ(char *str, va_list *prms);
 int 	ft_precision(char *str, va_list *prms);
@@ -63,6 +63,8 @@ char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned
 char	*chmp_overall_thn_dgt_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
 char	*prec_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
 char	*digit_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
+char	*chmp_overall_thn_dgt_x_2(char *base, char *display, int digit, unsigned int nb, s_flags flags);
+char	*chmp_overall_thn_dgt_x_3(char *display, int digit, unsigned int nb, s_flags flags);
 //s functions
 int	printf_s(va_list *prms, s_flags flags);
 char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags);
@@ -94,9 +96,11 @@ int 	printf_u(va_list *prms, s_flags flags);
 char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
 char	*prec_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
 char	*chmp_overall_thn_dgt_u(char *display, int digit, unsigned int nb, s_flags flags);
+char	*chmp_overall_thn_dgt_u_2(char *display, int digit, unsigned int nb, s_flags flags);
 char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_flags flags);
 void        ft_itoa_custom_pos_u(unsigned int n, char *arr);
 void       ft_itoa_custom_u(unsigned int n, char *arr);
+char	*chmp_overall_thn_dgt_u_3(char *display, int digit, unsigned int nb, s_flags flags);
 int	countdigit_u(unsigned int nb);
 
 #endif
