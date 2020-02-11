@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/10 20:01:10 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 22:11:33 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -446,9 +446,18 @@
 	return (0);
 }*/
 
-int main()  //printf testers
+/*int main()  //printf testers
 {
-	printf(":%011.10x:\n", UINT_MAX);
-	printf(":%011.10X:\n", UINT_MAX);
+	printf(":%.*s:\n", 0, "Hello");
+	printf(":%*.*s:\n", 0, 0, "Hello");
+	printf(":%*.*s:\n", -5, 0, "Helloooooo");
+	return (0);
+}*/
+
+int main()
+{
+	printf("%%d 0000042 == |%d|\n", 0000042);
+	//printf(":%5c:\n", '\0');
+	//printf(":%-5c:\n", '\0');
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/10 16:42:54 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 17:44:29 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ char	*chmp_neg_prec_pos(char *display, int digit, int nb, s_flags flags)
 	i = flags.prec - digit;
 	while (y < lngth)
 		display[y++] = ' ';
+	if (flags.prec == 0 && nb == 0)
+		return (display);	
 	if (flags.prec < digit)
 		ft_itoa_custom_pos(nb, display);
 	else

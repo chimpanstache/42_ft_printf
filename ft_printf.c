@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/10 20:00:34 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 22:12:12 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -531,10 +531,22 @@ int		ft_printf(const char *src, ...)
 	return (0);
 }*/
 
+/*int main()  //printf testers
+{
+	ft_printf(":%011.9x:\n", 429496764);
+	ft_printf(":%011.9X:\n", 429496764);
+	return (0);
+}*/
+
+/*int main()  //printf testers
+{
+	//ft_printf(":%.*s:\n", -3, "Hello");
+	//ft_printf(":%*.*s:\n", 0, -5, "Hello");
+	ft_printf(":%.s:\n", 42);
+	return (0);
+}*/
+
 int main()  //printf testers
 {
-	ft_printf(":%011.10x:\n", UINT_MAX);
-	ft_printf(":%011.10X:\n", UINT_MAX);
-	return (0);
+	ft_printf("%%d 0000042 == |%d|\n", 0000042);
 }
-

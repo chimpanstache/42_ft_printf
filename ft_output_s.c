@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/10 15:32:01 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 17:17:11 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*digit_overall_s(char *display, int digit, char *src, s_flags flags)
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);
 	ft_memcpy(display, src, digit);
 	return (display);
@@ -40,7 +40,7 @@ char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags)
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';	
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);	
 	if (flags.prec < digit && flags.prec >= 0)
 	{
@@ -66,7 +66,7 @@ char	*chmp_over_erthing_left_2(char *display, int digit, char *src, s_flags flag
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';	
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);	
 	ft_memcpy(display, src, digit);
 	return (display);
@@ -87,7 +87,7 @@ char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);
 	if (flags.prec == -1)
 	{
@@ -115,7 +115,7 @@ char	*chmp_over_erthing_right_2(char *display, int digit, char *src, s_flags fla
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);
 	if (flags.prec == -1)
 		ft_memcpy(&display[i], src, digit);
@@ -139,7 +139,7 @@ char	*chmp_thn_prec(char *display, int digit, char *src, s_flags flags)
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);
 	if (flags.att < 0)
 		ft_memcpy(display, src, flags.prec);
@@ -160,7 +160,7 @@ char	*prec_overall_s(char *display, int digit, char *src, s_flags flags)
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);
 	ft_memcpy(display, src, flags.prec);
 	return (display);
@@ -178,7 +178,7 @@ char	*chmp_neg_s(char *display, int digit, char *src, s_flags flags)
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
-	if (*src == '\0' || !src)
+	if (*src == '\0' || !src || flags.prec == 0)
 		return (display);	
 	ft_memcpy(display, src, digit);
 	return (display);
@@ -214,46 +214,47 @@ int	printf_s(va_list *prms, s_flags flags)
 	}
 	else
 		digit = ft_strlen(src);
-	if ((flags.prec == -1 && flags.chmp < digit))
+	if (flags.prec < 0 && flags.chmp < digit && flags.chmp >= 0)
 	{
 		//printf("ici\n"); /////////////
 		display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp >= digit && flags.att < 0)
+	else if (flags.chmp >= digit && flags.att < 0)
 	{
 		//printf("ici1\n"); /////////////
 		display = chmp_over_erthing_left(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp == digit && flags.att == 0)
+	else if (flags.chmp == digit && flags.att == 0)
 	{
 		//printf("ici2\n"); /////////////
 		display = chmp_over_erthing_right(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp > digit && flags.att == 0)
+	else if (flags.chmp > digit && flags.att == 0)
 	{
 		//printf("icikiwi\n"); /////////////
 		display = chmp_over_erthing_right_2(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp < digit && digit <= flags.prec)
+	else if (flags.chmp < digit && digit <= flags.prec)
     {
 		//printf("ici3\n"); /////////////
 	  display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec && flags.prec != -1)
+	else if (flags.chmp < digit && flags.prec < digit && flags.chmp >= flags.prec && flags.prec >= 0)
 	{
 		//printf("ici4\n"); /////////////
 		display = chmp_thn_prec(display, digit, src == NULL ? src2 : src, flags);
 	}
-	if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec && flags.prec != -1)
-	{
-		//printf("ici5\n"); /////////////
-	  display = prec_overall_s(display, digit, src == NULL ? src2 : src, flags);
-	}
-	if (flags.chmp < 0 && digit < -flags.chmp)
+	else if (flags.chmp < 0 && digit <= -flags.chmp)
 	{
 		//printf("ici6\n"); /////////////
 		display = chmp_neg_s(display, digit, src == NULL ? src2 : src, flags);
 	}
+	else if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec && flags.prec >= 0)
+	{
+		//printf("ici5\n"); /////////////
+	  display = prec_overall_s(display, digit, src == NULL ? src2 : src, flags);
+	}
+
 	p = ft_strlen(display);
 	//printf("%d%s\n", p, ": p"); ///////////////////
 	write(1, display, p);

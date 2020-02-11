@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:57:03 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/10 19:48:05 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 18:27:02 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,12 @@ char	*chmp_overall_thn_dgt_u_2(char *display, int digit, unsigned int nb, s_flag
 		y = 0;
 		while (y < i)
 			display[y++] = '0';
+	}
+	if (flags.prec > digit)
+	{
+		y = flags.chmp - flags.prec;
+			while (y <= flags.chmp - digit)
+				display[y++] = '0';
 	}
 	if (flags.att == 1 && flags.prec == 0 && nb == 0)
 		return (display);

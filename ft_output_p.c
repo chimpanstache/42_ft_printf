@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/02 16:12:34 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 21:31:17 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int 	printf_p(va_list *prms, s_flags flags)
 	digit = countdigit_base(ptr, base) + 2;
 	if (flags.chmp > digit)
 	{
+		//printf("ici\n"); ////////////////////////
 		char *display;
 		display = put_p(display, ptr, base, digit, flags);
 		p = ft_strlen(display);
@@ -32,8 +33,10 @@ int 	printf_p(va_list *prms, s_flags flags)
 	}
 	else
 	{
+		//printf("%d%s\n", flags.prec, ": prec");
 		write(1, "0x", 2);
-		p = ft_putnbr_base_p(ptr, base);
+		if (flags.prec == -1)
+			p = ft_putnbr_base_p(ptr, base);
 		p = p + 2;
 		return (p);
 	}
@@ -55,15 +58,25 @@ char	*put_p(char *display, unsigned long long ptr, char *base, int digit, s_flag
 		display[y++] = ' ';
 	if (flags.att < 0)
 	{	 
+		//printf("ici\n"); ////////////////////////
 		display[0] = '0';
 		display[1] = 'x';
-		ft_ulltoa_base(ptr, &display[2], base);
+			ft_ulltoa_base(ptr, &display[2], base);
 	}
 	else
 	{
-		display[lngth - digit] = '0';
-		display[lngth - digit + 1] = 'x';
-		ft_ulltoa_base(ptr, &display[lngth - digit + 2], base);
+		//printf("ici\n"); ////////////////////////
+		if (!ptr && flags.prec == 0)
+		{
+			display[lngth - 2] = '0';
+			display[lngth - 1] = 'x';
+		}
+		else
+		{
+			display[lngth - digit] = '0';
+			display[lngth - digit + 1] = 'x';
+			ft_ulltoa_base(ptr, &display[lngth - digit + 2], base);
+		}
 	}
 	return (display);
 }

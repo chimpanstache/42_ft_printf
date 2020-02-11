@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:10 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/10 20:03:13 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 15:28:42 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,12 @@ char	*chmp_overall_thn_dgt_x_2(char *base, char *display, int digit, unsigned in
 	}
 	if (flags.att == 1 && flags.prec == 0 && nb == 0)
 		return (display);
+	if (flags.prec > digit)
+	{
+		y = flags.chmp - flags.prec;
+			while (y <= flags.chmp - digit)
+				display[y++] = '0';
+	}	
 	ft_putnbr_base(nb, base, &display[i]);
 	return (display);
 }
@@ -158,7 +164,7 @@ char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned
 
 int 	printf_x(va_list *prms, s_flags flags)
 {
-	unsigned int nb = va_arg(*prms, unsigned int);
+	unsigned long long nb = va_arg(*prms, unsigned long long);
 	int digit;
 	char *display;
 	char *base = "0123456789abcdef";
@@ -175,7 +181,12 @@ int 	printf_x(va_list *prms, s_flags flags)
 		//printf("ici1\n"); /////////////////
 		display = prec_overall_x(base, display, digit, nb, flags);
 	}
-		else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
+	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
+	{
+		//printf("ici333\n"); //////////////////////
+		display = chmp_overall_thn_dgt_x_3(display, digit, nb, flags);
+	}
+	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
 	{
 		//printf("ici333\n"); //////////////////////
 		display = chmp_overall_thn_dgt_x_3(display, digit, nb, flags);

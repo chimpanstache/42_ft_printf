@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/08 13:06:53 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/11 21:50:18 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ char	*put_c(char *display, char chr, s_flags flags)
 	while (y < lngth)
 		display[y++] = ' ';
 	if (chr == '\0' || !chr)
+	{	
+		display[lngth - 1] = '\0';
 		return (display);
+	}
 	if (flags.att < 0)
 		display[0] = chr;
 	else
@@ -58,7 +61,10 @@ int	printf_c(va_list *prms, s_flags flags)
 	char *display;
 	//printf("ici\n"); //////////////////////
 	if (flags.chmp > 1)
+	{
+		//printf("ici\n"); ///////////////////////
 		display = put_c(display, chr, flags);
+	}
 	else if (flags.chmp < -1)
 		display = put_c_neg(display, chr, flags);
 	else
