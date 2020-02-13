@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/11 17:44:29 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/13 16:11:35 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*digit_overall(char *display, int digit, int nb, s_flags flags)
 
 	i = 0;
 	int lngth;
+	//printf("%d%s\n", nb, ": nb"); /////////////////////
 	nb >= 0 ? (lngth = digit) : (lngth = digit + 1);
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
@@ -235,6 +236,7 @@ char	*chmp_overall_thn_prec_neg(char *display, int digit, int nb, s_flags flags)
 int	printf_d_i(va_list *prms, s_flags flags) 
 {
 	int nb = va_arg(*prms, int);
+	//printf("%d%s\n", nb, ": nb"); /////////////////////////////
 	int digit;
 	char *display;
 	int p;

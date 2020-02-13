@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/11 21:58:43 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/13 19:54:00 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct 	s_flags
 	int att;
 	int chmp;
 	int prec;
+	int precp;
 }				s_flags;
 
 //side & parse functions
@@ -85,12 +86,13 @@ int 	printf_X(va_list *prms, s_flags flags);
 //p functions
 int 	printf_p(va_list *prms, s_flags flags);
 char	*put_p(char *display, unsigned long long ptr, char *base, int digit, s_flags flags);
+char	*put_p2(char *display, unsigned long long ptr, char *base, int digit, s_flags flags);
 //% functions
 int	printf_percent(va_list *prms, s_flags flags);
-char	*chmp_and_att_0(char *display, char chr, s_flags flags);
-char	*chmp_and_att_neg(char *display, char chr, s_flags flags);
-char	*chmp(char *display, char chr, s_flags flags);
-char	*display_overall_perc(char *display, char chr, s_flags flags);
+char	*chmp_and_att_0(char *display, s_flags flags);
+char	*chmp_and_att_neg(char *display, s_flags flags);
+char	*chmp(char *display, s_flags flags);
+char	*display_overall_perc(char *display, s_flags flags);
 //u functions
 int 	printf_u(va_list *prms, s_flags flags);
 char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags);

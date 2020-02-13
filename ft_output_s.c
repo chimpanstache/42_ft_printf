@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/11 17:17:11 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/13 19:29:58 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,7 @@ int	printf_s(va_list *prms, s_flags flags)
 	char *src2;
 	int p;
 
+	//printf("%d%s\n", flags.prec, ": prec"); ///////////////////
 	if (src == NULL)
 	{
 		src2 = null();
@@ -248,6 +249,11 @@ int	printf_s(va_list *prms, s_flags flags)
 	{
 		//printf("ici6\n"); /////////////
 		display = chmp_neg_s(display, digit, src == NULL ? src2 : src, flags);
+	}
+	else if (flags.chmp < 0 && digit >= -flags.chmp)
+	{
+		//printf("ici6\n"); /////////////
+		display = digit_overall_s(display, digit, src == NULL ? src2 : src, flags);
 	}
 	else if (flags.chmp < digit && flags.prec < digit && flags.chmp < flags.prec && flags.prec >= 0)
 	{

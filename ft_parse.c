@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:16:55 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/11 16:44:48 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/13 20:19:56 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void init_flags(s_flags *flags)
 	flags->att = 0;
 	flags->chmp = 0;
 	flags->prec = -1;
-} 
+	flags->precp = 0;
+	
+}
 
 void analyse_params(char *prmtrs, s_flags *flags, va_list *prms)
 {
@@ -37,7 +39,10 @@ void analyse_params(char *prmtrs, s_flags *flags, va_list *prms)
 		i++;
 	}
 	if (prmtrs[i] == '.')
+	{
 		flags->prec = ft_precision(&prmtrs[++i], prms);
+		if (prmtrs[i])
+	}
 }
 
 int		ft_attribute(char str)

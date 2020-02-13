@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/11 22:11:33 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/13 19:49:04 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,8 +174,8 @@
 
 
 
-	printf("R:%6p:\n", str); //champ < digit
-	printf("-:%-6p:\n", str); //champ < digit
+	printf("R:%25p:\n", str); //champ < digit
+	printf("-:%-25p:\n", str); //champ < digit
 	printf("%p\n", p); //champ < digit
 	printf("%p\n", p); //champ < digit
 	printf("%p\n", p1); //champ < digit
@@ -454,10 +454,41 @@
 	return (0);
 }*/
 
+/*int main()
+{
+	printf("%%d 0000042 == |%d|\n", 00000432);
+	return (0);
+}*/
+
+/*#include <stdarg.h>
+
+void	fonction(int ok, ...)
+{
+	va_list vl;
+	va_start(vl, ok);
+	printf("%d", va_arg(vl, int));
+	va_end(vl);
+}
+
+int main(int argc, char **argv)
+{
+	(void) argc;
+	fonction(19, 0000042);
+}*/
+
 int main()
 {
-	printf("%%d 0000042 == |%d|\n", 0000042);
-	//printf(":%5c:\n", '\0');
-	//printf(":%-5c:\n", '\0');
-	return (0);
+	
+	char *str = "hello";
+	
+	//printf("%09s", "hello");
+	printf("%.p", str);
+	printf("%2.p", str);
+	//printf("%2.9p", 1234);
+	//printf("%.5p", 0);
+	//printf("%.0p", 0);
+	//printf("%021s", NULL);
+	//printf("%05s", "hello");
+	printf("%*s", -3, "hello");
+	return 0;
 }
