@@ -6,208 +6,187 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:10 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/11 15:28:42 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 15:51:52 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*digit_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags)
+char	*dgt_upmst_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg)
 {
 	int i;
 
 	i = 0;
 	int lngth;
-	lngth = digit;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+	lngth = dgt;
+	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
-	if (nb == 0 && flags.prec == 0)
+	dsply[lngth] = '\0';
+	if (nb == 0 && flg.p == 0)
 	{
-		if (flags.chmp == 1)
-			display[0] = ' ';
+		if (flg.c == 1)
+			dsply[0] = ' ';
 		else 
-			display[0] = '\0';
-		return (display);
+			dsply[0] = '\0';
+		return (dsply);
 	}
-	ft_putnbr_base(nb, base, display);
-	return (display);
+	ft_putnbr_base(nb, base, dsply);
+	return (dsply);
 }
 
-char	*prec_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags)
+char	*prec_upmst_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
 	y = 0;
-	lngth = flags.prec;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+	lngth = flg.p;
+	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
-	i = lngth - digit;
+	dsply[lngth] = '\0';
+	i = lngth - dgt;
 	while (y < lngth)
-		display[y++] = '0';
-	ft_putnbr_base(nb, base, &display[i]);
-	return (display);
+		dsply[y++] = '0';
+	ft_putnbr_base(nb, base, &dsply[i]);
+	return (dsply);
 }
 
-char	*chmp_overall_thn_dgt_x(char *base, char *display, int digit, unsigned int nb, s_flags flags) //regler ca
+char	*chmp_upmst_dgt_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
-	lngth = flags.chmp;
+	lngth = flg.c;
 	y = 0;
-	if (!(display = malloc(sizeof(char) * (lngth + 1))))
+	if (!(dsply = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
-	i = lngth - digit;
+	dsply[lngth] = '\0';
+	i = lngth - dgt;
 	while (y < lngth)
-		display[y++] = ' ';
-	if (flags.prec == 0 && nb == 0)
-		return (display); 
-	if (flags.att < 0)
-		ft_putnbr_base(nb, base, display);
+		dsply[y++] = ' ';
+	if (flg.p == 0 && nb == 0)
+		return (dsply); 
+	if (flg.a < 0)
+		ft_putnbr_base(nb, base, dsply);
 	else
-		ft_putnbr_base(nb, base, &display[i]);
-	return (display);
+		ft_putnbr_base(nb, base, &dsply[i]);
+	return (dsply);
 }
 
-char	*chmp_overall_thn_dgt_x_2(char *base, char *display, int digit, unsigned int nb, s_flags flags) //regler ca
+char	*chmp_upmst_dgt_x2(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
-	lngth = flags.chmp;
+	lngth = flg.c;
 	y = 0;
-	if (!(display = malloc(sizeof(char) * (lngth + 1))))
+	if (!(dsply = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
-	i = lngth - digit;
+	dsply[lngth] = '\0';
+	i = lngth - dgt;
 	while (y < lngth)
-		display[y++] = ' ';
-	if (flags.att == 1 && flags.prec == -1)
+		dsply[y++] = ' ';
+	if (flg.a == 1 && flg.p == -1)
 	{
 		y = 0;
 		while (y < i)
-			display[y++] = '0';
+			dsply[y++] = '0';
 	}
-	if (flags.att == 1 && flags.prec == 0 && nb == 0)
-		return (display);
-	if (flags.prec > digit)
+	if (flg.a == 1 && flg.p == 0 && nb == 0)
+		return (dsply);
+	if (flg.p > dgt)
 	{
-		y = flags.chmp - flags.prec;
-			while (y <= flags.chmp - digit)
-				display[y++] = '0';
-	}	
-	ft_putnbr_base(nb, base, &display[i]);
-	return (display);
+		y = flg.c - flg.p;
+			while (y <= flg.c - dgt)
+				dsply[y++] = '0';
+	}
+	ft_putnbr_base(nb, base, &dsply[i]);
+	return (dsply);
 }
 
-char	*chmp_overall_thn_dgt_x_3(char *display, int digit, unsigned int nb, s_flags flags)
+char	*chmp_upmst_dgt_x3(char *dsply, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
-	lngth = flags.chmp;
+	lngth = flg.c;
 	y = 0;
-	if (!(display = malloc(sizeof(char) * (lngth + 1))))
+	if (!(dsply = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
+	dsply[lngth] = '\0';
 	while (y < lngth)
-		display[y++] = ' ';
-	if(flags.prec > -1)
+		dsply[y++] = ' ';
+	if (flg.p > -1)
 	{
-		y = lngth - flags.prec;
+		y = lngth - flg.p;
 		while (y < lngth)
-			display[y++] = '0';
+			dsply[y++] = '0';
 	}
-	else if (flags.prec == -1)
+	else if (flg.p == -1)
 	{
 		y = 0;
 		while (y < lngth)
-			display[y++] = '0';
+			dsply[y++] = '0';
 	}
-	return (display);
+	return (dsply);
 }
 
-char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned int nb, s_flags flags)
+char	*chmp_upmst_prec_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
 	y = 0;
-	lngth = flags.chmp;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+	lngth = flg.c;
+	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
-	(flags.att >= 0) ? (i = lngth - digit) : (i = flags.prec - digit);
+	dsply[lngth] = '\0';
+	(flg.a >= 0) ? (i = lngth - dgt) : (i = flg.p - dgt);
 	while (y < lngth)
-		display[y++] = ' ';
-	if (flags.att < 0)
-		ft_putnbr_base(nb, base, &display[flags.prec - digit]);
+		dsply[y++] = ' ';
+	if (flg.a < 0)
+		ft_putnbr_base(nb, base, &dsply[flg.p - dgt]);
 	else
-		ft_putnbr_base(nb, base, &display[i]);
+		ft_putnbr_base(nb, base, &dsply[i]);
 	y = 0;
-	while (y < (flags.prec - digit))
+	while (y < (flg.p - dgt))
 	{
-		display[--i] = '0';
+		dsply[--i] = '0';
 		y++;
 	}
-	return (display);
+	return (dsply);
 }
 
-int 	printf_x(va_list *prms, s_flags flags)
+int 	printf_x(va_list *prms, s_flags flg)
 {
 	unsigned long long nb = va_arg(*prms, unsigned long long);
-	int digit;
-	char *display;
+	int dgt;
+	char *dsply;
 	char *base = "0123456789abcdef";
 	int p;
 
-	digit = countdigit_base(nb, base);
-	if (digit >= flags.chmp && digit >= flags.prec)
-	{
-		//printf("ici\n"); //////////////////////
-		display = digit_overall_x(base, display, digit, nb, flags);
-	}
-	else if (flags.prec >= flags.chmp && flags.prec >= digit)
-	{
-		//printf("ici1\n"); /////////////////
-		display = prec_overall_x(base, display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
-	{
-		//printf("ici333\n"); //////////////////////
-		display = chmp_overall_thn_dgt_x_3(display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
-	{
-		//printf("ici333\n"); //////////////////////
-		display = chmp_overall_thn_dgt_x_3(display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1) 
-	{
-		//printf("ici2222\n");  ////////////////*******************
-		display = chmp_overall_thn_dgt_x_2(base, display, digit, nb, flags); 
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit) 
-	{
-		//printf("ici2\n");  ////////////////
-		display = chmp_overall_thn_dgt_x(base, display, digit, nb, flags); 
-	}
-	else if ((flags.chmp >= flags.prec) && (flags.chmp >= digit) && (flags.prec > digit))
-	{
-		//printf("ici3\n");  ////////////////
-		display = chmp_overall_thn_prec_pos_x(base, display, digit, nb, flags);
-	}
-	p = ft_strlen(display);
-	write(1, display, ft_strlen(display));
-	free(display);
+	dgt = countdgt_base(nb, base);
+	if (dgt >= flg.c && dgt >= flg.p)
+		dsply = dgt_upmst_x(base, dsply, dgt, nb, flg);
+	else if (flg.p >= flg.c && flg.p >= dgt)
+		dsply = prec_upmst_x(base, dsply, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0)
+		dsply = chmp_upmst_dgt_x3(dsply, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0)
+		dsply = chmp_upmst_dgt_x3(dsply, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1) 
+		dsply = chmp_upmst_dgt_x2(base, dsply, dgt, nb, flg); 
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt) 
+		dsply = chmp_upmst_dgt_x(base, dsply, dgt, nb, flg); 
+	else if ((flg.c >= flg.p) && (flg.c >= dgt) && (flg.p > dgt))
+		dsply = chmp_upmst_prec_x(base, dsply, dgt, nb, flg);
+	p = ft_strlen(dsply);
+	write(1, dsply, ft_strlen(dsply));
+	free(dsply);
 	return (p);
 }

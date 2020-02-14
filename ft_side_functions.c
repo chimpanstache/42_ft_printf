@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/13 18:57:01 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:30:36 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n) ///////////////////
+/*void	*ft_memcpy(void *dest, const void *src, size_t n) ///////////////////
 {
 	char *dest1;
 	char *src1;
@@ -83,7 +83,7 @@ int		ft_atoi(const char *str)  ////////////////////////////////
 	return (nb);
 }//*/
 
-int	countdigit_d_i(int nb)
+int	countdgt_d_i(int nb)
 {
 	int digit = 0;
 	unsigned int nbr;
@@ -104,7 +104,7 @@ int	countdigit_d_i(int nb)
 	return(digit);
 }
 
-int	countdigit_u(unsigned int nb)
+int	countdgt_u(unsigned int nb)
 {
 	int digit = 0;
 	unsigned int nbr;
@@ -150,7 +150,7 @@ void       ft_itoa_custom_u(unsigned int n, char *arr)
     int                len;
  
     sign = 0;
-    len = countdigit_u(n);
+    len = countdgt_u(n);
     nb = (unsigned int)n;
     while (len-- > sign)
     {
@@ -205,7 +205,7 @@ void        ft_itoa_custom_pos_u(unsigned int n, char *arr)
     unsigned int    nb;
     int                len;
 	
-    len = countdigit_u(n);
+    len = countdgt_u(n);
     nb = (unsigned int)n;
     while (len-- > 0)
     {
@@ -219,7 +219,7 @@ void        ft_ulltoa_base(unsigned long long n, char *arr, char *base)
     int                len;
 	int					lenny;
  
-    len = countdigit_base(n, base);
+    len = countdgt_base(n, base);
 	lenny = ft_strlen(base);
     while (len-- > 0)
     {
@@ -228,7 +228,7 @@ void        ft_ulltoa_base(unsigned long long n, char *arr, char *base)
     }
 }
 
-int	countdigit_base(unsigned long long nb, char *base)
+int	countdgt_base(unsigned long long nb, char *base)
 {
 	int digit = 0;
 	int i = ft_strlen(base);

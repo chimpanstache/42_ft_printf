@@ -6,42 +6,43 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:16:55 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/13 20:19:56 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:02:21 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void init_flags(s_flags *flags)
+void init_flg(s_flags *flg)
 {
-	flags->att = 0;
-	flags->chmp = 0;
-	flags->prec = -1;
-	flags->precp = 0;
+	flg->a = 0;
+	flg->c = 0;
+	flg->p = -1;
+	flg->p_p = 0;
 	
 }
 
-void analyse_params(char *prmtrs, s_flags *flags, va_list *prms)
+void analyse_params(char *prmtrs, s_flags *flg, va_list *prms)
 {
 	int i = 0;
 	int j = 0;
 
 	while (prmtrs[i] == '-' || prmtrs[i] == '0')
 	{
-		if (flags->att != -1)
-			flags->att = ft_attribute(prmtrs[i]);
+		if (flg->a != -1)
+			flg->a = ft_attribute(prmtrs[i]);
 		i++;
 	}
 	while (('0' <= prmtrs[i] && prmtrs[i] <= '9') || prmtrs[i] == '*')
 	{
-		if (flags->chmp == 0)
-			flags->chmp = ft_champ(&prmtrs[i], prms);
+		if (flg->c == 0)
+			flg->c = ft_champ(&prmtrs[i], prms);
 		i++;
 	}
 	if (prmtrs[i] == '.')
 	{
-		flags->prec = ft_precision(&prmtrs[++i], prms);
-		if (prmtrs[i])
+		flg->p = ft_precision(&prmtrs[++i], prms);
+		if (prmtrs[i] == '\0')
+			flg->p_p = 1;
 	}
 }
 

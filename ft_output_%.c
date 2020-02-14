@@ -6,87 +6,83 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 13:48:33 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/13 16:11:08 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 15:48:47 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*display_overall_perc(char *display, s_flags flags)
+char	*dsply_upmst_perc(char *dsply, s_flags flg)
 {
-    if (!(display = malloc(sizeof(*display) * (1 + 1))))
+    if (!(dsply = malloc(sizeof(*dsply) * (1 + 1))))
 		return (NULL);
-    display[0] = '%';
-    display[1] = '\0';
-    return (display);
+    dsply[0] = '%';
+    dsply[1] = '\0';
+    return (dsply);
 }
 
-char	*chmp(char *display, s_flags flags)
+char	*chmp_upmst_perc(char *dsply, s_flags flg)
 {
     int lngth;
     int y;
 
-    lngth = flags.chmp;
-    if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+    lngth = flg.c;
+    if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-    display[lngth] = '\0';
+    dsply[lngth] = '\0';
     y = 0;
     while (y < lngth)
-    	display[y++] = ' ';
-    display[lngth - 1] = '%';
-    return (display);
+    	dsply[y++] = ' ';
+    dsply[lngth - 1] = '%';
+    return (dsply);
 }
 
-char	*chmp_and_att_neg(char *display, s_flags flags)
+char	*chmp_att_neg_perc(char *dsply, s_flags flg)
 {
     int lngth;
     int y;
 
-    lngth = flags.chmp;
-    if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+    lngth = flg.c;
+    if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-    display[lngth] = '\0';
+    dsply[lngth] = '\0';
     y = 0;
     while (y < lngth)
-    	display[y++] = ' ';
-    display[0] = '%';
-    return (display);
+    	dsply[y++] = ' ';
+    dsply[0] = '%';
+    return (dsply);
 }
 
-char	*chmp_and_att_0(char *display, s_flags flags)
+char	*chmp_att_0(char *dsply, s_flags flg)
 {
     int lngth;
     int y;
 
-    lngth = flags.chmp;
-    if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+    lngth = flg.c;
+    if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-    display[lngth] = '\0';
+    dsply[lngth] = '\0';
     y = 0;
     while (y < lngth)
-    	display[y++] = '0';
-    display[lngth - 1] = '%';
-    return (display);
+    	dsply[y++] = '0';
+    dsply[lngth - 1] = '%';
+    return (dsply);
 }
 
-int	printf_percent(va_list *prms, s_flags flags)
+int	printf_percent(va_list *prms, s_flags flg)
 {
-	//char chr = va_arg(*prms, int);
-  //printf("%d\n", chr);
 	int p;
-    char *display;
-	//printf("ici\n"); ////////////////
-	if (flags.chmp < 2)
-    display = display_overall_perc(display, flags);
-  if (flags.chmp > 1 && flags.att == 0)
-		display = chmp(display, flags);
-  if (flags.chmp > 1 && flags.att == -1)
-		display = chmp_and_att_neg(display, flags);
-  if (flags.chmp > 1 && flags.att == 1)
-		display = chmp_and_att_0(display, flags);
-	p = ft_strlen(display);
-	write(1, display, p);
-	free(display);
-	//printf("%d%s\n", p, ": p"); ////////////////////
+    char *dsply;
+	if (flg.c < 2)
+    dsply = dsply_upmst_perc(dsply, flg);
+  if (flg.c > 1 && flg.a == 0)
+		dsply = chmp_upmst_perc(dsply, flg);
+  if (flg.c > 1 && flg.a == -1)
+		dsply = chmp_att_neg_perc(dsply, flg);
+  if (flg.c > 1 && flg.a == 1)
+		dsply = chmp_att_0(dsply, flg);
+	p = ft_strlen(dsply);
+	write(1, dsply, p);
+	free(dsply);
 	return (p);
 }

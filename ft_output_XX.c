@@ -6,41 +6,37 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 16:36:15 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/10 19:56:57 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 15:50:24 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int 	printf_X(va_list *prms, s_flags flags)
+int 	printf_X(va_list *prms, s_flags flg)
 {
-	unsigned int nb = va_arg(*prms, unsigned int);
-	int digit;
-	char *display;
+	unsigned long long nb = va_arg(*prms, unsigned long long);
+	int dgt;
+	char *dsply;
 	char *base = "0123456789ABCDEF";
 	int p;
 
-	digit = countdigit_base(nb, base);
-	if (digit >= flags.chmp && digit >= flags.prec)
-		display = digit_overall_x(base, display, digit, nb, flags);
-	else if (flags.prec >= flags.chmp && flags.prec >= digit)
-		display = prec_overall_x(base, display, digit, nb, flags);
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
-	{
-		//printf("ici333\n"); //////////////////////
-		display = chmp_overall_thn_dgt_u_3(display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1) 
-	{
-		//printf("ici2222\n");  ////////////////
-		display = chmp_overall_thn_dgt_x_2(base, display, digit, nb, flags); 
-	}	
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit)
-		display = chmp_overall_thn_dgt_x(base, display, digit, nb, flags);
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit)
-		display = chmp_overall_thn_prec_pos_x(base, display, digit, nb, flags);
-	p = ft_strlen(display);
-	write(1, display, p);
-	free(display);
+	dgt = countdgt_base(nb, base);
+	if (dgt >= flg.c && dgt >= flg.p)
+		dsply = dgt_upmst_x(base, dsply, dgt, nb, flg);
+	else if (flg.p >= flg.c && flg.p >= dgt)
+		dsply = prec_upmst_x(base, dsply, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0)
+		dsply = chmp_upmst_dgt_x3(dsply, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0)
+		dsply = chmp_upmst_dgt_x3(dsply, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1) 
+		dsply = chmp_upmst_dgt_x2(base, dsply, dgt, nb, flg); 
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt) 
+		dsply = chmp_upmst_dgt_x(base, dsply, dgt, nb, flg); 
+	else if ((flg.c >= flg.p) && (flg.c >= dgt) && (flg.p > dgt))
+		dsply = chmp_upmst_prec_x(base, dsply, dgt, nb, flg);
+	p = ft_strlen(dsply);
+	write(1, dsply, p);
+	free(dsply);
 	return (p);
 }

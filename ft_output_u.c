@@ -6,25 +6,25 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:57:03 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/11 18:27:02 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 15:52:22 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags)
+char	*digit_upmst_u(char *display, int dgt, unsigned int nb, s_flags flg)
 {
 	int i;
 	
 	i = 0;
 	int lngth;
-	lngth = digit;
+	lngth = dgt;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
-	if (nb == 0 && flags.prec == 0)
+	if (nb == 0 && flg.p == 0)
 	{
-		if (flags.chmp == 1)
+		if (flg.c == 1)
 			display[0] = ' ';
 		else
 			display[0] = '\0';
@@ -34,99 +34,99 @@ char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags)
 	return (display);
 }
 
-char	*prec_overall_u(char *display, int digit, unsigned int nb, s_flags flags)
+char	*prec_upmst_u(char *display, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
 	y = 0;
-	lngth = flags.prec;
+	lngth = flg.p;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
-	i = lngth - digit;
+	i = lngth - dgt;
 	while (y < lngth)
 		display[y++] = '0';
 	ft_itoa_custom_pos_u(nb, &display[i]);
 	return (display);
 }
 
-char	*chmp_overall_thn_dgt_u(char *display, int digit, unsigned int nb, s_flags flags)
+char	*chmp_upmst_dgt_u(char *display, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
-	lngth = flags.chmp;
+	lngth = flg.c;
 	y = 0;
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
-	i = lngth - digit;
+	i = lngth - dgt;
 	while (y < lngth)
 		display[y++] = ' ';
-	if (flags.prec == 0 && nb == 0)
+	if (flg.p == 0 && nb == 0)
 		return (display); 
-	if (flags.att < 0)
+	if (flg.a < 0)
 		ft_itoa_custom_u(nb, display);
 	else
 		ft_itoa_custom_u(nb, &display[i]);
 	return (display);
 }
 
-char	*chmp_overall_thn_dgt_u_2(char *display, int digit, unsigned int nb, s_flags flags)
+char	*chmp_upmst_dgt_u2(char *display, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
-	lngth = flags.chmp;
+	lngth = flg.c;
 	y = 0;
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
-	i = lngth - digit;
+	i = lngth - dgt;
 	while (y < lngth)
 		display[y++] = ' ';
-	if (flags.att == 1 && flags.prec == -1)
+	if (flg.a == 1 && flg.p == -1)
 	{
 		y = 0;
 		while (y < i)
 			display[y++] = '0';
 	}
-	if (flags.prec > digit)
+	if (flg.p > dgt)
 	{
-		y = flags.chmp - flags.prec;
-			while (y <= flags.chmp - digit)
+		y = flg.c - flg.p;
+			while (y <= flg.c - dgt)
 				display[y++] = '0';
 	}
-	if (flags.att == 1 && flags.prec == 0 && nb == 0)
+	if (flg.a == 1 && flg.p == 0 && nb == 0)
 		return (display);
 	ft_itoa_custom_u(nb, &display[i]);
 	return (display);
 }
 
-char	*chmp_overall_thn_dgt_u_3(char *display, int digit, unsigned int nb, s_flags flags)
+char	*chmp_upmst_dgt_u3(char *display, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
-	lngth = flags.chmp;
+	lngth = flg.c;
 	y = 0;
 	if (!(display = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	while (y < lngth)
 		display[y++] = ' ';
-	if(flags.prec > -1)
+	if (flg.p > -1)
 	{
-		y = lngth - flags.prec;
+		y = lngth - flg.p;
 		while (y < lngth)
 			display[y++] = '0';
 	}
-	else if (flags.prec == -1)
+	else if (flg.p == -1)
 	{
 		y = 0;
 		while (y < lngth)
@@ -135,26 +135,26 @@ char	*chmp_overall_thn_dgt_u_3(char *display, int digit, unsigned int nb, s_flag
 	return (display);
 }
 
-char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_flags flags)
+char	*chmp_upmst_prec_u(char *display, int dgt, unsigned int nb, s_flags flg)
 {
 	int lngth;
 	int i;
 	int y;
 
 	y = 0;
-	lngth = flags.chmp;
+	lngth = flg.c;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
-	(flags.att >= 0) ? (i = lngth - digit) : (i = flags.prec - digit);
+	(flg.a >= 0) ? (i = lngth - dgt) : (i = flg.p - dgt);
 	while (y < lngth)
 		display[y++] = ' ';
-	if (flags.att < 0)
-		ft_itoa_custom_pos_u(nb, &display[flags.prec - digit]);
+	if (flg.a < 0)
+		ft_itoa_custom_pos_u(nb, &display[flg.p - dgt]);
 	else
 		ft_itoa_custom_pos_u(nb, &display[i]);
 	y = 0;
-	while (y < (flags.prec - digit))
+	while (y < (flg.p - dgt))
 	{
 		display[--i] = '0';
 		y++;
@@ -163,44 +163,26 @@ char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_f
 }
 
 
-int	printf_u(va_list *prms, s_flags flags)
+int	printf_u(va_list *prms, s_flags flg)
 {
 	unsigned int nb = va_arg(*prms, unsigned int);
-	int digit;
+	int dgt;
 	char *display;
 	int p;
 
-	digit = countdigit_u(nb);
-	if (digit >= flags.chmp && digit >= flags.prec)
-	{
-		//printf("ici\n"); //////////////////////
-		display = digit_overall_u(display, digit, nb, flags);
-	}
-	else if (flags.prec >= flags.chmp && flags.prec >= digit)
-	{
-		//printf("ici1\n"); //////////////////////
-		display = prec_overall_u(display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1 && nb == 0)
-	{
-		//printf("ici333\n"); //////////////////////
-		display = chmp_overall_thn_dgt_u_3(display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.att == 1)
-	{
-		//printf("ici2222\n"); //////////////////////
-		display = chmp_overall_thn_dgt_u_2(display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec <= digit)
-	{
-		//printf("ici2\n"); //////////////////////
-		display = chmp_overall_thn_dgt_u(display, digit, nb, flags);
-	}
-	else if (flags.chmp >= flags.prec && flags.chmp >= digit && flags.prec > digit)
-	{
-		//printf("ici3\n"); //////////////////////
-		display = chmp_overall_thn_prec_pos_u(display, digit, nb, flags);
-	}
+	dgt = countdgt_u(nb);
+	if (dgt >= flg.c && dgt >= flg.p)
+		display = digit_upmst_u(display, dgt, nb, flg);
+	else if (flg.p >= flg.c && flg.p >= dgt)
+		display = prec_upmst_u(display, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0)
+		display = chmp_upmst_dgt_u3(display, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1)
+		display = chmp_upmst_dgt_u2(display, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt)
+		display = chmp_upmst_dgt_u(display, dgt, nb, flg);
+	else if (flg.c >= flg.p && flg.c >= dgt && flg.p > dgt)
+		display = chmp_upmst_prec_u(display, dgt, nb, flg);
 	p = ft_strlen(display);
 	write(1, display, p);
 	free(display);

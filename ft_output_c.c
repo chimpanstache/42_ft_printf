@@ -6,79 +6,74 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/13 11:01:24 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 15:48:36 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*put_c(char *display, char chr, s_flags flags)
+char	*chmp_pos(char *dsply, char chr, s_flags flg)
 {
 	int lngth;
 	int y;
 
 	y = 0;
-	lngth = flags.chmp;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+	lngth = flg.c;
+	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
+	dsply[lngth] = '\0';
 	while (y < lngth)
-		display[y++] = ' ';
+		dsply[y++] = ' ';
 	if (chr == '\0' || !chr)
 	{	
-		display[lngth - 1] = '\0';
-		//printf("%d", ft_strlen(display)); //////////////////////
-		return (display);
+		dsply[lngth - 1] = '\0';
+		return (dsply);
 	}
-	if (flags.att < 0)
-		display[0] = chr;
+	if (flg.a < 0)
+		dsply[0] = chr;
 	else
-		display[lngth - 1] = chr;
-	return (display);
+		dsply[lngth - 1] = chr;
+	return (dsply);
 }
 
-char	*put_c_neg(char *display, char chr, s_flags flags)
+char	*chmp_neg(char *dsply, char chr, s_flags flg)
 {
 	int lngth;
 	int y;
 
 	y = 0;
-	lngth = -flags.chmp;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+	lngth = -flg.c;
+	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0';
+	dsply[lngth] = '\0';
 	while (y < lngth)
-		display[y++] = ' ';
+		dsply[y++] = ' ';
 	if (chr == '\0' || !chr)
-		return (display);
-	display[0] = chr;
-	return (display);
+		return (dsply);
+	dsply[0] = chr;
+	return (dsply);
 }
 
-int	printf_c(va_list *prms, s_flags flags)
+int	printf_c(va_list *prms, s_flags flg)
 {
 	char chr = va_arg(*prms, int);
 	int p;
-	char *display;
-	//printf("ici\n"); //////////////////////
-	if (flags.chmp > 1)
+	char *dsply;
+	if (flg.c > 1)
 	{
-		//printf("ici\n"); ///////////////////////
-		display = put_c(display, chr, flags);
+		dsply = chmp_pos(dsply, chr, flg);
 	}
-	else if (flags.chmp < -1)
-		display = put_c_neg(display, chr, flags);
+	else if (flg.c < -1)
+		dsply = chmp_neg(dsply, chr, flg);
 	else
 	{
-		//printf("ici\n"); //////////////////////
 		write(1, &chr, 1);
 		return (1);
 	}
-	p = ft_strlen(display);
-	write(1, display, p);
+	p = ft_strlen(dsply);
+	write(1, dsply, p);
 	if (chr == '\0')
 		p++;
-	free(display);
-	//printf("%d%s\n", p, ": pppp"); ////////////////////// 
+	free(dsply);
 	return (p);
 }

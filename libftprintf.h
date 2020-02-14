@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/13 19:54:00 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:30:32 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,91 +18,94 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
-//#include "libft.h"
+#include "libft.h"
 
 typedef struct 	s_flags  
 {
-	int att;
-	int chmp;
-	int prec;
-	int precp;
+	int a;
+	int c;
+	int p;
+	int p_p;
 }				s_flags;
 
 //side & parse functions
 void	ft_putnbr_base(int n, char *base, char *str);
-int		ft_strlen(char *base);
+/*int		ft_strlen(char *base);
 int		ft_atoi(const char *str);
 char	*ft_strndup(const char *str, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t n);//*/
 int		ft_attribute(char str);
 int		ft_champ(char *str, va_list *prms);
 int 	ft_precision(char *str, va_list *prms);
-int	countdigit_d_i(int nb);
-void analyse_params(char *prmtrs, s_flags *flags, va_list *prms);
+int	countdgt_d_i(int nb);
+void analyse_params(char *prmtrs, s_flags *flg, va_list *prms);
 void ft_case_percent(int a);
-void init_flags(s_flags *flags);
+void init_flg(s_flags *flg);
 void        ft_itoa_custom(int n, char *arr);
 static int    count_no_diggity(int n);
 void        ft_itoa_custom_pos(int n, char *arr);
 int	ft_putnbr_base_p(unsigned long long nbr, char *base);
-int	countdigit_base(unsigned long long nbr, char *base);
+int	countdgt_base(unsigned long long nbr, char *base);
 void        ft_ulltoa_base(unsigned long long n, char *arr, char *base);
 void	ft_putnbr_custom(int n, char *src);
  void	ft_putnbr_custom_pos(int n, char *src);
 //d_i functions
-int	printf_d_i(va_list *prms, s_flags flags);
-char	*digit_overall(char *display, int digit, int nb, s_flags flags);
-char	*prec_overall(char *display, int digit, int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_pos(char *display, int digit, int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_neg(char *display, int digit, int nb, s_flags flags);
-char	*chmp_overall_thn_prec(char *display, int digit, int nb, s_flags flags);
-char	*chmp_neg_prec_pos(char *display, int digit, int nb, s_flags flags);
-char	*chmp_neg_prec_pos_nb_neg(char *display, int digit, int nb, s_flags flags);
+int	printf_d_i(va_list *prms, s_flags flg);
+char	*dgt_upmst(char *dsply, int dgt, int nb, s_flags flg);
+char	*prec_upmst(char *dsply, int dgt, int nb, s_flags flg);
+char	*chmp_neg_prec_pos(char *dsply, int dgt, int nb, s_flags flg);
+char	*chmp_nb_neg_prec_pos(char *dsply, int dgt, int nb, s_flags flg);
+char	*chmp_upmst_dgt_pos(char *dsply, int dgt, int nb, s_flags flg);
+char	*chmp_upmst_dgt_neg(char *dsply, int dgt, int nb, s_flags flg);
+char	*chmp_upmst_prec_pos(char *dsply, int dgt, int nb, s_flags flg);
+char	*chmp_upmst_prec_neg(char *dsply, int dgt, int nb, s_flags flg);
 //x functions
-int	printf_x(va_list *prms, s_flags flags);
-char	*chmp_overall_thn_prec_pos_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
-char	*prec_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
-char	*digit_overall_x(char *base, char *display, int digit, unsigned int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_x_2(char *base, char *display, int digit, unsigned int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_x_3(char *display, int digit, unsigned int nb, s_flags flags);
+int	printf_x(va_list *prms, s_flags flg);
+char	*dgt_upmst_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*prec_upmst_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_x2(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_x3(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_prec_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
 //s functions
-int	printf_s(va_list *prms, s_flags flags);
-char	*chmp_over_erthing_left(char *display, int digit, char *src, s_flags flags);
-char	*chmp_over_erthing_left_2(char *display, int digit, char *src, s_flags flags);
-char	*chmp_over_erthing_right(char *display, int digit, char *src, s_flags flags);
-char	*digit_overall_s(char *display, int digit, char *src, s_flags flags);
-char	*chmp_thn_prec(char *display, int digit, char *src, s_flags flags);
-char	*prec_overall_s(char *display, int digit, char *src, s_flags flags);
-char	*chmp_neg_s(char *display, int digit, char *src, s_flags flags);
-char	*chmp_over_erthing_right_2(char *display, int digit, char *src, s_flags flags);
+int	printf_s(va_list *prms, s_flags flg);
+char	*dgt_upmst_s(char *dsply, int dgt, char *src, s_flags flg);
+char	*chmp_upmst_left(char *dsply, int dgt, char *src, s_flags flg);
+char	*chmp_upmst_right(char *dsply, int dgt, char *src, s_flags flg);
+char	*chmp_upmst_right2(char *dsply, int dgt, char *src, s_flags flg);
+char	*chmp_upmst_prec(char *dsply, int dgt, char *src, s_flags flg);
+char	*prec_upmst_s(char *dsply, int dgt, char *src, s_flags flg);
+char	*chmp_neg_s(char *dsply, int dgt, char *src, s_flags flg);
 char *null(void);
 //c functions
-int	printf_c(va_list *prms, s_flags flags);
-char	*put_c(char *display, char chr, s_flags flags);
-char	*put_c_neg(char *display, char chr, s_flags flags);
+int	printf_c(va_list *prms, s_flags flg);
+char	*chmp_pos(char *dsply, char chr, s_flags flg);
+char	*chmp_neg(char *dsply, char chr, s_flags flg);
 //X functions
-int 	printf_X(va_list *prms, s_flags flags);
+int 	printf_X(va_list *prms, s_flags flg);
 //p functions
-int 	printf_p(va_list *prms, s_flags flags);
-char	*put_p(char *display, unsigned long long ptr, char *base, int digit, s_flags flags);
-char	*put_p2(char *display, unsigned long long ptr, char *base, int digit, s_flags flags);
+int 	printf_p(va_list *prms, s_flags flg);
+char	*put_p(char *dsply, unsigned long long ptr, char *base, int dgt, s_flags flg);
+char	*put_p2(char *dsply, unsigned long long ptr, char *base, int dgt, s_flags flg);
 //% functions
-int	printf_percent(va_list *prms, s_flags flags);
-char	*chmp_and_att_0(char *display, s_flags flags);
-char	*chmp_and_att_neg(char *display, s_flags flags);
-char	*chmp(char *display, s_flags flags);
-char	*display_overall_perc(char *display, s_flags flags);
+int	printf_percent(va_list *prms, s_flags flg);
+char	*dsply_upmst_perc(char *dsply, s_flags flg);
+char	*chmp_upmst_perc(char *dsply, s_flags flg);
+char	*chmp_att_neg_perc(char *dsply, s_flags flg);
+char	*chmp_att_0(char *dsply, s_flags flg);
 //u functions
-int 	printf_u(va_list *prms, s_flags flags);
-char	*digit_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
-char	*prec_overall_u(char *display, int digit, unsigned int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_u(char *display, int digit, unsigned int nb, s_flags flags);
-char	*chmp_overall_thn_dgt_u_2(char *display, int digit, unsigned int nb, s_flags flags);
-char	*chmp_overall_thn_prec_pos_u(char *display, int digit, unsigned int nb, s_flags flags);
+int 	printf_u(va_list *prms, s_flags flg);
+char	*dgt_upmst_u(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*prec_upmst_u(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_u(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_u2(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_u3(char *dsply, int dgt, unsigned int nb, s_flags flg);
 void        ft_itoa_custom_pos_u(unsigned int n, char *arr);
 void       ft_itoa_custom_u(unsigned int n, char *arr);
-char	*chmp_overall_thn_dgt_u_3(char *display, int digit, unsigned int nb, s_flags flags);
-int	countdigit_u(unsigned int nb);
+char	*chmp_upmst_prec_u(char *dsply, int dgt, unsigned int nb, s_flags flg);
+int	countdgt_u(unsigned int nb);
+
+int		ft_printf(const char *src, ...);
+int 	findIndex(char *arr, char element);
 
 #endif
