@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/14 16:08:26 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/16 17:26:24 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_printf(const char *src, ...)
 	int b;
 	int (*tabFunction[9]) (va_list *, s_flags) = {printf_percent, printf_p,
 													printf_u, printf_x, 
-													printf_X, printf_s, 
+													printf_xx, printf_s, 
 													printf_c, printf_d_i, 
 													printf_d_i};
 	char tabIndex[10] = {'%', 'p', 'u', 'x', 'X', 's', 'c', 'd', 'i', 0};

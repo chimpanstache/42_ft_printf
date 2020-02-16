@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/14 16:09:58 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/16 19:08:20 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 char	*dgt_upmst(char *display, int dgt, int nb, s_flags flg)
 {
 	int i;
+	int lngth;
 
 	i = 0;
-	int lngth;
-	nb >= 0 ? (lngth = dgt) : (lngth = dgt + 1);
+	lngth = dgt + 1;
+	if (nb >= 0)
+		lngth = dgt;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -26,7 +28,7 @@ char	*dgt_upmst(char *display, int dgt, int nb, s_flags flg)
 	{
 		if (flg.c == 1)
 			display[0] = ' ';
-		else 
+		else
 			display[0] = '\0';
 		return (display);
 	}
@@ -41,7 +43,9 @@ char	*prec_upmst(char *display, int dgt, int nb, s_flags flg)
 	int y;
 
 	y = 0;
-	(nb >= 0) ? (lngth = flg.p) : (lngth = flg.p + 1);
+	lngth = flg.p + 1;
+	if (nb >= 0)
+		lngth = flg.p;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -61,15 +65,16 @@ char	*chmp_neg_prec_pos(char *display, int dgt, int nb, s_flags flg)
 	int y;
 
 	y = 0;
-	-flg.c >= flg.p ? lngth = -flg.c : (lngth = -flg.c + 1);
+	lngth = -flg.c + 1;
+	if (-flg.c >= flg.p)
+		lngth = -flg.c;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	i = flg.p - dgt;
-	while (y < lngth)
-		display[y++] = ' ';
+	write_stuff(display, lngth, ' ');
 	if (flg.p == 0 && nb == 0)
-		return (display);	
+		return (display);
 	if (flg.p < dgt)
 		ft_itoa_custom_pos(nb, display);
 	else
@@ -92,15 +97,18 @@ char	*chmp_nb_neg_prec_pos(char *display, int dgt, int nb, s_flags flg)
 	int y;
 
 	y = 0;
-	(-flg.c <= flg.p) ? (lngth = flg.p + 1) : (lngth = -flg.c);
+	lngth = -flg.c;
+	if (-flg.c <= flg.p)
+		lngth = flg.p + 1;
 	if (dgt >= -flg.c && -flg.c > flg.p)
 		lngth++;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
-	(nb >= 0) ? (i = flg.p - dgt) : (i = flg.p - dgt + 1);
-	while (y < lngth)
-		display[y++] = ' ';
+	i = flg.p - dgt + 1;
+	if (nb >= 0) 
+		i = flg.p - dgt;
+	write_stuff(display, lngth, ' ');
 	if (flg.p < dgt)
 		ft_itoa_custom(nb, display);
 	else
@@ -135,7 +143,7 @@ char	*chmp_upmst_dgt_pos(char *display, int dgt, int nb, s_flags flg)
 		while (y < lngth)
 			display[y++] = '0';
 	if (flg.p == 0 && nb == 0)
-		return (display); 
+		return (display);
 	if (flg.a < 0)
 		ft_itoa_custom(nb, display);
 	else
@@ -160,12 +168,12 @@ char	*chmp_upmst_dgt_neg(char *display, int dgt, int nb, s_flags flg)
 	i = lngth - dgt;
 	while (y < lngth)
 		display[y++] = ' ';
-	y = 0;	
+	y = 0;
 	if (flg.a > 0 && nb < 0 && flg.p < 0)
 	{
 		while (y < lngth)
 			display[y++] = '0';
-		display[0] = '-';	
+		display[0] = '-';
 		ft_itoa_custom_pos(nb, &display[lngth - dgt + 1]);
 	}
 	else if (flg.a < 0)
@@ -212,7 +220,7 @@ char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, s_flags flg)
 	lngth = flg.c;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
-	display[lngth] = '\0'; 
+	display[lngth] = '\0';
 	(flg.a >= 0) ? (i = lngth - dgt - 1) : (i = flg.p - dgt);
 	while (y < lngth)
 		display[y++] = ' ';
@@ -231,7 +239,7 @@ char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-int	printf_d_i(va_list *prms, s_flags flg) 
+int	printf_d_i(va_list *prms, s_flags flg)
 {
 	int nb = va_arg(*prms, int);
 	int dgt;

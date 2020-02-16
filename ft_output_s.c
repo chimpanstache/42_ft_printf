@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/14 15:49:34 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/16 19:01:01 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*dgt_upmst_s(char *dsply, int dgt, char *src, s_flags flg)
 {
 	int y;
 	int lngth;
+
 	y = 0;
 	lngth = dgt;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
@@ -32,16 +33,17 @@ char	*dgt_upmst_s(char *dsply, int dgt, char *src, s_flags flg)
 char	*chmp_upmst_left(char *dsply, int dgt, char *src, s_flags flg)
 {
 	int y;
-	y = 0;
 	int lngth;
+
+	y = 0;
 	lngth = flg.c;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
 	while (y < lngth)
-		dsply[y++] = ' ';	
+		dsply[y++] = ' ';
 	if (*src == '\0' || !src || flg.p == 0)
-		return (dsply);	
+		return (dsply);
 	if (flg.p < dgt && flg.p >= 0)
 		ft_memcpy(dsply, src, flg.p);
 	if ((flg.p >= dgt && flg.p >= 0) || flg.p == -1)
@@ -53,16 +55,18 @@ char	*chmp_upmst_right(char *dsply, int dgt, char *src, s_flags flg)
 {
 	int i;
 	int y;
+	int lngth;
+
 	y = 0;
 	i = 0;
-	int lngth;
 	lngth = flg.c;
-	(flg.p >= dgt) ? (i = lngth - dgt) : (i = lngth - flg.p);
+	i = lngth - flg.p;
+	if (flg.p >= dgt)
+		i = lngth - dgt;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
-	while (y < lngth)
-		dsply[y++] = ' ';
+	write_stuff(dsply, lngth, ' ');
 	if (*src == '\0' || !src || flg.p == 0)
 		return (dsply);
 	if (flg.p == -1)
@@ -78,24 +82,26 @@ char	*chmp_upmst_right2(char *dsply, int dgt, char *src, s_flags flg)
 {
 	int i;
 	int y;
+	int lngth;
+
 	y = 0;
 	i = 0;
-	int lngth;
 	lngth = flg.c;
-	(flg.p >= 0) ? i = lngth - flg.p : (i = lngth - dgt);
+	i = lngth - dgt;
+	if (flg.p >= 0)
+		i = lngth - flg.p;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
-	while (y < lngth)
-		dsply[y++] = ' ';
+	write_stuff(dsply, lngth, ' ');
 	if (*src == '\0' || !src || flg.p == 0)
 		return (dsply);
 	if (flg.p == -1)
 		ft_memcpy(&dsply[i], src, dgt);
 	else if (flg.p > dgt)
 		ft_memcpy(&dsply[lngth - dgt], src, dgt);
-	else 
-		ft_memcpy(&dsply[i], src, flg.p);		
+	else
+		ft_memcpy(&dsply[i], src, flg.p);
 	return (dsply);
 }
 

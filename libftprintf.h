@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/14 16:30:32 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/16 17:40:27 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ int	countdgt_base(unsigned long long nbr, char *base);
 void        ft_ulltoa_base(unsigned long long n, char *arr, char *base);
 void	ft_putnbr_custom(int n, char *src);
  void	ft_putnbr_custom_pos(int n, char *src);
+ void   write_ox(char *dsply);
+void		write_stuff(char *dsply, int limit, char stuff);
+
 //d_i functions
 int	printf_d_i(va_list *prms, s_flags flg);
 char	*dgt_upmst(char *dsply, int dgt, int nb, s_flags flg);
@@ -61,12 +64,12 @@ char	*chmp_upmst_prec_pos(char *dsply, int dgt, int nb, s_flags flg);
 char	*chmp_upmst_prec_neg(char *dsply, int dgt, int nb, s_flags flg);
 //x functions
 int	printf_x(va_list *prms, s_flags flg);
-char	*dgt_upmst_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
-char	*prec_upmst_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
-char	*chmp_upmst_dgt_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
-char	*chmp_upmst_dgt_x2(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*dgt_upmst_x(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*prec_upmst_x(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_x(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_x2(char *dsply, int dgt, unsigned int nb, s_flags flg);
 char	*chmp_upmst_dgt_x3(char *dsply, int dgt, unsigned int nb, s_flags flg);
-char	*chmp_upmst_prec_x(char *base, char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_prec_x(char *dsply, int dgt, unsigned int nb, s_flags flg);
 //s functions
 int	printf_s(va_list *prms, s_flags flg);
 char	*dgt_upmst_s(char *dsply, int dgt, char *src, s_flags flg);
@@ -82,11 +85,21 @@ int	printf_c(va_list *prms, s_flags flg);
 char	*chmp_pos(char *dsply, char chr, s_flags flg);
 char	*chmp_neg(char *dsply, char chr, s_flags flg);
 //X functions
-int 	printf_X(va_list *prms, s_flags flg);
+int 	printf_xx(va_list *prms, s_flags flg);
+char	*dgt_upmst_xx(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*prec_upmst_xx(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_xx(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_xx2(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_dgt_xx3(char *dsply, int dgt, unsigned int nb, s_flags flg);
+char	*chmp_upmst_prec_xx(char *dsply, int dgt, unsigned int nb, s_flags flg);
+
 //p functions
+void 		write_stuff(char *dsply, int limit, char stuff);
+void		write_ox(char *dsply);
 int 	printf_p(va_list *prms, s_flags flg);
-char	*put_p(char *dsply, unsigned long long ptr, char *base, int dgt, s_flags flg);
-char	*put_p2(char *dsply, unsigned long long ptr, char *base, int dgt, s_flags flg);
+char	*put_p(char *dsply, unsigned long long ptr, int dgt, s_flags flg);
+char	*put_p2(char *dsply, unsigned long long ptr, int dgt, s_flags flg);
+
 //% functions
 int	printf_percent(va_list *prms, s_flags flg);
 char	*dsply_upmst_perc(char *dsply, s_flags flg);

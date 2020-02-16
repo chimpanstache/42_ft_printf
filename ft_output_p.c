@@ -6,64 +6,56 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/14 15:52:53 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/16 14:40:01 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*put_p(char *dsply, unsigned long long ptr, char *base, int dgt, s_flags flg)
+void		write_ox(char *dsply)
 {
-	int lngth;
-	int y;
-	int i;
+	dsply[0] = '0';
+	dsply[1] = 'x';
+}
 
-	y = 0;
-	i = 0;
-	lngth = flg.c;
-	
-	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
+char		*put_p(char *dsply, unsigned long long ptr, int dgt, s_flags flg)
+{
+	char	*base;
+
+	base = "0123456789abcdef";
+	if (!(dsply = malloc(sizeof(*dsply) * (flg.c + 1))))
 		return (NULL);
-	dsply[lngth] = '\0';
-	while (y < lngth)
-		dsply[y++] = ' ';
+	dsply[flg.c] = '\0';
+	write_stuff(dsply, flg.c, ' ');
 	if (flg.a < 0)
-	{	 
-		dsply[0] = '0';
-		dsply[1] = 'x';
-			ft_ulltoa_base(ptr, &dsply[2], base);
+	{
+		write_ox(dsply);
+		ft_ulltoa_base(ptr, &dsply[2], base);
 	}
 	else
 	{
 		if (!ptr && flg.p == 0)
-		{
-			dsply[lngth - 2] = '0';
-			dsply[lngth - 1] = 'x';
-		}
+			write_ox(&dsply[flg.c - 2]);
 		else
 		{
-			dsply[lngth - dgt] = '0';
-			dsply[lngth - dgt + 1] = 'x';
-			ft_ulltoa_base(ptr, &dsply[lngth - dgt + 2], base);
+			write_ox(&dsply[flg.c - dgt]);
+			ft_ulltoa_base(ptr, &dsply[flg.c - dgt + 2], base);
 		}
 	}
 	return (dsply);
 }
 
-char	*put_p2(char *dsply, unsigned long long ptr, char *base, int dgt, s_flags flg)
+char		*put_p2(char *dsply, unsigned long long ptr, int dgt, s_flags flg)
 {
-	int lngth;
-	int y;
-	int i;
+	int		lngth;
+	char	*base;
 
-	y = 0;
-	i = 0;
+	base = "0123456789abcdef";
 	lngth = dgt;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
-	while (y < lngth)
-		dsply[y++] = ' ';
+	write_stuff(dsply, lngth, ' ');
 	dsply[0] = '0';
 	dsply[1] = 'x';
 	if (!ptr && flg.p_p == 1)
@@ -75,20 +67,22 @@ char	*put_p2(char *dsply, unsigned long long ptr, char *base, int dgt, s_flags f
 	return (dsply);
 }
 
-int 	printf_p(va_list *prms, s_flags flg)
+int			printf_p(va_list *prms, s_flags flg)
 {
-	int dgt;
-	unsigned long long ptr = va_arg(*prms, unsigned long long);
-	char *base = "0123456789abcdef";
-	char *dsply;
-	int p;
+	int					dgt;
+	unsigned long long	ptr;
+	char				*base;
+	char				*dsply;
+	int					p;
 
+	ptr = va_arg(*prms, unsigned long long);
+	base = "0123456789abcdef";
 	p = 0;
 	dgt = countdgt_base(ptr, base) + 2;
 	if (flg.c > dgt)
-		dsply = put_p(dsply, ptr, base, dgt, flg);
+		dsply = put_p(dsply, ptr, dgt, flg);
 	else
-		dsply = put_p2(dsply, ptr, base, dgt, flg);
+		dsply = put_p2(dsply, ptr, dgt, flg);
 	p = ft_strlen(dsply);
 	write(1, dsply, p);
 	free(dsply);

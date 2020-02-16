@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:57:03 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/14 15:52:22 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/16 18:26:31 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	*digit_upmst_u(char *display, int dgt, unsigned int nb, s_flags flg)
 {
 	int i;
-	
-	i = 0;
 	int lngth;
+
+	i = 0;
 	lngth = dgt;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
@@ -67,7 +67,7 @@ char	*chmp_upmst_dgt_u(char *display, int dgt, unsigned int nb, s_flags flg)
 	while (y < lngth)
 		display[y++] = ' ';
 	if (flg.p == 0 && nb == 0)
-		return (display); 
+		return (display);
 	if (flg.a < 0)
 		ft_itoa_custom_u(nb, display);
 	else
@@ -87,19 +87,14 @@ char	*chmp_upmst_dgt_u2(char *display, int dgt, unsigned int nb, s_flags flg)
 		return (NULL);
 	display[lngth] = '\0';
 	i = lngth - dgt;
-	while (y < lngth)
-		display[y++] = ' ';
+	write_stuff(display, lngth, ' ');
 	if (flg.a == 1 && flg.p == -1)
-	{
-		y = 0;
-		while (y < i)
-			display[y++] = '0';
-	}
+		write_stuff(display, i, '0');
 	if (flg.p > dgt)
 	{
 		y = flg.c - flg.p;
-			while (y <= flg.c - dgt)
-				display[y++] = '0';
+		while (y <= flg.c - dgt)
+			display[y++] = '0';
 	}
 	if (flg.a == 1 && flg.p == 0 && nb == 0)
 		return (display);
@@ -107,69 +102,14 @@ char	*chmp_upmst_dgt_u2(char *display, int dgt, unsigned int nb, s_flags flg)
 	return (display);
 }
 
-char	*chmp_upmst_dgt_u3(char *display, int dgt, unsigned int nb, s_flags flg)
+int		printf_u(va_list *prms, s_flags flg)
 {
-	int lngth;
-	int i;
-	int y;
+	unsigned int	nb;
+	int				dgt;
+	char			*display;
+	int				p;
 
-	lngth = flg.c;
-	y = 0;
-	if (!(display = malloc(sizeof(char) * (lngth + 1))))
-		return (NULL);
-	display[lngth] = '\0';
-	while (y < lngth)
-		display[y++] = ' ';
-	if (flg.p > -1)
-	{
-		y = lngth - flg.p;
-		while (y < lngth)
-			display[y++] = '0';
-	}
-	else if (flg.p == -1)
-	{
-		y = 0;
-		while (y < lngth)
-			display[y++] = '0';
-	}
-	return (display);
-}
-
-char	*chmp_upmst_prec_u(char *display, int dgt, unsigned int nb, s_flags flg)
-{
-	int lngth;
-	int i;
-	int y;
-
-	y = 0;
-	lngth = flg.c;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
-		return (NULL);
-	display[lngth] = '\0';
-	(flg.a >= 0) ? (i = lngth - dgt) : (i = flg.p - dgt);
-	while (y < lngth)
-		display[y++] = ' ';
-	if (flg.a < 0)
-		ft_itoa_custom_pos_u(nb, &display[flg.p - dgt]);
-	else
-		ft_itoa_custom_pos_u(nb, &display[i]);
-	y = 0;
-	while (y < (flg.p - dgt))
-	{
-		display[--i] = '0';
-		y++;
-	}
-	return (display);
-}
-
-
-int	printf_u(va_list *prms, s_flags flg)
-{
-	unsigned int nb = va_arg(*prms, unsigned int);
-	int dgt;
-	char *display;
-	int p;
-
+	nb = va_arg(*prms, unsigned int);
 	dgt = countdgt_u(nb);
 	if (dgt >= flg.c && dgt >= flg.p)
 		display = digit_upmst_u(display, dgt, nb, flg);
@@ -188,4 +128,3 @@ int	printf_u(va_list *prms, s_flags flg)
 	free(display);
 	return (p);
 }
-

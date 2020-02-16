@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/14 15:48:36 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/16 17:32:49 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*chmp_pos(char *dsply, char chr, s_flags flg)
 	while (y < lngth)
 		dsply[y++] = ' ';
 	if (chr == '\0' || !chr)
-	{	
+	{
 		dsply[lngth - 1] = '\0';
 		return (dsply);
 	}
@@ -54,11 +54,13 @@ char	*chmp_neg(char *dsply, char chr, s_flags flg)
 	return (dsply);
 }
 
-int	printf_c(va_list *prms, s_flags flg)
+int		printf_c(va_list *prms, s_flags flg)
 {
-	char chr = va_arg(*prms, int);
-	int p;
-	char *dsply;
+	char	chr;
+	int		p;
+	char	*dsply;
+
+	chr = va_arg(*prms, int);
 	if (flg.c > 1)
 	{
 		dsply = chmp_pos(dsply, chr, flg);
