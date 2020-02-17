@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 17:40:27 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/17 18:26:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ typedef struct 	s_flags
 	int p;
 	int p_p;
 }				s_flags;
+
+typedef struct 	s_ind  
+{
+	int a;
+	int b;
+	int i;
+	int j;
+	int l;
+}				s_ind;
 
 //side & parse functions
 void	ft_putnbr_base(int n, char *base, char *str);
@@ -51,6 +60,7 @@ void	ft_putnbr_custom(int n, char *src);
  void	ft_putnbr_custom_pos(int n, char *src);
  void   write_ox(char *dsply);
 void		write_stuff(char *dsply, int limit, char stuff);
+void	init_ind(s_ind *ind);
 
 //d_i functions
 int	printf_d_i(va_list *prms, s_flags flg);
@@ -62,6 +72,8 @@ char	*chmp_upmst_dgt_pos(char *dsply, int dgt, int nb, s_flags flg);
 char	*chmp_upmst_dgt_neg(char *dsply, int dgt, int nb, s_flags flg);
 char	*chmp_upmst_prec_pos(char *dsply, int dgt, int nb, s_flags flg);
 char	*chmp_upmst_prec_neg(char *dsply, int dgt, int nb, s_flags flg);
+void		write_0_d_i(char *display, int ind, int limit);
+int		printf_d_i_2(int nb, int dgt, s_flags flg);
 //x functions
 int	printf_x(va_list *prms, s_flags flg);
 char	*dgt_upmst_x(char *dsply, int dgt, unsigned int nb, s_flags flg);
@@ -80,6 +92,8 @@ char	*chmp_upmst_prec(char *dsply, int dgt, char *src, s_flags flg);
 char	*prec_upmst_s(char *dsply, int dgt, char *src, s_flags flg);
 char	*chmp_neg_s(char *dsply, int dgt, char *src, s_flags flg);
 char *null(void);
+int	printf_s_null(char *src, s_flags flg);
+int	printf_s_2(char *src, int dgt, s_flags flg);
 //c functions
 int	printf_c(va_list *prms, s_flags flg);
 char	*chmp_pos(char *dsply, char chr, s_flags flg);
@@ -118,7 +132,10 @@ void       ft_itoa_custom_u(unsigned int n, char *arr);
 char	*chmp_upmst_prec_u(char *dsply, int dgt, unsigned int nb, s_flags flg);
 int	countdgt_u(unsigned int nb);
 
+//ft_printf.c
 int		ft_printf(const char *src, ...);
-int 	findIndex(char *arr, char element);
+void write_string(s_ind *ind, const char *src);
+void get_params(s_ind *ind, const char *src, s_flags *flg, va_list *prms);
+void ch0se_fnction(s_ind *ind, va_list *prms, s_flags *flg, const char *src);
 
 #endif

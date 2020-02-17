@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 14:30:11 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/17 17:38:09 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 	return (0);	
 }*/
 
-/*int main()  //grand X okkk
+int main()  //grand X okkk
 {
 	unsigned int age = 4294967295;
 	int khey = 132;
@@ -79,7 +79,7 @@
 	printf("0:%010.6X:\n", age); //precision > digit
 	printf("-:%-10.6X:\n", age); //precision > digit
 	return (0);
-}*/
+}
 
 /*int main() //unsigned int avec * okkk
 {
@@ -625,7 +625,7 @@ int main(int argc, char **argv)
 	return (0);	
 }*/
 
-int main()  // pointeur okkk
+/*int main()  // pointeur okkk
 {
 	char *str;
 	int i = 10;
@@ -682,7 +682,7 @@ int main()  // pointeur okkk
 	printf("%p\n", zebi); //champ < digit
 	printf("%.p\n", zebi); //champ < digit
 	return (0);
-}
+}*/
 
 /*int main() // int d avec * okkk
 {

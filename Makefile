@@ -6,9 +6,11 @@
 #    By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/10 11:06:06 by ehafidi           #+#    #+#              #
-#    Updated: 2020/02/16 18:27:36 by ehafidi          ###   ########.fr        #
+#    Updated: 2020/02/17 14:18:54 by ehafidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SRC = ft_printf.c ft_output_c.c ft_output_d_i.c ft_output_d_i_2.c ft_output_p.c ft_output_s.c ft_output_s_2.c ft_output_percent.c ft_output_u.c ft_output_u_2.c ft_output_x.c ft_output_x_2.c ft_output_xx.c ft_output_xx_2.c ft_parse.c ft_side_functions_0.c ft_side_functions_1.c ft_side_functions_2.c ft_side_functions_3.c 
 
 LIBFT_ROOT = ./libft
 
@@ -23,8 +25,6 @@ MAKE = make
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_output_c.c ft_output_d_i.c ft_output_p.c ft_output_s.c ft_output_percent.c ft_output_u.c ft_output_u_2.c ft_output_x.c ft_output_x_2.c ft_output_xx.c ft_output_xx_2.c ft_parse.c ft_side_functions_0.c ft_side_functions_1.c ft_side_functions_2.c 
-	  
 OBJ = $(SRC:.c=.o)
 INCLUDE = header.h
 

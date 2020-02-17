@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 13:43:42 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 14:26:11 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/17 13:43:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,16 @@ void	write_stuff(char *dsply, int limit, char stuff)
 	y = 0;
 	while (y < limit)
 		dsply[y++] = stuff;
+}
+
+void	write_0_d_i(char *display, int ind, int limit)
+{
+	int y;
+
+	y = 0;
+	while (y < limit)
+	{
+		display[--ind] = '0';
+		y++;
+	}
 }

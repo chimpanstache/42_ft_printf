@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 13:44:08 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 14:39:18 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/17 12:28:50 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,18 @@ void		ft_itoa_custom(int n, char *arr)
 	}
 }
 
+char		*null(void)
+{
+	char *null;
+
+	if (!(null = malloc(sizeof(*null) * 7)))
+		return (NULL);
+	null[0] = '(';
+	null[1] = 'n';
+	null[2] = 'u';
+	null[3] = 'l';
+	null[4] = 'l';
+	null[5] = ')';
+	null[6] = '\0';
+	return (null);
+}

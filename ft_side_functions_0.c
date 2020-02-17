@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 10:54:14 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 17:27:34 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/17 17:45:08 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,18 +172,4 @@ void		ft_putnbr_base(int n, char *base, char *str)
 	if (nb >= a)
 		ft_putnbr_base((nb / a), base, str);
 	str[i++] = base[nb % a];
-}
-
-void		ft_itoa_custom_pos_u(unsigned int n, char *arr)
-{
-	unsigned int	nb;
-	int				len;
-
-	len = countdgt_u(n);
-	nb = (unsigned int)n;
-	while (len-- > 0)
-	{
-		arr[len] = nb % 10 + '0';
-		nb = nb / 10;
-	}
 }
