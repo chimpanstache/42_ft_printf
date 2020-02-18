@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 13:00:13 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 17:38:09 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/18 13:13:32 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 	return (0);	
 }*/
 
-int main()  //grand X okkk
+/*int main()  //grand X okkk
 {
 	unsigned int age = 4294967295;
 	int khey = 132;
@@ -79,7 +79,7 @@ int main()  //grand X okkk
 	printf("0:%010.6X:\n", age); //precision > digit
 	printf("-:%-10.6X:\n", age); //precision > digit
 	return (0);
-}
+}*/
 
 /*int main() //unsigned int avec * okkk
 {
@@ -145,13 +145,18 @@ int main()  //grand X okkk
 
 /*int main() // c okkk
 {
-	char age = 127;
+	char age = '\0';
 
 	printf("/////champ =< digit\n");
-	printf("R:%10c:\n", age); //champ < digit
-	printf("-:%-10c:\n", age); //champ < digit
+	printf("R:%10.c:\n", age); //champ < digit
+	printf("-:%-10.c:\n", age); //champ < digit
 	printf("-:%c:\n", age); //champ < digit
 	printf("-:%c:\n", age); //champ < digit
+	ft_printf("/////champ =< digit\n");
+	ft_printf("R:%10.c:\n", age); //champ < digit
+	ft_printf("-:%-10.c:\n", age); //champ < digit
+	ft_printf("-:%c:\n", age); //champ < digit
+	ft_printf("-:%c:\n", age); //champ < digit
 	return (0);	
 }*/
 
@@ -1019,3 +1024,12 @@ int main(int argc, char **argv)
 	printf("%d\n",ft_printf("|%5X|\n", '\0'));
 	return 0;
 }*/
+
+int main()
+{
+	printf(":%*c:\n", -1000, 'a');
+	ft_printf(":%*c:\n", -1000, 'a');
+	//printf("%d\n",printf("|%5X|\n", '\0'));
+	//printf("%d\n",ft_printf("|%5X|\n", '\0'));
+	return 0;
+}

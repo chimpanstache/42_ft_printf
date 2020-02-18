@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 18:26:46 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:31:10 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	printf_s_2(char *src, int dgt, s_flags flg);
 //c functions
 int	printf_c(va_list *prms, s_flags flg);
 char	*chmp_pos(char *dsply, char chr, s_flags flg);
-char	*chmp_neg(char *dsply, char chr, s_flags flg);
+// char	*chmp_neg(char *dsply, char chr, s_flags flg);
 //X functions
 int 	printf_xx(va_list *prms, s_flags flg);
 char	*dgt_upmst_xx(char *dsply, int dgt, unsigned int nb, s_flags flg);
@@ -137,5 +137,7 @@ int		ft_printf(const char *src, ...);
 void write_string(s_ind *ind, const char *src);
 void get_params(s_ind *ind, const char *src, s_flags *flg, va_list *prms);
 void ch0se_fnction(s_ind *ind, va_list *prms, s_flags *flg, const char *src);
+char	*hardcode_tabindex(char *tabindex);
+int	*hardcode_tabfunction(int (*tabfunction) (va_list *, s_flags));
 
 #endif
