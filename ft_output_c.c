@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/18 13:19:41 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 16:57:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*chmp_pos(char *dsply, char chr, s_flags flg)
+char	*chmp_pos(char *dsply, char chr, t_flags flg)
 {
 	int lngth;
 
@@ -35,7 +35,7 @@ char	*chmp_pos(char *dsply, char chr, s_flags flg)
 	return (dsply);
 }
 
-int		printf_c(va_list *prms, s_flags flg)
+int		printf_c(va_list *prms, t_flags flg)
 {
 	char	chr;
 	int		p;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_output_%.c                                      :+:      :+:    :+:   */
+/*   ft_output_percent.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 13:48:33 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 14:22:41 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:41:59 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*dsply_upmst_perc(char *dsply, s_flags flg)
+char	*dsply_upmst_perc(char *dsply, t_flags flg)
 {
 	if (!(dsply = malloc(sizeof(*dsply) * (1 + 1))))
 		return (NULL);
@@ -21,7 +21,7 @@ char	*dsply_upmst_perc(char *dsply, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_perc(char *dsply, s_flags flg)
+char	*chmp_upmst_perc(char *dsply, t_flags flg)
 {
 	int lngth;
 
@@ -34,7 +34,7 @@ char	*chmp_upmst_perc(char *dsply, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_att_neg_perc(char *dsply, s_flags flg)
+char	*chmp_att_neg_perc(char *dsply, t_flags flg)
 {
 	int lngth;
 
@@ -47,7 +47,7 @@ char	*chmp_att_neg_perc(char *dsply, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_att_0(char *dsply, s_flags flg)
+char	*chmp_att_0(char *dsply, t_flags flg)
 {
 	int lngth;
 	int y;
@@ -61,7 +61,7 @@ char	*chmp_att_0(char *dsply, s_flags flg)
 	return (dsply);
 }
 
-int		printf_percent(va_list *prms, s_flags flg)
+int		printf_percent(va_list *prms, t_flags flg)
 {
 	int		p;
 	char	*dsply;

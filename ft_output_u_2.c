@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:26:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 18:26:26 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:42:53 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*chmp_upmst_dgt_u3(char *display, int dgt, unsigned int nb, s_flags flg)
+char	*chmp_upmst_dgt_u3(char *display, int dgt, unsigned int nb, t_flags flg)
 {
 	int lngth;
 	int i;
@@ -35,7 +35,7 @@ char	*chmp_upmst_dgt_u3(char *display, int dgt, unsigned int nb, s_flags flg)
 	return (display);
 }
 
-char	*chmp_upmst_prec_u(char *display, int dgt, unsigned int nb, s_flags flg)
+char	*chmp_upmst_prec_u(char *display, int dgt, unsigned int nb, t_flags flg)
 {
 	int lngth;
 	int i;

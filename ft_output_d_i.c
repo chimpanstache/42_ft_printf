@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 13:45:01 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:41:27 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*dgt_upmst(char *display, int dgt, int nb, s_flags flg)
+char	*dgt_upmst(char *display, int dgt, int nb, t_flags flg)
 {
 	int i;
 	int lngth;
@@ -36,7 +36,7 @@ char	*dgt_upmst(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-char	*prec_upmst(char *display, int dgt, int nb, s_flags flg)
+char	*prec_upmst(char *display, int dgt, int nb, t_flags flg)
 {
 	int lngth;
 	int i;
@@ -55,7 +55,7 @@ char	*prec_upmst(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-char	*chmp_neg_prec_pos(char *display, int dgt, int nb, s_flags flg)
+char	*chmp_neg_prec_pos(char *display, int dgt, int nb, t_flags flg)
 {
 	int lngth;
 	int i;
@@ -80,7 +80,7 @@ char	*chmp_neg_prec_pos(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-char	*chmp_nb_neg_prec_pos(char *display, int dgt, int nb, s_flags flg)
+char	*chmp_nb_neg_prec_pos(char *display, int dgt, int nb, t_flags flg)
 {
 	int lngth;
 	int i;
@@ -107,7 +107,7 @@ char	*chmp_nb_neg_prec_pos(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-char	*chmp_upmst_dgt_pos(char *display, int dgt, int nb, s_flags flg)
+char	*chmp_upmst_dgt_pos(char *display, int dgt, int nb, t_flags flg)
 {
 	int lngth;
 	int i;

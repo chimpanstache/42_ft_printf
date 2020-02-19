@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 12:29:16 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:42:38 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*dgt_upmst_s(char *dsply, int dgt, char *src, s_flags flg)
+char	*dgt_upmst_s(char *dsply, int dgt, char *src, t_flags flg)
 {
 	int y;
 	int lngth;
@@ -30,7 +30,7 @@ char	*dgt_upmst_s(char *dsply, int dgt, char *src, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_left(char *dsply, int dgt, char *src, s_flags flg)
+char	*chmp_upmst_left(char *dsply, int dgt, char *src, t_flags flg)
 {
 	int y;
 	int lngth;
@@ -51,7 +51,7 @@ char	*chmp_upmst_left(char *dsply, int dgt, char *src, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_right(char *dsply, int dgt, char *src, s_flags flg)
+char	*chmp_upmst_right(char *dsply, int dgt, char *src, t_flags flg)
 {
 	int i;
 	int y;
@@ -78,7 +78,7 @@ char	*chmp_upmst_right(char *dsply, int dgt, char *src, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_right2(char *dsply, int dgt, char *src, s_flags flg)
+char	*chmp_upmst_right2(char *dsply, int dgt, char *src, t_flags flg)
 {
 	int i;
 	int y;
@@ -105,7 +105,7 @@ char	*chmp_upmst_right2(char *dsply, int dgt, char *src, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_prec(char *dsply, int dgt, char *src, s_flags flg)
+char	*chmp_upmst_prec(char *dsply, int dgt, char *src, t_flags flg)
 {
 	int i;
 	int y;

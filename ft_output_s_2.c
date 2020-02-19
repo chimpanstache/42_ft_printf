@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:26:27 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 12:30:00 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:42:16 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*prec_upmst_s(char *dsply, int dgt, char *src, s_flags flg)
+char	*prec_upmst_s(char *dsply, int dgt, char *src, t_flags flg)
 {
 	int lngth;
 	int y;
@@ -30,7 +30,7 @@ char	*prec_upmst_s(char *dsply, int dgt, char *src, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_neg_s(char *dsply, int dgt, char *src, s_flags flg)
+char	*chmp_neg_s(char *dsply, int dgt, char *src, t_flags flg)
 {
 	int lngth;
 	int y;
@@ -48,7 +48,7 @@ char	*chmp_neg_s(char *dsply, int dgt, char *src, s_flags flg)
 	return (dsply);
 }
 
-int		printf_s_null(char *src, s_flags flg)
+int		printf_s_null(char *src, t_flags flg)
 {
 	int		dgt;
 	char	*dsply;
@@ -77,7 +77,7 @@ int		printf_s_null(char *src, s_flags flg)
 	return (p);
 }
 
-int		printf_s_2(char *src, int dgt, s_flags flg)
+int		printf_s_2(char *src, int dgt, t_flags flg)
 {
 	int		p;
 	char	*dsply;
@@ -94,7 +94,7 @@ int		printf_s_2(char *src, int dgt, s_flags flg)
 	return (p);
 }
 
-int		printf_s(va_list *prms, s_flags flg)
+int		printf_s(va_list *prms, t_flags flg)
 {
 	char	*src;
 	int		dgt;

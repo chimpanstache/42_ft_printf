@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:58:08 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 15:27:55 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 15:33:06 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		ft_itoa_custom_pos_u(unsigned int n, char *arr)
+void	ft_itoa_custom_pos_u(unsigned int n, char *arr)
 {
 	unsigned int	nb;
 	int				len;
@@ -26,11 +26,17 @@ void		ft_itoa_custom_pos_u(unsigned int n, char *arr)
 	}
 }
 
-void	init_ind(s_ind *ind)
+void	init_ind(t_ind *ind)
 {
 	ind->a = 0;
 	ind->b = 0;
 	ind->i = 0;
 	ind->j = 0;
 	ind->l = 0;
+}
+
+void	write_string(t_ind *ind, const char *src)
+{
+	write(1, &src[ind->i++], 1);
+	ind->a++;
 }

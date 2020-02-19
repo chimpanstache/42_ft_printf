@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:16:55 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 17:41:07 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:44:43 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	init_flg(s_flags *flg)
+void	init_flg(t_flags *flg)
 {
 	flg->a = 0;
 	flg->c = 0;
@@ -20,7 +20,7 @@ void	init_flg(s_flags *flg)
 	flg->p_p = 0;
 }
 
-void	analyse_params(char *prmtrs, s_flags *flg, va_list *prms)
+void	analyse_params(char *prmtrs, t_flags *flg, va_list *prms)
 {
 	int i;
 	int j;

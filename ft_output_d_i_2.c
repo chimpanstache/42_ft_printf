@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:44:20 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 13:44:57 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:41:06 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*chmp_upmst_dgt_neg(char *display, int dgt, int nb, s_flags flg)
+char	*chmp_upmst_dgt_neg(char *display, int dgt, int nb, t_flags flg)
 {
 	int lngth;
 	int i;
@@ -39,7 +39,7 @@ char	*chmp_upmst_dgt_neg(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-char	*chmp_upmst_prec_pos(char *display, int dgt, int nb, s_flags flg)
+char	*chmp_upmst_prec_pos(char *display, int dgt, int nb, t_flags flg)
 {
 	int lngth;
 	int i;
@@ -60,7 +60,7 @@ char	*chmp_upmst_prec_pos(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, s_flags flg)
+char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, t_flags flg)
 {
 	int lngth;
 	int i;
@@ -89,7 +89,7 @@ char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, s_flags flg)
 	return (display);
 }
 
-int		printf_d_i_2(int nb, int dgt, s_flags flg)
+int		printf_d_i_2(int nb, int dgt, t_flags flg)
 {
 	int		p;
 	char	*display;
@@ -106,7 +106,7 @@ int		printf_d_i_2(int nb, int dgt, s_flags flg)
 	return (p);
 }
 
-int		printf_d_i(va_list *prms, s_flags flg)
+int		printf_d_i(va_list *prms, t_flags flg)
 {
 	int		nb;
 	int		dgt;

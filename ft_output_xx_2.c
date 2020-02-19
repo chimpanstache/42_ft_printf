@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:58:22 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 17:30:24 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:44:16 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*dgt_upmst_xx(char *dsply, int dgt, unsigned int nb, s_flags flg)
+char	*dgt_upmst_xx(char *dsply, int dgt, unsigned int nb, t_flags flg)
 {
 	int		i;
 	char	*base;
@@ -36,7 +36,7 @@ char	*dgt_upmst_xx(char *dsply, int dgt, unsigned int nb, s_flags flg)
 	return (dsply);
 }
 
-char	*prec_upmst_xx(char *dsply, int dgt, unsigned int nb, s_flags flg)
+char	*prec_upmst_xx(char *dsply, int dgt, unsigned int nb, t_flags flg)
 {
 	int		lngth;
 	int		i;

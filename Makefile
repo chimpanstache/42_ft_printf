@@ -5,62 +5,66 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/12/10 11:06:06 by ehafidi           #+#    #+#              #
-#    Updated: 2020/02/17 14:18:54 by ehafidi          ###   ########.fr        #
+#    Created: 2020/02/19 15:41:44 by ehafidi           #+#    #+#              #
+#    Updated: 2020/02/19 16:59:33 by ehafidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_printf.c ft_output_c.c ft_output_d_i.c ft_output_d_i_2.c ft_output_p.c ft_output_s.c ft_output_s_2.c ft_output_percent.c ft_output_u.c ft_output_u_2.c ft_output_x.c ft_output_x_2.c ft_output_xx.c ft_output_xx_2.c ft_parse.c ft_side_functions_0.c ft_side_functions_1.c ft_side_functions_2.c ft_side_functions_3.c 
-
-LIBFT_ROOT = ./libft
-
-CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -L. -lftprintf
-INCFLAGS = -I$(LIBFT_ROOT)
-
-RM = rm -f
-LIB = ar rcs
-MAKE = make
+C = clang
 
 NAME = libftprintf.a
 
-OBJ = $(SRC:.c=.o)
-INCLUDE = header.h
+FLAGS = -Wall -Wextra -Werror
 
+LIBFT = libft
 
-all: libft_all $(NAME)
+DIR_S = srcs
 
-$(NAME): $(OBJ)
-	cp $(LIBFT_ROOT)/libft.a $(NAME)
-	$(LIB) $(NAME) $(OBJ)
+DIR_O = temporary
 
-%.o: %.c $(INCLUDE)
-	$(CC) $(CCFLAGS) $(INCFLAGS) -c -o $@ $<
+SOURCES = ft_output_c.c \
+			ft_output_s_2.c \
+			ft_output_xx_2.c \
+			ft_side_functions_3.c \
+			ft_output_d_i.c \
+			ft_output_u.c \
+			ft_parse.c \
+			ft_output_d_i_2.c \
+			ft_output_u_2.c \
+			ft_printf.c \
+			ft_output_p.c \
+			ft_output_x.c \
+			ft_side_functions_0.c \
+			ft_output_percent.c \
+			ft_output_x_2.c \
+			ft_side_functions_1.c \
+			ft_output_s.c \
+			ft_output_xx.c \
+			ft_side_functions_2.c
 
-bonus: all
+SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
-clean: libft_clean
-	$(RM) $(OBJ)
+OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
-fclean: libft_fclean clean
-	$(RM) $(NAME)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@make -C $(LIBFT)
+	@cp libft/libft.a ./$(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+
+$(DIR_O)/%.o: $(DIR_S)/%.c
+	@mkdir -p temporary
+	@$(CC) $(FLAG) -o $@  -c $<
+
+clean:
+	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
+	@make clean -C $(LIBFT)
+
+fclean: clean
+	@rm -f $(NAME)
+	@make fclean -C $(LIBFT)
 
 re: fclean all
-
-test: CCFLAGS += -g
-test: all
-	$(CC) $(CCFLAGS) $(LDFLAGS) -L./libft -lft $(INCFLAGS) -o test main.c
-
-
-libft_all:
-	$(MAKE) -C $(LIBFT_ROOT) all
-
-libft_bonus:
-	$(MAKE) -C $(LIBFT_ROOT) bonus
-
-libft_clean:
-	$(MAKE) -C $(LIBFT_ROOT) clean
-
-libft_fclean:
-	$(MAKE) -C $(LIBFT_ROOT) fclean

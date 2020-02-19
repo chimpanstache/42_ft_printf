@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 14:40:01 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:41:43 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		write_ox(char *dsply)
 	dsply[1] = 'x';
 }
 
-char		*put_p(char *dsply, unsigned long long ptr, int dgt, s_flags flg)
+char		*put_p(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 {
 	char	*base;
 
@@ -45,7 +45,7 @@ char		*put_p(char *dsply, unsigned long long ptr, int dgt, s_flags flg)
 	return (dsply);
 }
 
-char		*put_p2(char *dsply, unsigned long long ptr, int dgt, s_flags flg)
+char		*put_p2(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 {
 	int		lngth;
 	char	*base;
@@ -67,7 +67,7 @@ char		*put_p2(char *dsply, unsigned long long ptr, int dgt, s_flags flg)
 	return (dsply);
 }
 
-int			printf_p(va_list *prms, s_flags flg)
+int			printf_p(va_list *prms, t_flags flg)
 {
 	int					dgt;
 	unsigned long long	ptr;

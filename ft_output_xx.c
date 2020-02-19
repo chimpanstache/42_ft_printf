@@ -6,13 +6,13 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 16:36:15 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/16 17:26:02 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 14:44:30 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*chmp_upmst_dgt_xx(char *dsply, int dgt, unsigned int nb, s_flags flg)
+char	*chmp_upmst_dgt_xx(char *dsply, int dgt, unsigned int nb, t_flags flg)
 {
 	int		lngth;
 	int		i;
@@ -37,7 +37,7 @@ char	*chmp_upmst_dgt_xx(char *dsply, int dgt, unsigned int nb, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_dgt_xx2(char *dsply, int dgt, unsigned int nb, s_flags flg)
+char	*chmp_upmst_dgt_xx2(char *dsply, int dgt, unsigned int nb, t_flags flg)
 {
 	int		lngth;
 	int		i;
@@ -66,7 +66,7 @@ char	*chmp_upmst_dgt_xx2(char *dsply, int dgt, unsigned int nb, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_dgt_xx3(char *dsply, int dgt, unsigned int nb, s_flags flg)
+char	*chmp_upmst_dgt_xx3(char *dsply, int dgt, unsigned int nb, t_flags flg)
 {
 	int		lngth;
 	int		i;
@@ -91,7 +91,7 @@ char	*chmp_upmst_dgt_xx3(char *dsply, int dgt, unsigned int nb, s_flags flg)
 	return (dsply);
 }
 
-char	*chmp_upmst_prec_xx(char *dsply, int dgt, unsigned int nb, s_flags flg)
+char	*chmp_upmst_prec_xx(char *dsply, int dgt, unsigned int nb, t_flags flg)
 {
 	int		i;
 	int		y;
@@ -119,7 +119,7 @@ char	*chmp_upmst_prec_xx(char *dsply, int dgt, unsigned int nb, s_flags flg)
 	return (dsply);
 }
 
-int		printf_xx(va_list *prms, s_flags flg)
+int		printf_xx(va_list *prms, t_flags flg)
 {
 	unsigned long long	nb;
 	int					dgt;
