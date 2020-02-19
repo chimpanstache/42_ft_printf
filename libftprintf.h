@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 16:57:26 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 17:26:02 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct	s_flags
 {

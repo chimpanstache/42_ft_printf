@@ -6,23 +6,23 @@
 #    By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/19 15:41:44 by ehafidi           #+#    #+#              #
-#    Updated: 2020/02/19 16:59:33 by ehafidi          ###   ########.fr        #
+#    Updated: 2020/02/19 17:18:35 by ehafidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C = clang
+LIBFT_ROOT = ./libft
+
+CC = gcc
+CCFLAGS = -Wall -Wextra -Werror
+LDFLAGS = -L. -lftprintf
+INCFLAGS = -I$(LIBFT_ROOT)
+
+RM = rm -f
+LIB = ar rcs
+MAKE = make
 
 NAME = libftprintf.a
-
-FLAGS = -Wall -Wextra -Werror
-
-LIBFT = libft
-
-DIR_S = srcs
-
-DIR_O = temporary
-
-SOURCES = ft_output_c.c \
+SRC = ft_output_c.c \
 			ft_output_s_2.c \
 			ft_output_xx_2.c \
 			ft_side_functions_3.c \
@@ -42,29 +42,42 @@ SOURCES = ft_output_c.c \
 			ft_output_xx.c \
 			ft_side_functions_2.c
 
-SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
+OBJ = $(SRC:.c=.o)
+INCLUDE = header.h
 
-OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
-all: $(NAME)
+all: libft_all $(NAME)
 
-$(NAME): $(OBJS)
-	@make -C $(LIBFT)
-	@cp libft/libft.a ./$(NAME)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
+$(NAME): $(OBJ)
+	cp $(LIBFT_ROOT)/libft.a $(NAME)
+	$(LIB) $(NAME) $(OBJ)
 
-$(DIR_O)/%.o: $(DIR_S)/%.c
-	@mkdir -p temporary
-	@$(CC) $(FLAG) -o $@  -c $<
+%.o: %.c $(INCLUDE)
+	$(CC) $(CCFLAGS) $(INCFLAGS) -c -o $@ $<
 
-clean:
-	@rm -f $(OBJS)
-	@rm -rf $(DIR_O)
-	@make clean -C $(LIBFT)
+bonus: all
 
-fclean: clean
-	@rm -f $(NAME)
-	@make fclean -C $(LIBFT)
+clean: libft_clean
+	$(RM) $(OBJ)
+
+fclean: libft_fclean clean
+	$(RM) $(NAME)
 
 re: fclean all
+
+test: CCFLAGS += -g
+test: all
+	$(CC) $(CCFLAGS) $(LDFLAGS) -L./libft -lft $(INCFLAGS) -o test main.c
+
+
+libft_all:
+	$(MAKE) -C $(LIBFT_ROOT) all
+
+libft_bonus:
+	$(MAKE) -C $(LIBFT_ROOT) bonus
+
+libft_clean:
+	$(MAKE) -C $(LIBFT_ROOT) clean
+
+libft_fclean:
+	$(MAKE) -C $(LIBFT_ROOT) fclean
