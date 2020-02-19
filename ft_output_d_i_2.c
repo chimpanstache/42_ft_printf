@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:44:20 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 14:41:06 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 20:43:05 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		printf_d_i(va_list *prms, t_flags flg)
 	int		dgt;
 	char	*display;
 	int		p;
-
+//printf("ici\n"); ///////////////////////////
 	nb = va_arg(*prms, int);
 	dgt = countdgt_d_i(nb);
 	if (dgt >= flg.c && dgt >= flg.p && flg.c >= 0)

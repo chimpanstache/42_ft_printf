@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 14:41:43 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 20:43:30 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,33 @@ char		*put_p(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 	return (dsply);
 }
 
+char		*put_p_c_neg(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
+{
+	char	*base;
+
+	base = "0123456789abcdef";
+	if (!(dsply = malloc(sizeof(*dsply) * (-flg.c + 1))))
+		return (NULL);
+	dsply[-flg.c] = '\0';
+	write_stuff(dsply, -flg.c, ' ');
+	if (flg.a < 0)
+	{
+		write_ox(dsply);
+		ft_ulltoa_base(ptr, &dsply[2], base);
+	}
+	else
+	{
+		if (!ptr && flg.p == 0)
+			write_ox(&dsply[-flg.c - 2]);
+		else
+		{
+			write_ox(&dsply[-flg.c - dgt]);
+			ft_ulltoa_base(ptr, &dsply[-flg.c - dgt + 2], base);
+		}
+	}
+	return (dsply);
+}
+
 char		*put_p2(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 {
 	int		lngth;
@@ -74,13 +101,15 @@ int			printf_p(va_list *prms, t_flags flg)
 	char				*base;
 	char				*dsply;
 	int					p;
-
+//printf("ici\n"); ///////////////////////////
 	ptr = va_arg(*prms, unsigned long long);
 	base = "0123456789abcdef";
 	p = 0;
 	dgt = countdgt_base(ptr, base) + 2;
 	if (flg.c > dgt)
 		dsply = put_p(dsply, ptr, dgt, flg);
+	else if (flg.c < 0 && -flg.c > dgt)
+		dsply = put_p_c_neg(dsply, ptr, dgt, flg);
 	else
 		dsply = put_p2(dsply, ptr, dgt, flg);
 	p = ft_strlen(dsply);

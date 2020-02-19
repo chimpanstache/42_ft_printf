@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 16:57:46 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 20:42:41 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		printf_c(va_list *prms, t_flags flg)
 	char	chr;
 	int		p;
 	char	*dsply;
-
+    //printf("ici\n"); ///////////////////////////
 	chr = va_arg(*prms, int);
 	if (flg.c > 1 || flg.c < -1)
 		dsply = chmp_pos(dsply, chr, flg);

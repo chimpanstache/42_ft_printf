@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 13:48:33 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 14:41:59 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 20:51:38 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 char	*dsply_upmst_perc(char *dsply, t_flags flg)
 {
-	if (!(dsply = malloc(sizeof(*dsply) * (1 + 1))))
+	int lngth;
+
+	lngth = 1;
+	if (flg.c < -1)
+		lngth = -flg.c;		
+	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
+	write_stuff(dsply, lngth, ' ');
 	dsply[0] = '%';
-	dsply[1] = '\0';
+	dsply[lngth] = '\0';
 	return (dsply);
 }
 
@@ -65,15 +71,27 @@ int		printf_percent(va_list *prms, t_flags flg)
 {
 	int		p;
 	char	*dsply;
-
+	//printf("ici\n"); ///////////////////////////
 	if (flg.c < 2)
+	{
+		//printf("ici\n"); ///////////////////////////
 		dsply = dsply_upmst_perc(dsply, flg);
+	}	
 	else if (flg.c > 1 && flg.a == 0)
+	{
+	//printf("ici1\n"); ///////////////////////////
 		dsply = chmp_upmst_perc(dsply, flg);
+	}
 	else if (flg.c > 1 && flg.a == -1)
+	{
+	//printf("ici2\n"); ///////////////////////////
 		dsply = chmp_att_neg_perc(dsply, flg);
+	}
 	else if (flg.c > 1 && flg.a == 1)
+	{
+	//printf("ici3\n"); ///////////////////////////
 		dsply = chmp_att_0(dsply, flg);
+	}	
 	p = ft_strlen(dsply);
 	write(1, dsply, p);
 	free(dsply);

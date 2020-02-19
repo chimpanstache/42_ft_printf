@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 14:42:38 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 21:09:26 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*chmp_upmst_left(char *dsply, int dgt, char *src, t_flags flg)
 		return (dsply);
 	if (flg.p < dgt && flg.p >= 0)
 		ft_memcpy(dsply, src, flg.p);
-	if ((flg.p >= dgt && flg.p >= 0) || flg.p == -1)
+	if ((flg.p >= dgt && flg.p >= 0) || flg.p < 0)
 		ft_memcpy(dsply, src, dgt);
 	return (dsply);
 }
@@ -90,6 +90,7 @@ char	*chmp_upmst_right2(char *dsply, int dgt, char *src, t_flags flg)
 	i = lngth - dgt;
 	if (flg.p >= 0)
 		i = lngth - flg.p;
+	//printf("%d\n", lngth); ///////////////////////////
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
@@ -98,7 +99,7 @@ char	*chmp_upmst_right2(char *dsply, int dgt, char *src, t_flags flg)
 		return (dsply);
 	if (flg.p == -1)
 		ft_memcpy(&dsply[i], src, dgt);
-	else if (flg.p > dgt)
+	else if (flg.p > dgt || (flg.p < 0 && -flg.p > dgt))
 		ft_memcpy(&dsply[lngth - dgt], src, dgt);
 	else
 		ft_memcpy(&dsply[i], src, flg.p);

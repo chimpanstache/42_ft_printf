@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 17:26:02 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 20:09:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+//# include "libft/libft.h"
 
 typedef struct	s_flags
 {
@@ -137,6 +137,8 @@ char			*put_p(char *dsply, unsigned long long ptr, int dgt,
 						t_flags flg);
 char			*put_p2(char *dsply, unsigned long long ptr, int dgt,
 						t_flags flg);
+char			*put_p_c_neg(char *dsply, unsigned long long ptr, int dgt,
+								t_flags flg);
 /*
 ** % functions
 */
@@ -175,5 +177,11 @@ void			ch0se_fnction(t_ind *ind, va_list *prms, t_flags *flg,
 								const char *src);
 char			*hardcode_tabindex(char *tabindex);
 void			init_types(int (*tabfunction[9]) (va_list *, t_flags));
+
+//ft_to_delete
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*ft_strndup(const char *str, size_t len);
+int		ft_strlen(char *base);
+int		ft_atoi(const char *str);
 
 #endif

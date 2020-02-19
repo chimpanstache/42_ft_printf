@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:58:08 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 15:33:06 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/19 20:34:03 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	init_ind(t_ind *ind)
 
 void	write_string(t_ind *ind, const char *src)
 {
+	//printf("ici\n"); ///////////////////////////
+
 	write(1, &src[ind->i++], 1);
 	ind->a++;
 }
