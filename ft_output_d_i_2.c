@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:44:20 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 20:43:05 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:12:39 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,9 @@ char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, t_flags flg)
 	return (display);
 }
 
-int		printf_d_i_2(int nb, int dgt, t_flags flg)
+char		*printf_d_i_2(int nb, int dgt, t_flags flg, char *display)
 {
 	int		p;
-	char	*display;
 
 	if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt && nb < 0)
 		display = chmp_upmst_dgt_neg(display, dgt, nb, flg);
@@ -100,10 +99,7 @@ int		printf_d_i_2(int nb, int dgt, t_flags flg)
 		display = chmp_upmst_prec_pos(display, dgt, nb, flg);
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p > dgt && nb < 0)
 		display = chmp_upmst_prec_neg(display, dgt, nb, flg);
-	p = ft_strlen(display);
-	write(1, display, p);
-	free(display);
-	return (p);
+	return (display);
 }
 
 int		printf_d_i(va_list *prms, t_flags flg)
@@ -126,7 +122,7 @@ int		printf_d_i(va_list *prms, t_flags flg)
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt && nb >= 0)
 		display = chmp_upmst_dgt_pos(display, dgt, nb, flg);
 	else
-		return (printf_d_i_2(nb, dgt, flg));
+		display = printf_d_i_2(nb, dgt, flg, display);
 	p = ft_strlen(display);
 	write(1, display, p);
 	free(display);

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 20:09:46 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:17:51 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char			*chmp_upmst_dgt_neg(char *dsply, int dgt, int nb, t_flags flg);
 char			*chmp_upmst_prec_pos(char *dsply, int dgt, int nb, t_flags flg);
 char			*chmp_upmst_prec_neg(char *dsply, int dgt, int nb, t_flags flg);
 void			write_0_d_i(char *display, int ind, int limit);
-int				printf_d_i_2(int nb, int dgt, t_flags flg);
+char		*printf_d_i_2(int nb, int dgt, t_flags flg, char *display);
 /*
 ** x functions
 */
@@ -104,7 +104,7 @@ char			*prec_upmst_s(char *dsply, int dgt, char *src, t_flags flg);
 char			*chmp_neg_s(char *dsply, int dgt, char *src, t_flags flg);
 char			*null(void);
 int				printf_s_null(char *src, t_flags flg);
-int				printf_s_2(char *src, int dgt, t_flags flg);
+char	*printf_s_2(char *src, int dgt, t_flags flg, char *dsply);
 /*
 ** c functions
 */

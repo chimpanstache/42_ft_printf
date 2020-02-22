@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:09:38 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 21:09:26 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/21 14:53:30 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ char	*dgt_upmst_s(char *dsply, int dgt, char *src, t_flags flg)
 
 	y = 0;
 	lngth = dgt;
+	if (-flg.c > dgt)
+		lngth = -flg.c;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
-	while (y < lngth)
-		dsply[y++] = ' ';
+	write_stuff(dsply, lngth, ' ');
 	if (*src == '\0' || !src || flg.p == 0)
 		return (dsply);
 	ft_memcpy(dsply, src, dgt);
@@ -40,8 +41,7 @@ char	*chmp_upmst_left(char *dsply, int dgt, char *src, t_flags flg)
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
-	while (y < lngth)
-		dsply[y++] = ' ';
+	write_stuff(dsply, lngth, ' ');
 	if (*src == '\0' || !src || flg.p == 0)
 		return (dsply);
 	if (flg.p < dgt && flg.p >= 0)

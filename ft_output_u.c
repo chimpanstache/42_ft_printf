@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:57:03 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 14:43:13 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/22 12:12:24 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ char	*digit_upmst_u(char *display, int dgt, unsigned int nb, t_flags flg)
 
 	i = 0;
 	lngth = dgt;
+	if (-flg.c > dgt)
+		lngth = -flg.c;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
+	write_stuff(display, lngth, ' ');
 	if (nb == 0 && flg.p == 0)
 	{
 		if (flg.c == 1)
@@ -42,12 +45,14 @@ char	*prec_upmst_u(char *display, int dgt, unsigned int nb, t_flags flg)
 
 	y = 0;
 	lngth = flg.p;
+	if (flg.c < 0 && -flg.c > flg.p)
+		lngth = -flg.c; 
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
-	i = lngth - dgt;
-	while (y < lngth)
-		display[y++] = '0';
+	i = flg.p - dgt;
+	write_stuff(display, lngth, ' ');
+	write_stuff(display, flg.p - dgt, '0');
 	ft_itoa_custom_pos_u(nb, &display[i]);
 	return (display);
 }
@@ -88,7 +93,7 @@ char	*chmp_upmst_dgt_u2(char *display, int dgt, unsigned int nb, t_flags flg)
 	display[lngth] = '\0';
 	i = lngth - dgt;
 	write_stuff(display, lngth, ' ');
-	if (flg.a == 1 && flg.p == -1)
+	if (flg.a == 1 && flg.p < 0)
 		write_stuff(display, i, '0');
 	if (flg.p > dgt)
 	{
@@ -112,17 +117,35 @@ int		printf_u(va_list *prms, t_flags flg)
 	nb = va_arg(*prms, unsigned int);
 	dgt = countdgt_u(nb);
 	if (dgt >= flg.c && dgt >= flg.p)
+	{
+	//printf("ici\n"); ////////////////////////
 		display = digit_upmst_u(display, dgt, nb, flg);
+	}
 	else if (flg.p >= flg.c && flg.p >= dgt)
+	{
+	//printf("ici1\n"); ////////////////////////
 		display = prec_upmst_u(display, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0)
+	{
+	//printf("ici2\n"); ////////////////////////
 		display = chmp_upmst_dgt_u3(display, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1)
+	{
+	//printf("ici3\n"); ////////////////////////
 		display = chmp_upmst_dgt_u2(display, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt)
+	{
+	//printf("ici4\n"); ////////////////////////
 		display = chmp_upmst_dgt_u(display, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p > dgt)
+	{
+	//printf("ici5\n"); ////////////////////////
 		display = chmp_upmst_prec_u(display, dgt, nb, flg);
+	}
 	p = ft_strlen(display);
 	write(1, display, p);
 	free(display);

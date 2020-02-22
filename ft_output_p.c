@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 20:43:30 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/21 15:30:15 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,17 @@ char		*put_p_c_neg(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 		write_ox(dsply);
 		ft_ulltoa_base(ptr, &dsply[2], base);
 	}
+	else if (!ptr && flg.p == 0)
+		write_ox(&dsply[-flg.c - 2]);
+	else if (flg.p == -1 && flg.a == 0)
+	{
+		write_ox(&dsply[0]);
+		ft_ulltoa_base(ptr, &dsply[2], base);
+	}
 	else
 	{
-		if (!ptr && flg.p == 0)
-			write_ox(&dsply[-flg.c - 2]);
-		else
-		{
-			write_ox(&dsply[-flg.c - dgt]);
-			ft_ulltoa_base(ptr, &dsply[-flg.c - dgt + 2], base);
-		}
+		write_ox(&dsply[-flg.c - dgt]);
+		ft_ulltoa_base(ptr, &dsply[-flg.c - dgt + 2], base);
 	}
 	return (dsply);
 }
@@ -107,11 +109,20 @@ int			printf_p(va_list *prms, t_flags flg)
 	p = 0;
 	dgt = countdgt_base(ptr, base) + 2;
 	if (flg.c > dgt)
+	{
+		//printf("ici\n"); ///////////////////////////
 		dsply = put_p(dsply, ptr, dgt, flg);
+	}
 	else if (flg.c < 0 && -flg.c > dgt)
+	{
+		//printf("ici1\n"); ///////////////////////////
 		dsply = put_p_c_neg(dsply, ptr, dgt, flg);
+	}
 	else
+	{
+	//printf("ici2\n"); ///////////////////////////
 		dsply = put_p2(dsply, ptr, dgt, flg);
+	}
 	p = ft_strlen(dsply);
 	write(1, dsply, p);
 	free(dsply);

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:10 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 14:43:42 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/21 14:16:25 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ char	*prec_upmst_x(char *dsply, int dgt, unsigned int nb, t_flags flg)
 	base = "0123456789abcdef";
 	y = 0;
 	lngth = flg.p;
+	if (-flg.c > flg.p)
+		lngth = -flg.c;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
-	i = lngth - dgt;
-	while (y < lngth)
-		dsply[y++] = '0';
+	write_stuff(dsply, lngth, ' ');
+	i = flg.p - dgt;
+	write_stuff(dsply, flg.p - dgt, '0');
 	ft_putnbr_base(nb, base, &dsply[i]);
 	return (dsply);
 }
@@ -96,7 +98,7 @@ char	*chmp_upmst_dgt_x2(char *dsply, int dgt, unsigned int nb, t_flags flg)
 	dsply[lngth] = '\0';
 	i = lngth - dgt;
 	write_stuff(dsply, lngth, ' ');
-	if (flg.a == 1 && flg.p == -1)
+	if (flg.a == 1 && flg.p < 0)
 		write_stuff(dsply, i, '0');
 	if (flg.a == 1 && flg.p == 0 && nb == 0)
 		return (dsply);
@@ -120,18 +122,36 @@ int		printf_x(va_list *prms, t_flags flg)
 	nb = va_arg(*prms, unsigned long long);
 	dgt = countdgt_base(nb, "0123456789abcdef");
 	if (dgt >= flg.c && dgt >= flg.p)
+	{
+		//printf("ici\n"); ////////////////////////
 		dsply = dgt_upmst_x(dsply, dgt, nb, flg);
+	}
 	else if (flg.p >= flg.c && flg.p >= dgt)
+	{
+		//printf("ici1\n"); ////////////////////////
 		dsply = prec_upmst_x(dsply, dgt, nb, flg);
+	}
 	else if ((flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0) ||
 				(flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0))
+	{
+	 //printf("ici2\n"); ////////////////////////
 		dsply = chmp_upmst_dgt_x3(dsply, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1)
+	{
+	//  /printf("ici3\n"); ////////////////////////
 		dsply = chmp_upmst_dgt_x2(dsply, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt)
+	{
+	 //printf("ici4\n"); ////////////////////////
 		dsply = chmp_upmst_dgt_x(dsply, dgt, nb, flg);
+	}
 	else if ((flg.c >= flg.p) && (flg.c >= dgt) && (flg.p > dgt))
+	{
+	  //printf("ici5\n"); ////////////////////////
 		dsply = chmp_upmst_prec_x(dsply, dgt, nb, flg);
+	}
 	p = ft_strlen(dsply);
 	write(1, dsply, ft_strlen(dsply));
 	free(dsply);
