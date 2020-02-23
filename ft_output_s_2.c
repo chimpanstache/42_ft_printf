@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:26:27 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/22 13:16:21 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/23 18:04:20 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ int		printf_s_null(char *src, t_flags flg)
 
 	src = null();
 	dgt = ft_strlen(src);
-	if ((flg.p < 0 && flg.c < dgt && flg.c >= 0) || (flg.c < 0 && dgt >= -flg.c)
-			|| (flg.c < dgt && dgt <= flg.p))	
+	if ((flg.p < dgt && -flg.c <= dgt && flg.c < 0 && flg.p >= 0))
+		dsply = special_case_s(dsply, dgt, src, flg);
+	else if ((flg.p < 0 && flg.c < dgt && flg.c >= 0) || (flg.c < 0 && dgt >= -flg.c)
+			|| (flg.c < dgt && dgt <= flg.p))
 		dsply = dgt_upmst_s(dsply, dgt, src, flg);
 	else if (flg.c >= dgt && flg.a < 0)
 		dsply = chmp_upmst_left(dsply, dgt, src, flg);
@@ -75,14 +77,14 @@ int		printf_s_null(char *src, t_flags flg)
 		dsply = prec_upmst_s(dsply, dgt, src, flg);
 	p = ft_strlen(dsply);
 	write(1, dsply, p);
-	free(dsply);
+	//free(dsply);
 	return (p);
 }
 
 char	*printf_s_2(char *src, int dgt, t_flags flg, char *dsply)
 {
 	int		p;
-//printf("hello\n"); ///////////////////////////
+	//printf("hello\n"); ///////////////////////////
 	if (flg.c < dgt && flg.p < dgt && flg.c >= flg.p && flg.p >= 0)
 	{
 		//printf("ici\n"); ///////////////////////////
@@ -112,10 +114,15 @@ int		printf_s(va_list *prms, t_flags flg)
 	if (src == NULL)
 		return (printf_s_null(src, flg));
 	dgt = ft_strlen(src);
-	if ((flg.p < 0 && flg.c < dgt && flg.c >= 0) || (flg.c < 0 && dgt >= -flg.c)
+	if ((flg.p < dgt && -flg.c <= dgt && flg.c < 0 && flg.p >= 0))
+	{
+		//printf("ici3\n"); ///////////////////////////	
+		dsply = special_case_s(dsply, dgt, src, flg);
+	}
+	else if ((flg.p < 0 && flg.c < dgt && flg.c >= 0) || (flg.c < 0 && dgt >= -flg.c)
 			|| (flg.c < dgt && dgt <= flg.p))
 	{
-		// printf("ici3\n"); ///////////////////////////	
+		// printf("ici3\n"); ///////////////////////////
 		dsply = dgt_upmst_s(dsply, dgt, src, flg);
 	}
 	else if (flg.c >= dgt && flg.a < 0)
@@ -130,13 +137,13 @@ int		printf_s(va_list *prms, t_flags flg)
 	}
 	else if (flg.c > dgt && flg.a == 0)
 	{
-		// printf("ici6\n"); ///////////////////////////
+		 //printf("ici6\n"); ///////////////////////////
 		dsply = chmp_upmst_right2(dsply, dgt, src, flg);
 	}
 	else
 		dsply = printf_s_2(src, dgt, flg, dsply);
 	p = ft_strlen(dsply);
 	write(1, dsply, p);
-	free(dsply);
+	//free(dsply);
 	return (p);
 }

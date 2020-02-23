@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:44:20 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/22 13:12:39 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/23 14:23:51 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, t_flags flg)
 	int y;
 
 	lngth = flg.c;
-	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
+	if (!(display = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
 	i = flg.p - dgt;
@@ -92,13 +92,23 @@ char	*chmp_upmst_prec_neg(char *display, int dgt, int nb, t_flags flg)
 char		*printf_d_i_2(int nb, int dgt, t_flags flg, char *display)
 {
 	int		p;
+	//printf("hello\n"); ////////////////////////
 
 	if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt && nb < 0)
+	{
+	
 		display = chmp_upmst_dgt_neg(display, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p > dgt && nb >= 0)
+	{
+	
 		display = chmp_upmst_prec_pos(display, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p > dgt && nb < 0)
+	{
+	
 		display = chmp_upmst_prec_neg(display, dgt, nb, flg);
+	}
 	return (display);
 }
 
@@ -108,23 +118,41 @@ int		printf_d_i(va_list *prms, t_flags flg)
 	int		dgt;
 	char	*display;
 	int		p;
-//printf("ici\n"); ///////////////////////////
+//printf("hello2\n"); ////////////////////////
 	nb = va_arg(*prms, int);
 	dgt = countdgt_d_i(nb);
 	if (dgt >= flg.c && dgt >= flg.p && flg.c >= 0)
+	{
+		//printf("ici\n"); ////////////////////////
 		display = dgt_upmst(display, dgt, nb, flg);
+	}
 	else if (flg.c < 0 && nb >= 0)
+	{
+	//printf("ici1\n"); ////////////////////////
 		display = chmp_neg_prec_pos(display, dgt, nb, flg);
+	}
 	else if (flg.c < 0 && nb < 0)
+	{
+	//printf("ici2\n"); ////////////////////////
 		display = chmp_nb_neg_prec_pos(display, dgt, nb, flg);
+	}
 	else if (flg.p >= flg.c && flg.p >= dgt)
+	{
+	//printf("ici3\n"); ////////////////////////
 		display = prec_upmst(display, dgt, nb, flg);
+	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt && nb >= 0)
+	{
+	//printf("ici4\n"); ////////////////////////
 		display = chmp_upmst_dgt_pos(display, dgt, nb, flg);
+	}
 	else
+	{
+	//printf("ici5\n"); ////////////////////////
 		display = printf_d_i_2(nb, dgt, flg, display);
+	}
 	p = ft_strlen(display);
 	write(1, display, p);
-	free(display);
+	//free(display);
 	return (p);
 }

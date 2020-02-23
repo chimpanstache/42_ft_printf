@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:57:03 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/22 12:12:24 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/22 13:55:11 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,6 @@ int		printf_u(va_list *prms, t_flags flg)
 	}
 	p = ft_strlen(display);
 	write(1, display, p);
-	free(display);
+	//free(display);
 	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:58:22 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/21 14:00:45 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/23 14:36:46 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ char	*dgt_upmst_xx(char *dsply, int dgt, unsigned int nb, t_flags flg)
 	base = "0123456789ABCDEF";
 	i = 0;
 	lngth = dgt;
+	if (-flg.c > dgt)
+		lngth = -flg.c;
 	if (!(dsply = malloc(sizeof(*dsply) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
+	write_stuff(dsply, lngth, ' ');
 	if (nb == 0 && flg.p == 0)
 	{
 		if (flg.c == 1)

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/22 13:17:51 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/23 18:21:57 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ char			*chmp_neg_s(char *dsply, int dgt, char *src, t_flags flg);
 char			*null(void);
 int				printf_s_null(char *src, t_flags flg);
 char	*printf_s_2(char *src, int dgt, t_flags flg, char *dsply);
+char	*special_case_s(char *dsply, int dgt, char *src, t_flags flg);
 /*
 ** c functions
 */

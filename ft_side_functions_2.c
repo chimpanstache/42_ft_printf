@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 13:44:08 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/17 12:28:50 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/23 13:58:36 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,21 @@ void		ft_itoa_custom_pos(int n, char *arr)
 	unsigned int	nb;
 	int				len;
 
+	
 	len = count_no_diggity(n);
 	if (n < 0)
 		nb = (unsigned int)(n * -1);
 	else
 		nb = (unsigned int)n;
+	//printf("entree de fonction() aveec arr = |%s| et len |%d|\n", arr, len);
 	while (len-- > 0)
 	{
+		//printf("on essaye decrire dans arr[%d] ca : |%u|\n", len, nb % 10 + '0');
 		arr[len] = nb % 10 + '0';
 		nb = nb / 10;
 	}
+
+	//printf("sorti de fonction()\n");
 }
 
 void		ft_ulltoa_base(unsigned long long n, char *arr, char *base)

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 16:36:15 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/21 16:46:28 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/23 14:37:15 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*chmp_upmst_dgt_xx2(char *dsply, int dgt, unsigned int nb, t_flags flg)  //
 	dsply[lngth] = '\0';
 	i = lngth - dgt;
 	write_stuff(dsply, lngth, ' ');
-	if (flg.a == 1 && flg.p == -1)
+	if (flg.a == 1 && flg.p < 0)
 		write_stuff(dsply, i, '0');
 	else if (flg.a == 1 && flg.p == 0 && nb == 0)
 		return (dsply);
@@ -182,6 +182,6 @@ int		printf_xx(va_list *prms, t_flags flg)
 	}
 	p = ft_strlen(dsply);
 	write(1, dsply, p);
-	free(dsply);
+	//free(dsply);
 	return (p);
 }
