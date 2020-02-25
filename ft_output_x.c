@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:10 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/23 14:52:44 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/25 17:48:54 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,38 +125,20 @@ int		printf_x(va_list *prms, t_flags flg)
 	nb = va_arg(*prms, unsigned long long);
 	dgt = countdgt_base(nb, "0123456789abcdef");
 	if (dgt >= flg.c && dgt >= flg.p)
-	{
-		//printf("ici\n"); ////////////////////////
 		dsply = dgt_upmst_x(dsply, dgt, nb, flg);
-	}
 	else if (flg.p >= flg.c && flg.p >= dgt)
-	{
-		//printf("ici1\n"); ////////////////////////
 		dsply = prec_upmst_x(dsply, dgt, nb, flg);
-	}
 	else if ((flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0) ||
 				(flg.c >= flg.p && flg.c >= dgt && flg.a == 1 && nb == 0))
-	{
-	 //printf("ici2\n"); ////////////////////////
 		dsply = chmp_upmst_dgt_x3(dsply, dgt, nb, flg);
-	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.a == 1)
-	{
-	//  /printf("ici3\n"); ////////////////////////
 		dsply = chmp_upmst_dgt_x2(dsply, dgt, nb, flg);
-	}
 	else if (flg.c >= flg.p && flg.c >= dgt && flg.p <= dgt)
-	{
-	 //printf("ici4\n"); ////////////////////////
 		dsply = chmp_upmst_dgt_x(dsply, dgt, nb, flg);
-	}
 	else if ((flg.c >= flg.p) && (flg.c >= dgt) && (flg.p > dgt))
-	{
-	  //printf("ici5\n"); ////////////////////////
 		dsply = chmp_upmst_prec_x(dsply, dgt, nb, flg);
-	}
 	p = ft_strlen(dsply);
 	write(1, dsply, ft_strlen(dsply));
-	//free(dsply);
+	free(dsply);
 	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:16:55 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 14:44:43 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/25 11:12:30 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		ft_attribute(char str)
 {
 	int att;
 
+	att = 0;
 	if (str == '-')
 		att = -1;
 	if (att == -1)

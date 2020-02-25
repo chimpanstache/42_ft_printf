@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 14:34:47 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/23 13:58:45 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/25 16:46:41 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ char	*chmp_neg_prec_pos(char *display, int dgt, int nb, t_flags flg)
 	int i;
 
 	lngth = -flg.c;
-	if (-flg.c <= flg.p)
+	if (-flg.c <= flg.p && dgt <= flg.p)
 		lngth = flg.p;
+	if (-flg.c <= dgt && dgt > flg.p)
+		lngth = dgt;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';
@@ -70,7 +72,6 @@ char	*chmp_neg_prec_pos(char *display, int dgt, int nb, t_flags flg)
 	write_stuff(display, lngth, ' ');
 	if (flg.p == 0 && nb == 0)
 		return (display);
-	//printf("on appel itoacustompos avec une taille de %d, %d,%d, i = %d\n", lngth, flg.p, dgt, i);
 	if (flg.p < dgt)
 		ft_itoa_custom_pos(nb, display);
 	else
@@ -89,8 +90,10 @@ char	*chmp_nb_neg_prec_pos(char *display, int dgt, int nb, t_flags flg)
 	lngth = -flg.c;
 	if (-flg.c <= flg.p)
 		lngth = flg.p + 1;
-	if (dgt >= -flg.c && -flg.c > flg.p)
+	if (dgt == -flg.c && -flg.c > flg.p)
 		lngth++;
+	if (dgt > -flg.c && -flg.c > flg.p)
+		lngth = dgt + 1;
 	if (!(display = malloc(sizeof(*display) * (lngth + 1))))
 		return (NULL);
 	display[lngth] = '\0';

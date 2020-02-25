@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:46:00 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/19 20:36:56 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/25 17:50:22 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ch0se_fnction(t_ind *ind, va_list *prms, t_flags *flg, const char *src)
 		}
 		ind->j++;
 	}
+	free(tabindex);
 }
 
 void	get_params(t_ind *ind, const char *src, t_flags *flg, va_list *prms)
@@ -83,13 +84,9 @@ int		ft_printf(const char *src, ...)
 	while (src[ind.i])
 	{
 		if (src[ind.i] != '%')
-		{
-			//printf("i"); ///////////////////////////
 			write_string(&ind, src);
-		}
 		else if (src[ind.i++] == '%')
 		{
-			//printf("j"); ///////////////////////////
 			init_flg(&flg);
 			ind.l = ind.i;
 			while (('0' <= src[ind.i] && src[ind.i] <= '9') || src[ind.i] == '-'

@@ -6,19 +6,19 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:50:53 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/22 13:54:42 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/25 17:05:26 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		write_ox(char *dsply)
+void	write_ox(char *dsply)
 {
 	dsply[0] = '0';
 	dsply[1] = 'x';
 }
 
-char		*put_p(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
+char	*put_p(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 {
 	char	*base;
 
@@ -45,7 +45,7 @@ char		*put_p(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 	return (dsply);
 }
 
-char		*put_p_c_neg(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
+char	*put_p_c_neg(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 {
 	char	*base;
 
@@ -74,7 +74,7 @@ char		*put_p_c_neg(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 	return (dsply);
 }
 
-char		*put_p2(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
+char	*put_p2(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 {
 	int		lngth;
 	char	*base;
@@ -96,35 +96,26 @@ char		*put_p2(char *dsply, unsigned long long ptr, int dgt, t_flags flg)
 	return (dsply);
 }
 
-int			printf_p(va_list *prms, t_flags flg)
+int		printf_p(va_list *prms, t_flags flg)
 {
 	int					dgt;
 	unsigned long long	ptr;
 	char				*base;
 	char				*dsply;
 	int					p;
-//printf("ici\n"); ///////////////////////////
+
 	ptr = va_arg(*prms, unsigned long long);
 	base = "0123456789abcdef";
 	p = 0;
 	dgt = countdgt_base(ptr, base) + 2;
 	if (flg.c > dgt)
-	{
-		//printf("ici\n"); ///////////////////////////
 		dsply = put_p(dsply, ptr, dgt, flg);
-	}
 	else if (flg.c < 0 && -flg.c > dgt)
-	{
-		//printf("ici1\n"); ///////////////////////////
 		dsply = put_p_c_neg(dsply, ptr, dgt, flg);
-	}
 	else
-	{
-	//printf("ici2\n"); ///////////////////////////
 		dsply = put_p2(dsply, ptr, dgt, flg);
-	}
 	p = ft_strlen(dsply);
 	write(1, dsply, p);
-	//free(dsply);
+	free(dsply);
 	return (p);
 }
