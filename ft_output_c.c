@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:21:54 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/25 16:47:11 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/26 16:35:03 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int		printf_c(va_list *prms, t_flags flg)
 		write(1, dsply, p);
 	else if (chr == '\0')
 	{
-		if (flg.a == -1)
+		if (flg.a == -1 || flg.c < 0)
 			write(1, "\0", 1);
 		write(1, dsply, p);
-		if (flg.a == 0)
+		if (flg.a == 0 || flg.c > 0)
 			write(1, "\0", 1);
 	}
 	free(dsply);

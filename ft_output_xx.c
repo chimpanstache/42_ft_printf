@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 16:36:15 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/25 18:04:52 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/26 21:36:10 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,12 @@ char	*chmp_upmst_prec_xx(char *dsply, int dgt, unsigned int nb, t_flags flg)
 
 int		printf_xx(va_list *prms, t_flags flg)
 {
-	unsigned long long	nb;
-	int					dgt;
-	char				*dsply;
-	int					p;
+	unsigned int	nb;
+	int				dgt;
+	char			*dsply;
+	int				p;
 
-	nb = va_arg(*prms, unsigned long long);
+	nb = va_arg(*prms, unsigned int);
 	dgt = countdgt_base(nb, "0123456789ABCDEF");
 	if (dgt >= flg.c && dgt >= flg.p)
 		dsply = dgt_upmst_xx(dsply, dgt, nb, flg);

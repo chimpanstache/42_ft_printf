@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:10 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/25 17:48:54 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/26 21:36:01 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,15 @@ char	*chmp_upmst_dgt_x(char *dsply, int dgt, unsigned int nb, t_flags flg)
 {
 	int		lngth;
 	int		i;
-	int		y;
 	char	*base;
 
 	base = "0123456789abcdef";
 	lngth = flg.c;
-	y = 0;
 	if (!(dsply = malloc(sizeof(char) * (lngth + 1))))
 		return (NULL);
 	dsply[lngth] = '\0';
 	i = lngth - dgt;
-	while (y < lngth)
-		dsply[y++] = ' ';
+	write_stuff(dsply, lngth, ' ');
 	if (flg.p == 0 && nb == 0)
 		return (dsply);
 	if (flg.a < 0)
@@ -117,12 +114,11 @@ char	*chmp_upmst_dgt_x2(char *dsply, int dgt, unsigned int nb, t_flags flg)
 
 int		printf_x(va_list *prms, t_flags flg)
 {
-	unsigned long long	nb;
-	int					dgt;
-	char				*dsply;
-	int					p;
-
-	nb = va_arg(*prms, unsigned long long);
+	unsigned int	nb;
+	int				dgt;
+	char			*dsply;
+	int				p;
+	nb = va_arg(*prms, unsigned int);
 	dgt = countdgt_base(nb, "0123456789abcdef");
 	if (dgt >= flg.c && dgt >= flg.p)
 		dsply = dgt_upmst_x(dsply, dgt, nb, flg);

@@ -6,7 +6,7 @@
 /*   By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 15:41:29 by ehafidi           #+#    #+#             */
-/*   Updated: 2020/02/25 18:08:07 by ehafidi          ###   ########.fr       */
+/*   Updated: 2020/02/26 15:46:54 by ehafidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void			analyse_params(char *prmtrs, t_flags *flg, va_list *prms);
 void			ft_case_percent(int a);
 void			init_flg(t_flags *flg);
 void			ft_itoa_custom(int n, char *arr);
-static int		count_no_diggity(int n);
 void			ft_itoa_custom_pos(int n, char *arr);
 int				ft_putnbr_base_p(unsigned long long nbr, char *base);
 int				countdgt_base(unsigned long long nbr, char *base);
