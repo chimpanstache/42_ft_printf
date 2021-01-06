@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ehafidi <ehafidi@student.42.fr>            +#+  +:+       +#+         #
+#    By: stuntman <stuntman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/19 15:41:44 by ehafidi           #+#    #+#              #
-#    Updated: 2020/02/25 17:57:02 by ehafidi          ###   ########.fr        #
+#    Updated: 2021/01/06 16:15:34 by stuntman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,32 +22,32 @@ LIB = ar rcs
 MAKE = make
 
 NAME = libftprintf.a
-SRC = ft_output_c.c \
-			ft_output_s_2.c \
-			ft_output_s_3.c \
-			ft_output_xx_2.c \
-			ft_side_functions_3.c \
-			ft_output_d_i.c \
-			ft_output_u.c \
-			ft_parse.c \
-			ft_output_d_i_2.c \
-			ft_output_u_2.c \
-			ft_printf.c \
-			ft_output_p.c \
-			ft_output_x.c \
-			ft_side_functions_0.c \
-			ft_output_percent.c \
-			ft_output_x_2.c \
-			ft_side_functions_1.c \
-			ft_output_s.c \
-			ft_output_xx.c \
-			ft_side_functions_2.c 
+SRC = srcs/ft_output_c.c \
+			srcs/ft_output_s_2.c \
+			srcs/ft_output_s_3.c \
+			srcs/ft_output_xx_2.c \
+			srcs/ft_side_functions_3.c \
+			srcs/ft_output_d_i.c \
+			srcs/ft_output_u.c \
+			srcs/ft_parse.c \
+			srcs/ft_output_d_i_2.c \
+			srcs/ft_output_u_2.c \
+			srcs/ft_printf.c \
+			srcs/ft_output_p.c \
+			srcs/ft_output_x.c \
+			srcs/ft_side_functions_0.c \
+			srcs/ft_output_percent.c \
+			srcs/ft_output_x_2.c \
+			srcs/ft_side_functions_1.c \
+			srcs/ft_output_s.c \
+			srcs/ft_output_xx.c \
+			srcs/ft_side_functions_2.c 
 
 OBJ = $(SRC:.c=.o)
 INCLUDE = header.h
 
 
-all: libft_all $(NAME)
+all: libft_all $(NAME) clean
 
 $(NAME): $(OBJ)
 	cp $(LIBFT_ROOT)/libft.a $(NAME)
