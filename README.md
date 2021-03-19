@@ -1,7 +1,9 @@
 # ft_printf
 This is another algorithmic project.  
 It helps you getting familiar with variadic functions in C.   
-Basically, you're asked to code a simplified version of the [printf function from the stdio.h library](https://linux.die.net/man/3/printf). More details are available in the subject attached.  
+Basically, you're asked to code a simplified version of the [printf function from the stdio.h library](https://linux.die.net/man/3/printf). 
+The conversions you're asked to handle are "cspdiuxX%", with or without any of these flags "-.0*"
+More details are available in the subject attached.  
 ## Getting started
 This project is built on macOS, so you have to run it on a mac environment.
 On your terminal, execute in the repository of your choice:
