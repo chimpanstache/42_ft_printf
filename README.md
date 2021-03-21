@@ -1,4 +1,4 @@
-![printf](https://github.com/ehafidi/42_ft_printf/blob/master/printf-recording.gif)
+![printf](https://github.com/ehafidi/42_ft_printf/blob/master/ft-printf-recording.gif)
 
 
 # ft_printf
