@@ -1,5 +1,4 @@
-![printf]
-(https://github.com/ehafidi/42_ft_printf/printf-recording.gif)
+![printf](https://github.com/ehafidi/42_ft_printf/printf-recording.gif)
 
 # ft_printf
 This is another algorithmic project.  
